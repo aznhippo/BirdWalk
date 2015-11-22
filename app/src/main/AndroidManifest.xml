@@ -43,11 +43,6 @@
             android:value="AIzaSyCQE8u76Qt1SKe8kveKmLqAMVl8xQE_b9k" />
 
         <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name=".TrailActivity"
             android:label="@string/title_activity_trail"
             android:screenOrientation="portrait"
@@ -71,7 +66,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
-

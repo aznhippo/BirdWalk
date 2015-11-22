@@ -52,7 +52,7 @@ public class TrailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trail);
 
         Intent intent = getIntent();
-        trailName = intent.getStringExtra(MapsActivity.EXTRA_TRAILKEY);
+        trailName = intent.getStringExtra(MapActivity.EXTRA_TRAILKEY);
         trailData = TrailData.getInstance();
         currTrail = trailData.getValue(trailName);
 
@@ -92,7 +92,9 @@ public class TrailActivity extends AppCompatActivity {
     private void setUpMap() {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         //suppress all map gestures
+        //turn off current location button
         mMap.getUiSettings().setAllGesturesEnabled(false);
+        mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -131,7 +133,7 @@ public class TrailActivity extends AppCompatActivity {
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override
             public void onMapClick(LatLng position){
-                Intent intent = new Intent(TrailActivity.this, MapsActivity.class);
+                Intent intent = new Intent(TrailActivity.this, MapActivity.class);
                 intent.putExtra(EXTRA_TRAILKEY, trailName);
                 intent.putExtra("fromActivity", "TrailActivity");
                 startActivity(intent);

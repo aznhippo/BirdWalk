@@ -4,18 +4,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -23,7 +22,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.Map;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity {
 
     private GoogleMap mMap;
     TrailData trailData;
@@ -32,62 +31,62 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Toolbar toolbar;
     public final static String EXTRA_TRAILKEY = "com.example.josh.birdwalk.TRAIL";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        setContentView(R.layout.activity_map);
+
+        setUpMapIfNeeded();
+
+        trailData = TrailData.getInstance();
+        Intent intent = this.getIntent();
+        if (intent != null) {
+            String intentString = intent.getExtras().getString("fromActivity");
+
+            if (intentString.equals("MainActivity")) {
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
+                toolbar.setTitle("Map Overview");
+                setSupportActionBar(toolbar);
+                showAllTrails();
+            }
+            if (intentString.equals("TrailActivity")) {
+                trailName = intent.getStringExtra(TrailActivity.EXTRA_TRAILKEY);
+                currTrail = trailData.getValue(trailName);
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
+                toolbar.setTitle(trailName);
+                setSupportActionBar(toolbar);
+                showSelectedTrail();
+            }
+
+        }
+
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+                setUpMap();
+            }
+        }
+    }
+
+    private void setUpMap() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         } else {
             // Show rationale and request permission.
-        }
-
-        trailData = TrailData.getInstance();
-
-        Intent intent = this.getIntent();
-        if (intent !=null){
-            String intentString = intent.getExtras().getString("fromActivity");
-
-            if(intentString.equals("MainActivity")){
-//                toolbar = (Toolbar) findViewById(R.id.toolbar);
-//                toolbar.setTitle("Map Overview");
-//                setSupportActionBar(toolbar);
-                showAllTrails();
-            }
-            if(intentString.equals("TrailActivity")){
-                trailName = intent.getStringExtra(TrailActivity.EXTRA_TRAILKEY);
-                currTrail = trailData.getValue(trailName);
-//                toolbar = (Toolbar) findViewById(R.id.toolbar);
-//                toolbar.setTitle(trailName);
-//                setSupportActionBar(toolbar);
-                showSelectedTrail();
-            }
+            //makeToast();
         }
     }
 
-
-    //display all trail markers on map
     public void showAllTrails(){
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         Map<String, Trail> map = trailData.trailHashMap;
 
         //calculate the avg lat/lng of all markers
@@ -118,7 +117,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(
                 new GoogleMap.OnInfoWindowClickListener(){
                     public void onInfoWindowClick(Marker marker){
-                        Intent intent = new Intent(MapsActivity.this,TrailActivity.class);
+                        Intent intent = new Intent(MapActivity.this,TrailActivity.class);
                         intent.putExtra(EXTRA_TRAILKEY, marker.getTitle());
                         startActivity(intent);
                     }
@@ -127,7 +126,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    //add the trail's polyline onto the map
     public void showSelectedTrail(){
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         //calculate the avg lat/lng of the trail markers

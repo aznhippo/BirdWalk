@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
     //called when user clicks maps button
     public void goToMap(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         intent.putExtra("fromActivity", "MainActivity");
         startActivity(intent);
     }
 
     //called when user clicks list trails button
     public void goToList(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
