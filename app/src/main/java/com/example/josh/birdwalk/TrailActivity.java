@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,6 +34,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 
 public class TrailActivity extends AppCompatActivity {
@@ -41,6 +45,7 @@ public class TrailActivity extends AppCompatActivity {
     Trail currTrail;
     String trailName;
     Marker lastOpened = null;
+    float distance;
 
     public final static String EXTRA_EXCNAME = "com.example.josh.birdwalk.EXCNAME";
     public final static String EXTRA_TRAILNAME = "com.example.josh.birdwalk.TRAILNAME";
@@ -147,6 +152,8 @@ public class TrailActivity extends AppCompatActivity {
         //calculate the avg lat/lng of the trail markers
         Double avgLat = 0.0;
         Double avgLng = 0.0;
+        //calculate total trail distance
+        distance = 0;
 
         //add points to the polyline
         int numPoints = currTrail.points.length;
@@ -157,8 +164,16 @@ public class TrailActivity extends AppCompatActivity {
             TrailPoints.add(currTrail.points[i]);
             avgLat += currTrail.points[i].latitude;
             avgLng += currTrail.points[i].longitude;
+
+            if (i < numPoints-1)
+                distance += distanceBetween(currTrail.points[i], currTrail.points[i+1]);
+
         }
         mMap.addPolyline(TrailPoints);
+        TextView tv = (TextView) findViewById(R.id.distText);
+        double miles = round(distance * .000621371,2);
+        double klicks = round(distance/1000,2);
+        tv.setText("Distance:"+ Double.toString(miles) + "miles, or " + Double.toString(klicks) + "km");
 
         //center the camera to the avg position
         avgLat += currTrail.lotPoint.latitude;
@@ -167,6 +182,25 @@ public class TrailActivity extends AppCompatActivity {
         avgLng = avgLng/(numPoints+1);
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
+    }
+
+    private float distanceBetween(LatLng latLng1, LatLng latLng2) {
+        Location loc1 = new Location(LocationManager.GPS_PROVIDER);
+        Location loc2 = new Location(LocationManager.GPS_PROVIDER);
+        loc1.setLatitude(latLng1.latitude);
+        loc1.setLongitude(latLng1.longitude);
+        loc2.setLatitude(latLng2.latitude);
+        loc2.setLongitude(latLng2.longitude);
+        return loc1.distanceTo(loc2);
+    }
+
+    public static double round(double value, int places) {
+        http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
     public void launchDirections(View view){
@@ -186,7 +220,8 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     public void launchExcerpt(View view){
-        Intent intent = new Intent(TrailActivity.this,ExcerptActivity.class);
+        Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
+        intent.putExtra("fromActivity", "TrailActivity");
         intent.putExtra(EXTRA_EXCNAME, currTrail.excName);
         intent.putExtra(EXTRA_TRAILNAME, trailName);
         startActivity(intent);

@@ -12,8 +12,6 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static String EXTRA_INFO = "com.example.josh.birdwalk.INFO";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,17 +56,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //called when user clicks Info button
-    public void goToIntro(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        intent.putExtra(EXTRA_INFO, "Intro");
-        startActivity(intent);
-    }
 
     //called when user clicks how to use button
     public void goToHowToUse(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
-        intent.putExtra(EXTRA_INFO, "HowToUse");
+        intent.putExtra("fromActivity", "MainActivity");
         startActivity(intent);
     }
 }
