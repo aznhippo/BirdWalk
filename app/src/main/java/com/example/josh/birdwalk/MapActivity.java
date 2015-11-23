@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +32,7 @@ public class MapActivity extends AppCompatActivity {
     Trail currTrail;
     String trailName;
     Toolbar toolbar;
+    String intentString;
     public final static String EXTRA_TRAILKEY = "com.example.josh.birdwalk.TRAIL";
 
     /**
@@ -49,7 +52,7 @@ public class MapActivity extends AppCompatActivity {
         trailData = TrailData.getInstance();
         Intent intent = this.getIntent();
         if (intent != null) {
-            String intentString = intent.getExtras().getString("fromActivity");
+            intentString = intent.getExtras().getString("fromActivity");
 
             if (intentString.equals("MainActivity")) {
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -73,7 +76,10 @@ public class MapActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        if (intentString.equals("MainActivity"))
+            getMenuInflater().inflate(R.menu.menu_map, menu);
+        if (intentString.equals("TrailActivity"))
+            getMenuInflater().inflate(R.menu.menu_trail_map, menu);
         return true;
     }
 
@@ -82,14 +88,45 @@ public class MapActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.normal:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.hybrid:
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                return true;
+
+            case R.id.satellite:
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                return true;
+
+            case R.id.terrain:
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                return true;
+
+            case R.id.directions:
+                //convert the starting latlng into a string
+                LatLng lotPoint = currTrail.lotPoint;
+                Double lat = lotPoint.latitude;
+                Double lng = lotPoint.longitude;
+                String latString = lat.toString();
+                String lngString = lng.toString();
+                String uriString = "google.navigation:q=".concat(latString).concat(",").concat(lngString);
+
+                //launch navigation to trail in Google Maps Apps
+                Uri gmmIntentUri = Uri.parse(uriString);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
     private void setUpMapIfNeeded() {
@@ -136,6 +173,7 @@ public class MapActivity extends AppCompatActivity {
 
     public void showAllTrails(){
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         Map<String, Trail> map = trailData.trailHashMap;
 
         //calculate the avg lat/lng of all markers
@@ -157,8 +195,8 @@ public class MapActivity extends AppCompatActivity {
         }
 
         //center the camera to the avg position
-        avgLat = avgLat/numTrails;
-        avgLng = avgLng/numTrails;
+        avgLat = avgLat / numTrails;
+        avgLng = avgLng / numTrails;
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 11));
 
@@ -177,6 +215,7 @@ public class MapActivity extends AppCompatActivity {
 
     public void showSelectedTrail(){
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         //calculate the avg lat/lng of the trail markers
         Double avgLat = 0.0;
         Double avgLng = 0.0;
@@ -201,5 +240,6 @@ public class MapActivity extends AppCompatActivity {
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
     }
+
 
 }
