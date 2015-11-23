@@ -60,15 +60,16 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Distance:..."
+            android:text="Trail Distance:..."
             android:id="@+id/distText"
+            android:background="#d4d4d4"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="23dp" />
+            android:maxLines="1" />
 
     </RelativeLayout>
 </LinearLayout>

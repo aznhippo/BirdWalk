@@ -16,6 +16,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -72,6 +74,28 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
@@ -106,7 +130,7 @@ public class TrailActivity extends AppCompatActivity {
             mMap.setMyLocationEnabled(true);
         } else {
             // Show rationale and request permission.
-            makeToast();
+//            makeToast();
         }
 
         //override the markerclicklistener
@@ -145,10 +169,10 @@ public class TrailActivity extends AppCompatActivity {
             }
         });
 
-        addTrailPolyline();
+        addTrailLine();
     }
 
-    public void addTrailPolyline(){
+    public void addTrailLine(){
         //calculate the avg lat/lng of the trail markers
         Double avgLat = 0.0;
         Double avgLng = 0.0;
@@ -173,7 +197,7 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.distText);
         double miles = round(distance * .000621371,2);
         double klicks = round(distance/1000,2);
-        tv.setText("Distance:"+ Double.toString(miles) + "miles, or " + Double.toString(klicks) + "km");
+        tv.setText("Trail Distance: "+ Double.toString(miles) + "miles or " + Double.toString(klicks) + "km");
 
         //center the camera to the avg position
         avgLat += currTrail.lotPoint.latitude;
@@ -228,52 +252,5 @@ public class TrailActivity extends AppCompatActivity {
     }
 
 
-
-    //    //enable changing the map type
-//    // http://stackoverflow.com/questions/7064857/making-an-android-map-menu-to-change-map-type
-//    public static final CharSequence[] MAP_TYPE_ITEMS =
-//            {"Road Map", "Hybrid", "Satellite", "Terrain"};
-//    public void showMapTypeSelectorDialog() {
-//        // Prepare the dialog by setting up a Builder.
-//        final String fDialogTitle = "Select Map Type";
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle(fDialogTitle);
-//
-//        // Find the current map type to pre-check the item representing the current state.
-//        int checkItem = mMap.getMapType() - 1;
-//
-//        // Add an OnClickListener to the dialog, so that the selection will be handled.
-//        builder.setSingleChoiceItems(
-//                MAP_TYPE_ITEMS,
-//                checkItem,
-//                new DialogInterface.OnClickListener() {
-//
-//                    public void onClick(DialogInterface dialog, int item) {
-//                        // Locally create a finalised object.
-//
-//                        // Perform an action depending on which item was selected.
-//                        switch (item) {
-//                            case 1:
-//                                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-//                                break;
-//                            case 2:
-//                                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-//                                break;
-//                            case 3:
-//                                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-//                                break;
-//                            default:
-//                                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-//                        }
-//                        dialog.dismiss();
-//                    }
-//                }
-//        );
-//
-//        // Build the dialog and show it.
-//        AlertDialog fMapTypeDialog = builder.create();
-//        fMapTypeDialog.setCanceledOnTouchOutside(true);
-//        fMapTypeDialog.show();
-//    }
 
 }
