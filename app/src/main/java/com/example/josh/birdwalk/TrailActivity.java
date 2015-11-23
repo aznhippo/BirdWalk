@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,7 +77,7 @@ public class TrailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_trail_map, menu);
         return true;
     }
 
@@ -85,14 +86,32 @@ public class TrailActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.normal:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.hybrid:
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                return true;
+
+            case R.id.satellite:
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                return true;
+
+            case R.id.terrain:
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                return true;
+
+            case R.id.directions:
+                launchDirections();
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -169,10 +188,10 @@ public class TrailActivity extends AppCompatActivity {
             }
         });
 
-        addTrailLine();
+        createTrailLine();
     }
 
-    public void addTrailLine(){
+    public void createTrailLine(){
         //calculate the avg lat/lng of the trail markers
         Double avgLat = 0.0;
         Double avgLng = 0.0;
@@ -194,10 +213,6 @@ public class TrailActivity extends AppCompatActivity {
 
         }
         mMap.addPolyline(TrailPoints);
-        TextView tv = (TextView) findViewById(R.id.distText);
-        double miles = round(distance * .000621371,2);
-        double klicks = round(distance/1000,2);
-        tv.setText("Trail Distance: "+ Double.toString(miles) + "miles or " + Double.toString(klicks) + "km");
 
         //center the camera to the avg position
         avgLat += currTrail.lotPoint.latitude;
@@ -206,6 +221,8 @@ public class TrailActivity extends AppCompatActivity {
         avgLng = avgLng/(numPoints+1);
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
+
+        setUpInfo();
     }
 
     private float distanceBetween(LatLng latLng1, LatLng latLng2) {
@@ -227,7 +244,23 @@ public class TrailActivity extends AppCompatActivity {
         return bd.doubleValue();
     }
 
-    public void launchDirections(View view){
+    public void setUpInfo(){
+        double miles = round(distance * .000621371,2);
+        String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
+        TextView tv = (TextView) findViewById(R.id.distText);
+        tv.setText(Html.fromHtml(distString));
+
+        String birdsString = "<b>"+"Birds: "+"</b>"+ currTrail.birds;
+        TextView tv2 = (TextView) findViewById(R.id.birdsText);
+        tv2.setText(Html.fromHtml(birdsString));
+
+        String typeString = "<b>"+"Trail Type: "+"</b>"+ currTrail.type;
+        TextView tv3 = (TextView) findViewById(R.id.typeText);
+        tv3.setText(Html.fromHtml(typeString));
+
+    }
+
+    public void launchDirections(){
         //convert the starting latlng into a string
         LatLng lotPoint = currTrail.lotPoint;
         Double lat = lotPoint.latitude;

@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5">
+        android:layout_weight=".4"
+        android:background="@drawable/text_back">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -27,35 +28,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight=".5">
+        android:layout_weight=".5"
+        android:layout_margin="5dp"
+        android:background="@drawable/text_back">
 
-        <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Change Map Type"-->
-        <!--android:id="@+id/changemap"-->
-        <!--android:onClick="showMapTypeSelectorDialog"-->
-        <!--/>-->
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get Directions"
-            android:id="@+id/directions"
-            android:onClick="launchDirections"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Read More About ....."
-            android:id="@+id/excerpt"
-            android:onClick="launchExcerpt"
-            android:layout_below="@+id/directions"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Trail Distance:"
+            android:id="@+id/distText"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="20dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -63,13 +49,77 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Trail Distance:..."
-            android:id="@+id/distText"
-            android:background="#d4d4d4"
-            android:layout_alignParentTop="true"
+            android:text="Birds:"
+            android:id="@+id/birdsText"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/view2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:maxLines="1" />
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Trail Type: "
+            android:id="@+id/typeText"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/view3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/black"
+            android:id="@+id/view2"
+            android:layout_below="@+id/distText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/black"
+            android:id="@+id/view3"
+            android:layout_below="@+id/birdsText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/black"
+            android:id="@+id/view4"
+            android:layout_below="@+id/typeText"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Read More About "
+            android:id="@+id/excerpt"
+            android:onClick="launchExcerpt"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="50dp" />
+    </LinearLayout>
 </LinearLayout>
