@@ -262,9 +262,6 @@ public class TrailActivity extends AppCompatActivity {
         String typeString = "<b>"+"Trail Type: "+"</b>"+ currTrail.type;
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(Html.fromHtml(typeString));
-
-
-
     }
 
     public void launchDirections(View view){

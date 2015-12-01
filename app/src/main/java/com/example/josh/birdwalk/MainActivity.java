@@ -1,5 +1,6 @@
 package com.example.josh.birdwalk;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 

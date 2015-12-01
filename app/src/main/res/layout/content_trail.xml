@@ -9,7 +9,7 @@
     tools:context="com.example.josh.birdwalk.TrailActivity"
     android:orientation="vertical"
     android:id="@+id/trailContent"
-    android:background="@drawable/bkgrd4">
+    android:background="@drawable/background2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,8 +122,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:layout_margin="7dp">
+        android:layout_weight=".3"
+        android:layout_margin="7dp"
+        android:orientation="vertical">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -141,16 +142,8 @@
             android:textColor="#ffffff"
             android:drawableLeft="@android:drawable/ic_menu_directions"
             android:drawableRight="@drawable/go_icon"
-            android:layout_gravity="center" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:layout_margin="7dp">
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -167,15 +160,7 @@
             android:longClickable="false"
             android:textColor="#ffffff"
             android:drawableLeft="@android:drawable/ic_menu_info_details"
-            android:drawableRight="@drawable/go_icon"
-            android:layout_gravity="center" />
+            android:drawableRight="@drawable/go_icon" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1">
-
-
-    </LinearLayout>
 </LinearLayout>

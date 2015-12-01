@@ -9,16 +9,19 @@ class Trail {
 
     public LatLng lotPoint;
     public LatLng[] points;
+    public double distance;
     public String excName;
-    public String diff;
+    public String address;
     public String birds;
     public String type;
 
-    public Trail(LatLng sLotPoint, LatLng[] sPoints, String sExcName, String sDiff, String sBirds, String sType){
+    public Trail(LatLng sLotPoint, LatLng[] sPoints, double sDistance, String sExcName,
+                 String sAddress, String sBirds, String sType){
         lotPoint = sLotPoint;
         points = sPoints;
+        distance = sDistance;
         excName = sExcName;
-        diff = sDiff;
+        address = sAddress;
         birds = sBirds;
         type = sType;
     }
