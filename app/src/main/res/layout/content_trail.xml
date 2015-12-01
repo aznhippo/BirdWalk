@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_trail"
     tools:context="com.example.josh.birdwalk.TrailActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/trailContent"
+    android:background="@drawable/bkgrd5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".4"
-        android:background="@drawable/text_back">
+        android:layout_weight=".3">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight=".5"
+        android:layout_weight=".2"
         android:layout_margin="5dp"
         android:background="@drawable/text_back">
 
@@ -41,7 +42,7 @@
             android:id="@+id/distText"
             android:maxLines="1"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -53,7 +54,7 @@
             android:id="@+id/birdsText"
             android:maxLines="1"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_below="@+id/view2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -66,7 +67,7 @@
             android:id="@+id/typeText"
             android:maxLines="1"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_below="@+id/view3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -93,33 +94,62 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/black"
-            android:id="@+id/view4"
-            android:layout_below="@+id/typeText"
-            android:layout_centerHorizontal="true" />
+
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2">
+        android:layout_weight=".2"
+        android:weightSum="1">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageButton"
+            android:layout_weight="0.33"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageButton2"
+            android:layout_weight="0.33"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageButton3"
+            android:layout_weight="0.33"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1">
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Read More About "
             android:id="@+id/excerpt"
             android:onClick="launchExcerpt"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="50dp" />
+            android:textSize="12dp"
+            android:background="@drawable/text_back"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1">
+
+
     </LinearLayout>
 </LinearLayout>

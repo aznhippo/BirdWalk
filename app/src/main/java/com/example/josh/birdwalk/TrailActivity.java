@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,9 +52,6 @@ public class TrailActivity extends AppCompatActivity {
     Marker lastOpened = null;
     float distance;
 
-    public final static String EXTRA_EXCNAME = "com.example.josh.birdwalk.EXCNAME";
-    public final static String EXTRA_TRAILNAME = "com.example.josh.birdwalk.TRAILNAME";
-    public final static String EXTRA_TRAILKEY = "com.example.josh.birdwalk.TRAILKEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,7 @@ public class TrailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trail);
 
         Intent intent = getIntent();
-        trailName = intent.getStringExtra(MapActivity.EXTRA_TRAILKEY);
+        trailName = intent.getExtras().getString("trailKey");
         trailData = TrailData.getInstance();
         currTrail = trailData.getValue(trailName);
 
@@ -120,6 +119,7 @@ public class TrailActivity extends AppCompatActivity {
         setUpMapIfNeeded();
     }
 
+
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -133,10 +133,6 @@ public class TrailActivity extends AppCompatActivity {
         }
     }
 
-    public void makeToast(){
-        Toast.makeText(this, "no permission", Toast.LENGTH_SHORT).show();
-    }
-
     private void setUpMap() {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         //suppress all map gestures
@@ -147,9 +143,6 @@ public class TrailActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
-        } else {
-            // Show rationale and request permission.
-//            makeToast();
         }
 
         //override the markerclicklistener
@@ -177,16 +170,26 @@ public class TrailActivity extends AppCompatActivity {
                 return true;
             }
         });
-        //override onmapclicklistener, direct to full page map
+        //override click and longclick listeners, direct to full page map
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override
             public void onMapClick(LatLng position){
                 Intent intent = new Intent(TrailActivity.this, MapActivity.class);
-                intent.putExtra(EXTRA_TRAILKEY, trailName);
+                intent.putExtra("trailKey", trailName);
                 intent.putExtra("fromActivity", "TrailActivity");
                 startActivity(intent);
             }
         });
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng position) {
+                Intent intent = new Intent(TrailActivity.this, MapActivity.class);
+                intent.putExtra("trailKey", trailName);
+                intent.putExtra("fromActivity", "TrailActivity");
+                startActivity(intent);
+            }
+        });
+
 
         createTrailLine();
     }
@@ -236,7 +239,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     public static double round(double value, int places) {
-        http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
+        //http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
         if (places < 0) throw new IllegalArgumentException();
 
         BigDecimal bd = new BigDecimal(value);
@@ -257,6 +260,8 @@ public class TrailActivity extends AppCompatActivity {
         String typeString = "<b>"+"Trail Type: "+"</b>"+ currTrail.type;
         TextView tv3 = (TextView) findViewById(R.id.typeText);
         tv3.setText(Html.fromHtml(typeString));
+
+
 
     }
 
@@ -279,8 +284,8 @@ public class TrailActivity extends AppCompatActivity {
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
-        intent.putExtra(EXTRA_EXCNAME, currTrail.excName);
-        intent.putExtra(EXTRA_TRAILNAME, trailName);
+        intent.putExtra("excName", currTrail.excName);
+        intent.putExtra("trailName", trailName);
         startActivity(intent);
     }
 

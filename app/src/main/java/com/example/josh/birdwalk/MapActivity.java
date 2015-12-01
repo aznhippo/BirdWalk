@@ -33,7 +33,6 @@ public class MapActivity extends AppCompatActivity {
     String trailName;
     Toolbar toolbar;
     String intentString;
-    public final static String EXTRA_TRAILKEY = "com.example.josh.birdwalk.TRAIL";
 
     /**
      * Request code for location permission request.
@@ -61,7 +60,7 @@ public class MapActivity extends AppCompatActivity {
                 showAllTrails();
             }
             if (intentString.equals("TrailActivity")) {
-                trailName = intent.getStringExtra(TrailActivity.EXTRA_TRAILKEY);
+                trailName = intent.getExtras().getString("trailKey");
                 currTrail = trailData.getValue(trailName);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle(trailName);
@@ -154,10 +153,11 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
-    //https://github.com/googlemaps/android-samples/blob/master/ApiDemos/app/src/main/java/com/example/mapdemo/MyLocationDemoActivity.java
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        //https://github.com/googlemaps/android-samples/blob/master/ApiDemos/app/src/main/java/com/example/mapdemo/MyLocationDemoActivity.java
         if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
             return;
         }
@@ -172,7 +172,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void showAllTrails(){
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         Map<String, Trail> map = trailData.trailHashMap;
 
@@ -205,7 +205,7 @@ public class MapActivity extends AppCompatActivity {
                 new GoogleMap.OnInfoWindowClickListener(){
                     public void onInfoWindowClick(Marker marker){
                         Intent intent = new Intent(MapActivity.this,TrailActivity.class);
-                        intent.putExtra(EXTRA_TRAILKEY, marker.getTitle());
+                        intent.putExtra("trailKey", marker.getTitle());
                         startActivity(intent);
                     }
                 }

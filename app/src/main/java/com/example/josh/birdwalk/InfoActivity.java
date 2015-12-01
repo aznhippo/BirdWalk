@@ -25,11 +25,11 @@ public class InfoActivity extends AppCompatActivity {
                 setWebView("HowToUse");
             }
             if (intentString.equals("TrailActivity")) {
-                String trailName = intent.getStringExtra(TrailActivity.EXTRA_TRAILNAME);
+                String trailName = intent.getExtras().getString("trailName");
                 toolbar.setTitle(trailName);
                 setSupportActionBar(toolbar);
 
-                String excName = intent.getStringExtra(TrailActivity.EXTRA_EXCNAME);
+                String excName = intent.getExtras().getString("excName");
                 setWebView(excName);
             }
         }
