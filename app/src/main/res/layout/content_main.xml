@@ -11,7 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
     tools:showIn="@layout/activity_main"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bkgrd1">
 
     <!--<TextView android:text="Hello World!" android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content" />-->
@@ -19,7 +20,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_weight=".2">
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -27,60 +28,73 @@
             android:text="BirdWalk"
             android:id="@+id/textView"
             android:textStyle="bold"
-            android:textSize="60dp"
+            android:textSize="75dp"
             android:textColor="#000000"
             android:padding="10dp"
-            android:background="@drawable/text_back"
             android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".6">
+        android:layout_weight=".5">
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_weight=".1"
+        android:layout_margin="5dp">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:text="Map Overview"
             android:id="@+id/button"
             android:onClick="goToMap"
-            android:background="@drawable/text_back"
+            android:background="#99000000"
             android:layout_below="@+id/list"
-            android:layout_gravity="center" />
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:drawableLeft="@android:drawable/ic_menu_compass"
+            android:drawableRight="@drawable/go_icon"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_weight=".1"
+        android:layout_margin="5dp">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:text="List of Trails"
             android:id="@+id/list"
             android:onClick="goToList"
-            android:background="@drawable/text_back"
-            android:layout_gravity="center" />
+            android:background="#99000000"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
+            android:drawableRight="@drawable/go_icon"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_weight=".1"
+        android:layout_margin="5dp">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:text="How To Use"
             android:id="@+id/button3"
             android:onClick="goToHowToUse"
-            android:background="@drawable/text_back"
-            android:layout_gravity="center" />
+            android:background="#99000000"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:drawableLeft="@android:drawable/ic_menu_help"
+            android:drawableRight="@drawable/go_icon"/>
     </LinearLayout>
 
 

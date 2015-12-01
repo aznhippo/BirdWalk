@@ -67,8 +67,8 @@ public class TrailActivity extends AppCompatActivity {
         toolbar.setTitle(trailName);
         setSupportActionBar(toolbar);
 
-        Button button2 = (Button) this.findViewById(R.id.excerpt);
-        button2.setText("Read more about " + trailName);
+        Button button = (Button) this.findViewById(R.id.excerpt);
+        button.setText("Read more about " + trailName);
 
         setUpMapIfNeeded();
     }
@@ -76,7 +76,7 @@ public class TrailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_trail_map, menu);
+        getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;
     }
 
@@ -102,8 +102,6 @@ public class TrailActivity extends AppCompatActivity {
                 mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                 return true;
 
-            case R.id.directions:
-                launchDirections();
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -248,24 +246,28 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     public void setUpInfo(){
+        String addrString = "<b>"+"Address: "+"</b>";
+        TextView tv1 = (TextView) findViewById(R.id.addrText);
+        tv1.setText(Html.fromHtml(addrString));
+
         double miles = round(distance * .000621371,2);
         String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
-        TextView tv = (TextView) findViewById(R.id.distText);
-        tv.setText(Html.fromHtml(distString));
+        TextView tv2 = (TextView) findViewById(R.id.distText);
+        tv2.setText(Html.fromHtml(distString));
 
         String birdsString = "<b>"+"Birds: "+"</b>"+ currTrail.birds;
-        TextView tv2 = (TextView) findViewById(R.id.birdsText);
-        tv2.setText(Html.fromHtml(birdsString));
+        TextView tv3 = (TextView) findViewById(R.id.birdsText);
+        tv3.setText(Html.fromHtml(birdsString));
 
         String typeString = "<b>"+"Trail Type: "+"</b>"+ currTrail.type;
-        TextView tv3 = (TextView) findViewById(R.id.typeText);
-        tv3.setText(Html.fromHtml(typeString));
+        TextView tv4 = (TextView) findViewById(R.id.typeText);
+        tv4.setText(Html.fromHtml(typeString));
 
 
 
     }
 
-    public void launchDirections(){
+    public void launchDirections(View view){
         //convert the starting latlng into a string
         LatLng lotPoint = currTrail.lotPoint;
         Double lat = lotPoint.latitude;

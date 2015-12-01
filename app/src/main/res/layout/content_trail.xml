@@ -9,7 +9,7 @@
     tools:context="com.example.josh.birdwalk.TrailActivity"
     android:orientation="vertical"
     android:id="@+id/trailContent"
-    android:background="@drawable/bkgrd5">
+    android:background="@drawable/bkgrd4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,12 +27,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight=".2"
-        android:layout_margin="5dp"
-        android:background="@drawable/text_back">
+        android:layout_margin="7dp"
+        android:background="#CCFFFFFF">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Address: "
+            android:id="@+id/addrText"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -43,6 +53,7 @@
             android:maxLines="1"
             android:padding="10dp"
             android:textSize="15dp"
+            android:layout_below="@+id/view1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -78,6 +89,17 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:background="@android:color/black"
+            android:id="@+id/view1"
+            android:layout_below="@+id/addrText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/black"
             android:id="@+id/view2"
             android:layout_below="@+id/distText"
             android:layout_alignParentLeft="true"
@@ -91,8 +113,7 @@
             android:background="@android:color/black"
             android:id="@+id/view3"
             android:layout_below="@+id/birdsText"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true" />
 
 
 
@@ -101,48 +122,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:weightSum="1">
+        android:layout_weight=".1"
+        android:layout_margin="7dp">
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Directions"
+            android:id="@+id/direct"
+            android:onClick="launchDirections"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="20dp"
+            android:background="#99000000"
+            android:longClickable="false"
+            android:textColor="#ffffff"
+            android:drawableLeft="@android:drawable/ic_menu_directions"
+            android:drawableRight="@drawable/go_icon"
+            android:layout_gravity="center" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton"
-            android:layout_weight="0.33"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton2"
-            android:layout_weight="0.33"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton3"
-            android:layout_weight="0.33"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1">
+        android:layout_weight=".1"
+        android:layout_margin="7dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Read More About "
             android:id="@+id/excerpt"
             android:onClick="launchExcerpt"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="12dp"
-            android:background="@drawable/text_back"
-            />
+            android:textSize="20dp"
+            android:background="#99000000"
+            android:longClickable="false"
+            android:textColor="#ffffff"
+            android:drawableLeft="@android:drawable/ic_menu_info_details"
+            android:drawableRight="@drawable/go_icon"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
