@@ -1,5 +1,6 @@
 package com.example.josh.birdwalk;
 
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

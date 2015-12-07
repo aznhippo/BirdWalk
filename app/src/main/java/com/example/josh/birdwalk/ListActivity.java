@@ -38,7 +38,7 @@ public class ListActivity extends AppCompatActivity {
         // Defined Array values to show in ListView
         String[] TrailNames = new String[map.size()];
 
-        //add each trail to the map
+        //add each trailname to the array
         int i = 0;
         for (Map.Entry<String, Trail> entry : map.entrySet()) {
             TrailNames[i] = entry.getKey();
@@ -52,8 +52,9 @@ public class ListActivity extends AppCompatActivity {
         // the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, R.id.firstLine, TrailNames);
+                R.layout.list_item, R.id.trailName, TrailNames);
         listView.setAdapter(adapter);
+
 
         // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,27 +72,4 @@ public class ListActivity extends AppCompatActivity {
     }
 
 }
-//
-//public class TrailAdapter extends ArrayAdapter<Trail> {
-//    public TrailAdapter(Context context, ArrayList<Trail> users) {
-//        super(context, 0, users);
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        // Get the data item for this position
-//        User user = getItem(position);
-//        // Check if an existing view is being reused, otherwise inflate the view
-//        if (convertView == null) {
-//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_user, parent, false);
-//        }
-//        // Lookup view for data population
-//        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-//        TextView tvHome = (TextView) convertView.findViewById(R.id.tvHome);
-//        // Populate the data into the template view using the data object
-//        tvName.setText(user.name);
-//        tvHome.setText(user.hometown);
-//        // Return the completed view to render on screen
-//        return convertView;
-//    }
-//}
+

@@ -12,10 +12,8 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity"
-    android:background="@drawable/background1">
+    android:background="@drawable/bg_main">
 
-    <!--<TextView android:text="Hello World!" android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,11 +52,12 @@
             android:id="@+id/button"
             android:onClick="goToMap"
             android:background="#99000000"
-            android:layout_below="@+id/list"
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_compass"
-            android:drawableRight="@drawable/go_icon"/>
+            android:drawableRight="@drawable/go_icon"
+            android:paddingLeft="5dip"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +76,9 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
-            android:drawableRight="@drawable/go_icon"/>
+            android:drawableRight="@drawable/go_icon"
+            android:paddingLeft="6dip"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +89,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:text="How To Use"
+            android:text="About"
             android:id="@+id/button3"
             android:onClick="goToHowToUse"
             android:background="#99000000"
@@ -96,7 +97,9 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_help"
-            android:drawableRight="@drawable/go_icon"/>
+            android:drawableRight="@drawable/go_icon"
+            android:paddingLeft="5dip"
+            android:singleLine="true" />
     </LinearLayout>
 
 

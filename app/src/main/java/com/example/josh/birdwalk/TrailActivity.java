@@ -1,19 +1,13 @@
 package com.example.josh.birdwalk;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,26 +16,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
 
 public class TrailActivity extends AppCompatActivity {
 
@@ -71,6 +57,7 @@ public class TrailActivity extends AppCompatActivity {
         button.setText("Read more about " + trailName);
 
         setUpMapIfNeeded();
+        setUpInfo();
     }
 
     @Override
@@ -116,7 +103,6 @@ public class TrailActivity extends AppCompatActivity {
         super.onResume();
         setUpMapIfNeeded();
     }
-
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
@@ -169,9 +155,9 @@ public class TrailActivity extends AppCompatActivity {
             }
         });
         //override click and longclick listeners, direct to full page map
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
-            public void onMapClick(LatLng position){
+            public void onMapClick(LatLng position) {
                 Intent intent = new Intent(TrailActivity.this, MapActivity.class);
                 intent.putExtra("trailKey", trailName);
                 intent.putExtra("fromActivity", "TrailActivity");
@@ -188,22 +174,23 @@ public class TrailActivity extends AppCompatActivity {
             }
         });
 
-
         createTrailLine();
     }
 
-    public void createTrailLine(){
+    private void createTrailLine(){
         //calculate the avg lat/lng of the trail markers
         Double avgLat = 0.0;
         Double avgLng = 0.0;
         //calculate total trail distance
         distance = 0;
 
+        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
+        if (!currTrail.lotIsStart())
+            mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
+
+        PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
         //add points to the polyline
         int numPoints = currTrail.points.length;
-        mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
-        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
-        PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
         for (int i = 0; i < numPoints; i++){
             TrailPoints.add(currTrail.points[i]);
             avgLat += currTrail.points[i].latitude;
@@ -222,8 +209,6 @@ public class TrailActivity extends AppCompatActivity {
         avgLng = avgLng/(numPoints+1);
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
-
-        setUpInfo();
     }
 
     private float distanceBetween(LatLng latLng1, LatLng latLng2) {
@@ -236,7 +221,7 @@ public class TrailActivity extends AppCompatActivity {
         return loc1.distanceTo(loc2);
     }
 
-    public static double round(double value, int places) {
+    private static double round(double value, int places) {
         //http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
         if (places < 0) throw new IllegalArgumentException();
 
@@ -245,7 +230,7 @@ public class TrailActivity extends AppCompatActivity {
         return bd.doubleValue();
     }
 
-    public void setUpInfo(){
+    private void setUpInfo(){
         String addrString = "<b>"+"Address: "+"</b>";
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
@@ -255,11 +240,11 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 
-        String birdsString = "<b>"+"Birds: "+"</b>"+ currTrail.birds;
+        String birdsString = "<b>"+"Highlights: "+"</b>"+ currTrail.birds;
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(Html.fromHtml(birdsString));
 
-        String typeString = "<b>"+"Trail Type: "+"</b>"+ currTrail.type;
+        String typeString = "<b>"+"Habitats: "+"</b>"+ currTrail.habitats;
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(Html.fromHtml(typeString));
     }
@@ -283,11 +268,9 @@ public class TrailActivity extends AppCompatActivity {
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
-        intent.putExtra("excName", currTrail.excName);
+        intent.putExtra("excName", currTrail.resName);
         intent.putExtra("trailName", trailName);
         startActivity(intent);
     }
-
-
 
 }

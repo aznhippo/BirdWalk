@@ -153,7 +153,6 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -202,9 +201,9 @@ public class MapActivity extends AppCompatActivity {
 
         //launch trailActivity for clicked on marker
         mMap.setOnInfoWindowClickListener(
-                new GoogleMap.OnInfoWindowClickListener(){
-                    public void onInfoWindowClick(Marker marker){
-                        Intent intent = new Intent(MapActivity.this,TrailActivity.class);
+                new GoogleMap.OnInfoWindowClickListener() {
+                    public void onInfoWindowClick(Marker marker) {
+                        Intent intent = new Intent(MapActivity.this, TrailActivity.class);
                         intent.putExtra("trailKey", marker.getTitle());
                         startActivity(intent);
                     }
@@ -216,16 +215,17 @@ public class MapActivity extends AppCompatActivity {
     public void showSelectedTrail(){
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        //calculate the avg lat/lng of the trail markers
-        Double avgLat = 0.0;
-        Double avgLng = 0.0;
+
+        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
+        if (!currTrail.lotIsStart())
+            mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
 
         //add points to the polyline
         int numPoints = currTrail.points.length;
-        mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
-        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
+        Double avgLat = 0.0;
+        Double avgLng = 0.0;
         PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
-        for (int i = 0; i < numPoints; i++){
+        for (int i = 0; i < numPoints; i++) {
             TrailPoints.add(currTrail.points[i]);
             avgLat += currTrail.points[i].latitude;
             avgLng += currTrail.points[i].longitude;
@@ -235,11 +235,13 @@ public class MapActivity extends AppCompatActivity {
         //center the camera to the avg position
         avgLat += currTrail.lotPoint.latitude;
         avgLng += currTrail.lotPoint.longitude;
-        avgLat = avgLat/(numPoints+1);
-        avgLng = avgLng/(numPoints+1);
+        avgLat = avgLat / (numPoints + 1);
+        avgLng = avgLng / (numPoints + 1);
         LatLng CENTER = new LatLng(avgLat, avgLng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
+
     }
+
 
 
 }

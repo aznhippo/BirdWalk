@@ -9,25 +9,27 @@ class Trail {
 
     public LatLng lotPoint;
     public LatLng[] points;
-    public double distance;
-    public String excName;
+    public String distance;
+    public String resName; //the name of the trailicon, and the excerpt file
     public String address;
     public String birds;
-    public String type;
+    public String habitats;
 
-    public Trail(LatLng sLotPoint, LatLng[] sPoints, double sDistance, String sExcName,
-                 String sAddress, String sBirds, String sType){
+    public Trail(LatLng sLotPoint, LatLng[] sPoints, String sDistance, String sResName,
+                 String sAddress, String sBirds, String sHabitats){
         lotPoint = sLotPoint;
         points = sPoints;
         distance = sDistance;
-        excName = sExcName;
+        resName = sResName;
         address = sAddress;
         birds = sBirds;
-        type = sType;
+        habitats = sHabitats;
     }
 
     public LatLng getStart(){
         return points[0];
     }
+
+    public Boolean lotIsStart() { return (lotPoint.equals(points[0]));}
 
 }
