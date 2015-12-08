@@ -55,7 +55,7 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_compass"
-            android:drawableRight="@drawable/go_icon"
+            android:drawableRight="@drawable/icon_go"
             android:paddingLeft="5dip"
             android:singleLine="true" />
     </LinearLayout>
@@ -76,7 +76,7 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
-            android:drawableRight="@drawable/go_icon"
+            android:drawableRight="@drawable/icon_go"
             android:paddingLeft="6dip"
             android:singleLine="true" />
     </LinearLayout>
@@ -97,7 +97,7 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:drawableLeft="@android:drawable/ic_menu_help"
-            android:drawableRight="@drawable/go_icon"
+            android:drawableRight="@drawable/icon_go"
             android:paddingLeft="5dip"
             android:singleLine="true" />
     </LinearLayout>

@@ -184,7 +184,7 @@ public class TrailActivity extends AppCompatActivity {
         //calculate total trail distance
         distance = 0;
 
-        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
+        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start")).showInfoWindow();
         if (!currTrail.lotIsStart())
             mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
 
@@ -231,7 +231,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-        String addrString = "<b>"+"Address: "+"</b>";
+        String addrString = "<b>"+"Address: "+"</b>" + currTrail.address;
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
