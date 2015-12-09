@@ -3,9 +3,8 @@ package com.example.josh.birdwalk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -13,18 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ListActivity extends AppCompatActivity {
     TrailData trailData;
@@ -83,8 +77,9 @@ class TrailAdapter extends ArrayAdapter<Trail> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ViewHolder();
-            holder.textView1 = (TextView)row.findViewById(R.id.trailDistance);
-            holder.textView2 = (TextView)row.findViewById(R.id.trailName);
+            holder.distText = (TextView)row.findViewById(R.id.trailDistance);
+            holder.nameText = (TextView)row.findViewById(R.id.trailName);
+            holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
 
             row.setTag(holder);
         }
@@ -93,17 +88,28 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
 
         Trail trail = data.get(position);
+        holder.distText.setText(trail.getDistance());
+        holder.nameText.setText(trail.getTrailName());
 
-        holder.textView1.setText(trail.getDistance());
-        holder.textView2.setText(trail.getTrailName());
+        //if a trailicon exists, set it as the item image
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(trail.getIconName());
+            int drawableId = field.getInt(null);
+            holder.trailIcon.setImageResource(drawableId);
+        }
+        catch (Exception e) {
+            //Log.e("MyTag", "Failure to get drawable id.", e);
+            holder.trailIcon.setImageResource(R.drawable.icon_app);
+        }
 
         return row;
     }
 
     static class ViewHolder {
-        TextView textView1;
-        TextView textView2;
-
+        TextView distText;
+        TextView nameText;
+        ImageView trailIcon;
     }
 }
 
