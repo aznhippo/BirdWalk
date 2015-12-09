@@ -106,7 +106,7 @@ public class MapActivity extends AppCompatActivity {
 
             case R.id.directions:
                 //convert the starting latlng into a string
-                LatLng lotPoint = currTrail.lotPoint;
+                LatLng lotPoint = currTrail.getLotPoint();
                 Double lat = lotPoint.latitude;
                 Double lng = lotPoint.longitude;
                 String latString = lat.toString();
@@ -216,25 +216,26 @@ public class MapActivity extends AppCompatActivity {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start"));
+        mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start"));
         if (!currTrail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
+            mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
 
         //add points to the polyline
-        int numPoints = currTrail.points.length;
+        int numPoints = currTrail.getPoints().length;
+        LatLng[] points = currTrail.getPoints();
         Double avgLat = 0.0;
         Double avgLng = 0.0;
         PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
         for (int i = 0; i < numPoints; i++) {
-            TrailPoints.add(currTrail.points[i]);
-            avgLat += currTrail.points[i].latitude;
-            avgLng += currTrail.points[i].longitude;
+            TrailPoints.add(points[i]);
+            avgLat += points[i].latitude;
+            avgLng += points[i].longitude;
         }
         mMap.addPolyline(TrailPoints);
 
         //center the camera to the avg position
-        avgLat += currTrail.lotPoint.latitude;
-        avgLng += currTrail.lotPoint.longitude;
+        avgLat += currTrail.getLotPoint().latitude;
+        avgLng += currTrail.getLotPoint().longitude;
         avgLat = avgLat / (numPoints + 1);
         avgLng = avgLng / (numPoints + 1);
         LatLng CENTER = new LatLng(avgLat, avgLng);

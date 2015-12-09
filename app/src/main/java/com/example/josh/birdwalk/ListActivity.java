@@ -15,11 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,29 +38,10 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-//        Map<String, Trail> map = trailData.trailHashMap;
-//        // Defined Array values to show in ListView
-//        String[] TrailNames = new String[map.size()];
-//
-//        //add each trailname to the array
-//        int i = 0;
-//        for (Map.Entry<String, Trail> entry : map.entrySet()) {
-//            TrailNames[i] = entry.getKey();
-//            i++;
-//        }
-//
-//        Arrays.sort(TrailNames);
-//        listView = (ListView) findViewById(R.id.listView);
-//
-//        // Define a new Adapter: Context, Layout for the row, ID of the TextView to which the data is written,
-//        // the Array of data
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                R.layout.list_item, R.id.trailName, TrailNames);
-//        listView.setAdapter(adapter);
-
+        //put trails into arraylist
         ArrayList<Trail> trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
+        Collections.sort(trailList, Trail.TrailComparator);
         TrailAdapter trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
-
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
 
@@ -66,13 +49,11 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String itemValue = (String) listView.getItemAtPosition(position);
+                Trail trail = (Trail) (listView.getItemAtPosition(position));
                 Intent intent = new Intent(ListActivity.this, TrailActivity.class);
-                intent.putExtra("trailKey", itemValue);
+                intent.putExtra("trailKey", trail.getTrailName());
                 startActivity(intent);
-
             }
-
         });
 
     }
@@ -97,8 +78,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         View row = convertView;
         ViewHolder holder = null;
 
-        if(row == null)
-        {
+        if(row == null) {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
 
@@ -108,23 +88,22 @@ class TrailAdapter extends ArrayAdapter<Trail> {
 
             row.setTag(holder);
         }
-        else
-        {
+        else {
             holder = (ViewHolder)row.getTag();
         }
 
         Trail trail = data.get(position);
 
-        holder.textView1.setText(trail.distance);
-        holder.textView2.setText(trail.resName);
+        holder.textView1.setText(trail.getDistance());
+        holder.textView2.setText(trail.getTrailName());
 
         return row;
     }
 
-    static class ViewHolder
-    {
+    static class ViewHolder {
         TextView textView1;
         TextView textView2;
+
     }
 }
 

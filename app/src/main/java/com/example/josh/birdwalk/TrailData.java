@@ -93,8 +93,8 @@ public class TrailData {
             new LatLng(38.624326, -121.301820), new LatLng(38.6067917, -121.50165),
     };
 
-    static LatLng barBannisterLot = new LatLng (38.633206, -121.286619);
-    static LatLng[] barBannisterPts = {
+    static LatLng barLot = new LatLng (38.633206, -121.286619);
+    static LatLng[] barPts = {
             new LatLng(38.633206, -121.286619), new LatLng(38.6067917, -121.50165),
     };
 
@@ -202,91 +202,151 @@ public class TrailData {
 
     static {
         trailHashMap.put("Discovery Park",
-                new Trail(discLot, discPts, "1.56", "disc", "1234 Discovery Parkway", "Blue Jays, Cardinals, Peacocks", "Marsh, Hills"));
+                new Trail("Discovery Park",
+                        discLot, discPts, "1.56", "icon_disc", "disc",
+                        "1234 Discovery Parkway",
+                        "Blue Jays, Cardinals, Peacocks",
+                        "Marsh, Hills"));
 
         trailHashMap.put("Bushy Lake and the Cal Expo Floodplain",
-                new Trail(bushyLot, bushyPts, "9.09", "bushy", "...", "...", "..."));
+                new Trail("Bushy Lake and the Cal Expo Floodplain",
+                        bushyLot, bushyPts, "9.09", "icon_bushy", "bushy",
+                        "...", "...", "..."));
 
         trailHashMap.put("California State University",
-                new Trail(csuLot,csuPts, "9.09", "csu", "...", "...", "..."));
+                new Trail("California State University",
+                        csuLot,csuPts, "9.09", "icon_csu", "csu",
+                        "...", "...", "..."));
 
         trailHashMap.put("Howe and Watt Accesses",
-                new Trail(howeLot, howePts, "9.09", "howe", "...", "...", "..."));
+                new Trail("Howe and Watt Accesses",
+                        howeLot, howePts, "9.09", "icon_howe", "howe",
+                        "...", "...", "..."));
 
         trailHashMap.put("Gristmill Recreation Area",
-                new Trail(gristLot, gristPts, "9.09", "grist", "...", "...", "..."));
+                new Trail("Gristmill Recreation Area",
+                        gristLot, gristPts, "9.09", "icon_grist", "grist",
+                        "...", "...", "..."));
 
         trailHashMap.put("William B. Pond Recreation Area",
-                new Trail(willLot, willPts, "9.09", "will", "...", "...", "..."));
+                new Trail("William B. Pond Recreation Area",
+                        willLot, willPts, "9.09", "icon_will", "will",
+                        "...", "...", "..."));
 
         trailHashMap.put("River Bend Park",
-                new Trail(riverBendLot, riverBendPts, "9.09", "riverBend", "...", "...", "..."));
+                new Trail("River Bend Park",
+                        riverBendLot, riverBendPts, "9.09", "icon_riverBend", "riverBend",
+                        "...", "...", "..."));
 
         trailHashMap.put("Effie Yeaw Nature Center",
-                new Trail(effieLot, effiePts, "9.09", "effie", "...", "...", "..."));
+                new Trail("Effie Yeaw Nature Center",
+                        effieLot, effiePts, "9.09", "icon_effie", "effie",
+                        "...", "...", "..."));
 
         trailHashMap.put("Rossmoor Bar",
-                new Trail(rossmoorLot, rossmoorPts, "9.09", "rossmoor", "...", "...", "..."));
+                new Trail("Rossmoor Bar",
+                        rossmoorLot, rossmoorPts, "9.09", "icon_rossmoor", "rossmoor",
+                        "...", "...", "..."));
 
         trailHashMap.put("Sacramento Bar and Bannister Park",
-                new Trail(barBannisterLot, barBannisterPts, "9.09", "barBannister", "...", "...", "..."));
+                new Trail("Sacramento Bar and Bannister Park",
+                        barLot, barPts, "9.09", "icon_bar", "bar",
+                        "...", "...", "..."));
 
         trailHashMap.put("Lower Sunrise Area",
-                new Trail(lowSunriseLot, lowSunrisePts, "9.09", "lowSunrise", "...", "...", "..."));
+                new Trail("Lower Sunrise Area",
+                        lowSunriseLot, lowSunrisePts, "9.09", "icon_lowSunrise", "lowSunrise",
+                        "...", "...", "..."));
 
         trailHashMap.put("Sailor Bar",
-                new Trail(sailorLot, sailorPts, "9.09", "sailor", "...", "...", "..."));
+                new Trail("Sailor Bar",
+                        sailorLot, sailorPts, "9.09", "icon_sailor", "sailor",
+                        "...", "...", "..."));
 
         trailHashMap.put("Upper Sunrise",
-                new Trail(upperSunriseLot, upperSunrisePts, "9.09", "upperSunrise", "...", "...", "..."));
+                new Trail("Upper Sunrise",
+                        upperSunriseLot, upperSunrisePts, "9.09", "icon_upperSunrise", "upperSunrise",
+                        "...", "...", "..."));
 
         trailHashMap.put("Nimbus Hatchery",
-                new Trail(nimbusLot, nimbusPts, "9.09", "nimbus", "...", "...", "..."));
+                new Trail("Nimbus Hatchery",
+                        nimbusLot, nimbusPts, "9.09", "icon_nimbus", "nimbus",
+                        "...", "...", "..."));
 
         trailHashMap.put("Purple Martins Site #1",
-                new Trail(purp1Lot, purp1Pts, "n/a", "purp1", "...", "...", "..."));
+                new Trail("Purple Martins Site #1",
+                        purp1Lot, purp1Pts, "n/a", "icon_purp1", "purp1",
+                        "...", "...", "..."));
 
         trailHashMap.put("Purple Martins Site #2",
-                new Trail(purp2Lot, purp2Pts, "n/a", "purp2", "...", "...", "..."));
+                new Trail("Purple Martins Site #2",
+                        purp2Lot, purp2Pts, "n/a", "icon_purp2", "purp2",
+                        "...", "...", "..."));
 
         trailHashMap.put("Purple Martins Site #3",
-                new Trail(purp3Lot, purp3Pts, "n/a", "purp3", "...", "...", "..."));
+                new Trail("Purple Martins Site #3",
+                        purp3Lot, purp3Pts, "n/a", "icon_purp3", "purp3",
+                        "...", "...", "..."));
 
         trailHashMap.put("East Lawn Park",
-                new Trail(eastLawnLot, eastLawnPts, "9.09", "eastLawn", "...", "...", "..."));
+                new Trail("East Lawn Park",
+                        eastLawnLot, eastLawnPts, "9.09", "icon_eastLawn", "eastLawn",
+                        "...", "...", "..."));
 
         trailHashMap.put("Arcade Creek at American River College",
-                new Trail(arcadeCollegeLot, arcadeCollegePts, "9.09", "arcadeCollege", "...", "...", "..."));
+                new Trail("Arcade Creek at American River College",
+                        arcadeCollegeLot, arcadeCollegePts, "9.09", "icon_arcadeCollege", "arcadeCollege",
+                        "...", "...", "..."));
 
         trailHashMap.put("Arcade Creek from Arden Creek Park",
-                new Trail(arcadeArdenLot, arcadeArdenPts, "9.09", "arcadeArden", "...", "...", "..."));
+                new Trail("Arcade Creek from Arden Creek Park",
+                        arcadeArdenLot, arcadeArdenPts, "9.09", "icon_arcadeArden", "arcadeArden",
+                        "...", "...", "..."));
 
         trailHashMap.put("Rough Winged Swallows Site #1",
-                new Trail(swallows1Lot, swallows1Pts, "n/a", "swallows1", "...", "...", "..."));
+                new Trail("Rough Winged Swallows Site #1",
+                        swallows1Lot, swallows1Pts, "n/a", "icon_swallows1", "swallows1",
+                        "...", "...", "..."));
 
         trailHashMap.put("Rough Winged Swallows Site #2",
-                new Trail(swallows2Lot, swallows2Pts, "n/a", "swallows2", "...", "...", "..."));
+                new Trail("Rough Winged Swallows Site #2",
+                        swallows2Lot, swallows2Pts, "n/a", "icon_swallows2", "swallows2",
+                        "...", "...", "..."));
 
         trailHashMap.put("Rough Winged Swallows Site #3",
-                new Trail(swallows3Lot, swallows3Pts, "n/a", "swallows3", "...", "...", "..."));
+                new Trail("Rough Winged Swallows Site #3",
+                        swallows3Lot, swallows3Pts, "n/a", "icon_swallows3", "swallows3",
+                        "...", "...", "..."));
 
         trailHashMap.put("William Land Park",
-                new Trail(williamParkLot, williamParkPts, "9.09", "williamPark", "...", "...", "..."));
+                new Trail("William Land Park",
+                        williamParkLot, williamParkPts, "9.09", "icon_williamPark", "williamPark",
+                        "...", "...", "..."));
 
         trailHashMap.put("Reichmuth Park",
-                new Trail(reichmuthLot, reichmuthPts, "9.09", "reichmuth", "...", "...", "..."));
+                new Trail("Reichmuth Park",
+                        reichmuthLot, reichmuthPts, "9.09", "icon_reichmuth", "reichmuth",
+                        "...", "...", "..."));
 
         trailHashMap.put("Green Haven Lake",
-                new Trail(greenHavenLot, greenHavenPts, "9.09", "greenHaven", "...", "...", "..."));
+                new Trail("Green Haven Lake",
+                        greenHavenLot, greenHavenPts, "9.09", "icon_greenHaven", "greenHaven",
+                        "...", "...", "..."));
 
         trailHashMap.put("Garcia Bend",
-                new Trail(garciaBendLot, garciaBendPts, "9.09", "garciaBend", "...", "...", "..."));
+                new Trail("Garcia Bend",
+                        garciaBendLot, garciaBendPts, "9.09", "icon_garciaBend", "garciaBend",
+                        "...", "...", "..."));
 
         trailHashMap.put("Marriott Park",
-                new Trail(marriottLot, marriottPts, "9.09", "marriott", "...", "...", "..."));
+                new Trail("Marriott Park",
+                        marriottLot, marriottPts, "9.09", "icon_marriott", "marriott",
+                        "...", "...", "..."));
 
         trailHashMap.put("Chorley Park",
-                new Trail(chorleyLot, chorleyPts, "9.09", "chorley", "...", "...", "..."));
+                new Trail("Chorley Park",
+                        chorleyLot, chorleyPts, "9.09", "icon_chorley", "chorley",
+                        "...", "...", "..."));
     }
 
 

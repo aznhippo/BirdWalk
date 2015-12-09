@@ -184,27 +184,28 @@ public class TrailActivity extends AppCompatActivity {
         //calculate total trail distance
         distance = 0;
 
-        mMap.addMarker(new MarkerOptions().position(currTrail.points[0]).title("Trail Start")).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start")).showInfoWindow();
         if (!currTrail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(currTrail.lotPoint).title("Parking Lot"));
+            mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
 
         PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
         //add points to the polyline
-        int numPoints = currTrail.points.length;
+        int numPoints = currTrail.getPoints().length;
+        LatLng[] points = currTrail.getPoints();
         for (int i = 0; i < numPoints; i++){
-            TrailPoints.add(currTrail.points[i]);
-            avgLat += currTrail.points[i].latitude;
-            avgLng += currTrail.points[i].longitude;
+            TrailPoints.add(points[i]);
+            avgLat += points[i].latitude;
+            avgLng += points[i].longitude;
 
             if (i < numPoints-1)
-                distance += distanceBetween(currTrail.points[i], currTrail.points[i+1]);
+                distance += distanceBetween(points[i], points[i+1]);
 
         }
         mMap.addPolyline(TrailPoints);
 
         //center the camera to the avg position
-        avgLat += currTrail.lotPoint.latitude;
-        avgLng += currTrail.lotPoint.longitude;
+        avgLat += currTrail.getLotPoint().latitude;
+        avgLng += currTrail.getLotPoint().longitude;
         avgLat = avgLat/(numPoints+1);
         avgLng = avgLng/(numPoints+1);
         LatLng CENTER = new LatLng(avgLat, avgLng);
@@ -231,7 +232,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-        String addrString = "<b>"+"Address: "+"</b>" + currTrail.address;
+        String addrString = "<b>"+"Address: "+"</b>" + currTrail.getAddress();
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
@@ -240,18 +241,18 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 
-        String birdsString = "<b>"+"Highlights: "+"</b>"+ currTrail.birds;
+        String birdsString = "<b>"+"Highlights: "+"</b>"+ currTrail.getBirds();
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(Html.fromHtml(birdsString));
 
-        String typeString = "<b>"+"Habitats: "+"</b>"+ currTrail.habitats;
+        String typeString = "<b>"+"Habitats: "+"</b>"+ currTrail.getHabitats();
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(Html.fromHtml(typeString));
     }
 
     public void launchDirections(View view){
         //convert the starting latlng into a string
-        LatLng lotPoint = currTrail.lotPoint;
+        LatLng lotPoint = currTrail.getLotPoint();
         Double lat = lotPoint.latitude;
         Double lng = lotPoint.longitude;
         String latString = lat.toString();
@@ -268,7 +269,7 @@ public class TrailActivity extends AppCompatActivity {
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
-        intent.putExtra("excName", currTrail.resName);
+        intent.putExtra("resName", currTrail.getResName());
         intent.putExtra("trailName", trailName);
         startActivity(intent);
     }

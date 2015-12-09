@@ -33,7 +33,7 @@ public class InfoActivity extends AppCompatActivity {
                 toolbar.setTitle(trailName);
                 setSupportActionBar(toolbar);
 
-                String excName = intent.getExtras().getString("excName");
+                String excName = intent.getExtras().getString("resName");
                 setWebView(excName);
             }
         }
