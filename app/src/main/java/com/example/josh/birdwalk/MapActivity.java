@@ -15,10 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -34,11 +36,9 @@ public class MapActivity extends AppCompatActivity {
     Toolbar toolbar;
     String intentString;
 
-    /**
-     * Request code for location permission request.
-     *
-     * @see #onRequestPermissionsResult(int, String[], int[])
-     */
+
+     /* Request code for location permission request.
+      * @see #onRequestPermissionsResult(int, String[], int[])   */
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     @Override
@@ -175,29 +175,29 @@ public class MapActivity extends AppCompatActivity {
         mMap.getUiSettings().setMapToolbarEnabled(false);
         Map<String, Trail> map = trailData.trailHashMap;
 
-        //calculate the avg lat/lng of all markers
-        Double avgLat = 0.0;
-        Double avgLng = 0.0;
-        int numTrails = 0;
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
         //add each trail marker to map
         for (Map.Entry<String, Trail> entry : map.entrySet()) {
             String title = entry.getKey();
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
-
-            avgLat += start.latitude;
-            avgLng += start.longitude;
-            numTrails += 1;
-
             mMap.addMarker(new MarkerOptions().position(start).title(title));
+
+            builder.include(start);
         }
 
-        //center the camera to the avg position
-        avgLat = avgLat / numTrails;
-        avgLng = avgLng / numTrails;
-        LatLng CENTER = new LatLng(avgLat, avgLng);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 11));
+        //center to bounds, zoom when map loaded
+        LatLngBounds bounds = builder.build();
+        int padding = 100; // offset from edges of the map in pixels
+        final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 10));
+        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                mMap.animateCamera(cu);
+            }
+        });
 
         //launch trailActivity for clicked on marker
         mMap.setOnInfoWindowClickListener(

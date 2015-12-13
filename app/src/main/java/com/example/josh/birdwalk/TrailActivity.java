@@ -18,10 +18,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -178,38 +180,48 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void createTrailLine(){
-        //calculate the avg lat/lng of the trail markers
-        Double avgLat = 0.0;
-        Double avgLng = 0.0;
-        //calculate total trail distance
-        distance = 0;
 
         mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start")).showInfoWindow();
-        if (!currTrail.lotIsStart())
+        if (currTrail.lotIsStart())
             mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
 
-        PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
-        //add points to the polyline
-        int numPoints = currTrail.getPoints().length;
-        LatLng[] points = currTrail.getPoints();
-        for (int i = 0; i < numPoints; i++){
-            TrailPoints.add(points[i]);
-            avgLat += points[i].latitude;
-            avgLng += points[i].longitude;
 
-            if (i < numPoints-1)
-                distance += distanceBetween(points[i], points[i+1]);
+        //trail only has 1 point
+        if (currTrail.getPoints().length == 1){
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currTrail.getStart(), 15));
+        }
+        //trail has multiple points
+        else{
+            PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            int numPoints = currTrail.getPoints().length;
+            LatLng[] points = currTrail.getPoints();
+
+
+            distance = 0;
+            for (int i = 0; i < numPoints; i++){
+                TrailPoints.add(points[i]);
+                builder.include(points[i]);
+
+                if (i < numPoints-1)
+                    distance += distanceBetween(points[i], points[i+1]);
+            }
+
+            //center to bounds, zoom when map loaded
+            LatLngBounds bounds = builder.build();
+            int padding = 200; // offset from edges of the map in pixels
+            final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+
+            mMap.addPolyline(TrailPoints);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    mMap.animateCamera(cu);
+                }
+            });
 
         }
-        mMap.addPolyline(TrailPoints);
-
-        //center the camera to the avg position
-        avgLat += currTrail.getLotPoint().latitude;
-        avgLng += currTrail.getLotPoint().longitude;
-        avgLat = avgLat/(numPoints+1);
-        avgLng = avgLng/(numPoints+1);
-        LatLng CENTER = new LatLng(avgLat, avgLng);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER, 15));
     }
 
     private float distanceBetween(LatLng latLng1, LatLng latLng2) {

@@ -27,14 +27,14 @@
         android:layout_marginLeft="7dp">
 
         <TextView
-            android:id="@+id/trailDistance"
+            android:id="@+id/trailBirds"
             android:layout_width="fill_parent"
             android:layout_height="26dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:ellipsize="marquee"
             android:singleLine="true"
-            android:text="Distance"
+            android:text="Birds"
             android:textSize="12sp"
             android:textColor="#ffffff" />
 
@@ -42,14 +42,15 @@
             android:id="@+id/trailName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/trailDistance"
+            android:layout_above="@id/trailBirds"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="true"
             android:gravity="center_vertical"
             android:text="Trail Name"
             android:textSize="16sp"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:singleLine="true" />
 
     </RelativeLayout>
 

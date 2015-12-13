@@ -32,7 +32,7 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        //put trails into arraylist
+        //put trails into arraylist,
         ArrayList<Trail> trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparator);
         TrailAdapter trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
@@ -49,10 +49,9 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
-
 }
+
 
 class TrailAdapter extends ArrayAdapter<Trail> {
     private final Context context;
@@ -77,7 +76,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ViewHolder();
-            holder.distText = (TextView)row.findViewById(R.id.trailDistance);
+            holder.birdText = (TextView)row.findViewById(R.id.trailBirds);
             holder.nameText = (TextView)row.findViewById(R.id.trailName);
             holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
 
@@ -88,7 +87,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
 
         Trail trail = data.get(position);
-        holder.distText.setText(trail.getDistance());
+        holder.birdText.setText(trail.getBirds());
         holder.nameText.setText(trail.getTrailName());
 
         //if a trailicon exists, set it as the item image
@@ -107,7 +106,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
     }
 
     static class ViewHolder {
-        TextView distText;
+        TextView birdText;
         TextView nameText;
         ImageView trailIcon;
     }
