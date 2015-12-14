@@ -197,7 +197,7 @@ public class TrailActivity extends AppCompatActivity {
 
     private void createTrailLine(){
         mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
-        if (trail.lotIsStart())
+        if (!trail.lotIsStart())
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking Lot"));
 
 

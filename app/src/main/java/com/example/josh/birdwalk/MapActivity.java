@@ -216,7 +216,7 @@ public class MapActivity extends AppCompatActivity {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start")).showInfoWindow();
-        if (currTrail.lotIsStart())
+        if (!currTrail.lotIsStart())
             mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
 
 

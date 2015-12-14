@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     //called when user clicks maps button
     public void goToMap(View view) {
         Intent intent = new Intent(this, MapActivity.class);
