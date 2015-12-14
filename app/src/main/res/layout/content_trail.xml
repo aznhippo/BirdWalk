@@ -8,9 +8,10 @@
     tools:showIn="@layout/activity_trail"
     tools:context="com.example.josh.birdwalk.TrailActivity"
     android:orientation="vertical"
-    android:id="@+id/trailContent"
+    android:id="@+id/trailContent">
 
-    android:background="@drawable/bg_trail">
+    <!--android:background="@drawable/bg_trail">-->
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -42,158 +43,174 @@
             android:background="#99000000"
 
             android:text="View Full Map"
-            android:textStyle="bold"
-            android:shadowColor="#000000" />
+            android:textStyle="bold" />
     </FrameLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".6"
-        android:orientation="vertical">
+        android:layout_weight=".6">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/trail_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Get Directions"
-            android:id="@+id/direct"
-            android:onClick="launchDirections"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="20dp"
-            android:background="#99000000"
-            android:longClickable="false"
-            android:textColor="#ffffff"
-            android:drawableLeft="@android:drawable/ic_menu_directions"
-            android:drawableRight="@drawable/icon_go"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginLeft="7dp"
-            android:paddingLeft="6dip"
-            android:singleLine="true" />
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_trail"
+            android:scaleType="centerCrop" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="7dp"
-            android:background="#CCFFFFFF">
+            android:layout_height="match_parent"
 
-            <TextView
+            android:orientation="vertical">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Address: "
-                android:id="@+id/addrText"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textSize="15dp"
+                android:text="Get Directions"
+                android:id="@+id/direct"
+                android:onClick="launchDirections"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:textSize="20dp"
+                android:background="#99000000"
+                android:longClickable="false"
+                android:textColor="#ffffff"
+                android:drawableLeft="@android:drawable/ic_menu_directions"
+                android:drawableRight="@drawable/icon_go"
+                android:paddingLeft="16dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="7dp"
+
                 android:singleLine="true"
-                android:clickable="true" />
+                android:textAlignment="center" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Trail Distance:"
-                android:id="@+id/distText"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textSize="15dp"
-                android:layout_below="@+id/view1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:singleLine="true" />
+                android:orientation="vertical"
+                android:layout_margin="7dp"
+                android:background="#CCFFFFFF">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Address: "
+                    android:id="@+id/addrText"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:singleLine="true"
+                    android:clickable="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Trail Distance:"
+                    android:id="@+id/distText"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/view1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Birds:"
+                    android:id="@+id/birdsText"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/view2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Trail Type: "
+                    android:id="@+id/typeText"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/view3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:singleLine="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/black"
+                    android:id="@+id/view1"
+                    android:layout_below="@+id/addrText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/black"
+                    android:id="@+id/view2"
+                    android:layout_below="@+id/distText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/black"
+                    android:id="@+id/view3"
+                    android:layout_below="@+id/birdsText"
+                    android:layout_centerHorizontal="true" />
+
+
+
+            </RelativeLayout>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Birds:"
-                android:id="@+id/birdsText"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textSize="15dp"
-                android:layout_below="@+id/view2"
+                android:text="Read More About "
+                android:id="@+id/excerpt"
+                android:onClick="launchExcerpt"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:textSize="20dp"
+                android:background="#99000000"
+                android:longClickable="false"
+                android:textColor="#ffffff"
+                android:drawableLeft="@android:drawable/ic_menu_info_details"
+                android:drawableRight="@drawable/icon_go"
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="7dp"
+                android:paddingLeft="16dp"
                 android:singleLine="true" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Trail Type: "
-                android:id="@+id/typeText"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textSize="15dp"
-                android:layout_below="@+id/view3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:singleLine="true" />
+        </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@android:color/black"
-                android:id="@+id/view1"
-                android:layout_below="@+id/addrText"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    </FrameLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@android:color/black"
-                android:id="@+id/view2"
-                android:layout_below="@+id/distText"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@android:color/black"
-                android:id="@+id/view3"
-                android:layout_below="@+id/birdsText"
-                android:layout_centerHorizontal="true" />
-
-
-
-        </RelativeLayout>
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Read More About "
-            android:id="@+id/excerpt"
-            android:onClick="launchExcerpt"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="20dp"
-            android:background="#99000000"
-            android:longClickable="false"
-            android:textColor="#ffffff"
-            android:drawableLeft="@android:drawable/ic_menu_info_details"
-            android:drawableRight="@drawable/icon_go"
-            android:layout_marginRight="7dp"
-            android:layout_marginLeft="7dp"
-            android:paddingLeft="6dip"
-            android:singleLine="true" />
-
-    </LinearLayout>
 </LinearLayout>

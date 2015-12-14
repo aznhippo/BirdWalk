@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -35,7 +37,7 @@ public class TrailActivity extends AppCompatActivity {
 
     GoogleMap mMap;
     TrailData trailData;
-    Trail currTrail;
+    Trail trail;
     String trailName;
     Marker lastOpened = null;
     float distance;
@@ -49,7 +51,7 @@ public class TrailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         trailName = intent.getExtras().getString("trailKey");
         trailData = TrailData.getInstance();
-        currTrail = trailData.getValue(trailName);
+        trail = trailData.getValue(trailName);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(trailName);
@@ -57,6 +59,20 @@ public class TrailActivity extends AppCompatActivity {
 
         Button button = (Button) this.findViewById(R.id.excerpt);
         button.setText("Read more about " + trailName);
+
+        //if a trail pic exists, set it as the background image
+        ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(trail.getResName());
+
+            int drawableId = field.getInt(null);
+            iv.setImageResource(drawableId);
+        }
+        catch (Exception e) {
+            //Log.e("MyTag", "Failure to get drawable id.", e);
+            iv.setImageResource(R.drawable.bg_trail);
+        }
 
         setUpMapIfNeeded();
         setUpInfo();
@@ -180,23 +196,21 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void createTrailLine(){
-
-        mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start")).showInfoWindow();
-        if (currTrail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
+        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
+        if (trail.lotIsStart())
+            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking Lot"));
 
 
         //trail only has 1 point
-        if (currTrail.getPoints().length == 1){
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currTrail.getStart(), 15));
+        if (trail.getPoints().length == 1){
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //trail has multiple points
         else{
             PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = currTrail.getPoints().length;
-            LatLng[] points = currTrail.getPoints();
-
+            int numPoints = trail.getPoints().length;
+            LatLng[] points = trail.getPoints();
 
             distance = 0;
             for (int i = 0; i < numPoints; i++){
@@ -244,7 +258,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-        String addrString = "<b>"+"Address: "+"</b>" + currTrail.getAddress();
+        String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
@@ -253,18 +267,18 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 
-        String birdsString = "<b>"+"Highlights: "+"</b>"+ currTrail.getBirds();
+        String birdsString = "<b>"+"Highlights: "+"</b>"+ trail.getBirds();
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(Html.fromHtml(birdsString));
 
-        String typeString = "<b>"+"Habitats: "+"</b>"+ currTrail.getHabitats();
+        String typeString = "<b>"+"Habitats: "+"</b>"+ trail.getHabitats();
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(Html.fromHtml(typeString));
     }
 
     public void launchDirections(View view){
         //convert the starting latlng into a string
-        LatLng lotPoint = currTrail.getLotPoint();
+        LatLng lotPoint = trail.getLotPoint();
         Double lat = lotPoint.latitude;
         Double lng = lotPoint.longitude;
         String latString = lat.toString();
@@ -281,7 +295,7 @@ public class TrailActivity extends AppCompatActivity {
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
-        intent.putExtra("resName", currTrail.getResName());
+        intent.putExtra("resName", trail.getResName());
         intent.putExtra("trailName", trailName);
         startActivity(intent);
     }

@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -34,7 +40,7 @@ public class ListActivity extends AppCompatActivity {
 
         //put trails into arraylist,
         ArrayList<Trail> trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
-        Collections.sort(trailList, Trail.TrailComparator);
+        Collections.sort(trailList, Trail.TrailComparatorName);
         TrailAdapter trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
@@ -50,6 +56,35 @@ public class ListActivity extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_list_activity, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        switch (item.getItemId()) {
+//            case R.id.alpha:
+//
+//                return true;
+//            case R.id.dist:
+//
+//                return true;
+//
+//            default:
+//                // If we got here, the user's action was not recognized.
+//                // Invoke the superclass to handle it.
+//                return super.onOptionsItemSelected(item);
+//
+//        }
+//
+//    }
 }
 
 
@@ -76,7 +111,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ViewHolder();
-            holder.birdText = (TextView)row.findViewById(R.id.trailBirds);
+            holder.distText = (TextView)row.findViewById(R.id.trailDistance);
             holder.nameText = (TextView)row.findViewById(R.id.trailName);
             holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
 
@@ -87,7 +122,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
 
         Trail trail = data.get(position);
-        holder.birdText.setText(trail.getBirds());
+        holder.distText.setText(trail.getDistance());
         holder.nameText.setText(trail.getTrailName());
 
         //if a trailicon exists, set it as the item image
@@ -106,7 +141,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
     }
 
     static class ViewHolder {
-        TextView birdText;
+        TextView distText;
         TextView nameText;
         ImageView trailIcon;
     }

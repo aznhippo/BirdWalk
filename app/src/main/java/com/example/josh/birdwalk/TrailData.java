@@ -217,14 +217,14 @@ public class TrailData {
 
         trailHashMap.put("Howe Ave River Access",
                 new Trail("Howe Ave River Access",
-                        howeLot, howePts, "9.09 miles", "icon_howe", "howe",
+                        howeLot, howePts, "9.09 miles", "icon_howe", "howe_watt",
                         "Follow The La Riviera Off-ramp Straight To The Park’s Entrance",
                         "Nesting Rough-Winged Swallows, Waterbirds, Spring And Fall Migrants",
                         "Riparian, Pond, Flooded Backwaters"));
 
         trailHashMap.put("Watt Ave River Access",
                 new Trail("Watt Ave River Access",
-                        wattLot, wattPts, "9.09 miles", "icon_watt", "watt",
+                        wattLot, wattPts, "9.09 miles", "icon_watt", "howe_watt",
                         "Riviera Drive Off Watt Ave, Sacramento, CA",
                         "Wood Ducks, Belted Kingfishers, Green Herons, Black Phoebes",
                         "Cottonwood Stands, Riparian"));
@@ -239,7 +239,7 @@ public class TrailData {
 
         trailHashMap.put("William B. Pond Recreation Area",
                 new Trail("William B. Pond Recreation Area",
-                        willLot, willPts, "9.09 miles", "icon_will", "will",
+                        willLot, willPts, "9.09 miles", "icon_willPond", "willPond",
                         "5700 Arden Way, Carmichael CA",
                         "Great Blue Heron And Great Egret Nesting Rookery, Wide Variety Birds",
                         "Riparian Woodlands, Riverine, Ponds, Grassland Open Areas"));
@@ -302,21 +302,21 @@ public class TrailData {
 
         trailHashMap.put("Purple Martins Site #1",
                 new Trail("Purple Martins Site #1",
-                        purp1Lot, purp1Pts, "n/a", "icon_purp1", "purp1",
+                        purp1Lot, purp1Pts, "n/a", "icon_purp", "purp",
                         "20th Street Between X And W Streets, Sacramento, CA",
                         "Largest Swallows In North America, Nesting In Sacramento, Winter in South America",
                         "Weep Holes Under Freeway Overpasses"));
 
         trailHashMap.put("Purple Martins Site #2",
                 new Trail("Purple Martins Site #2",
-                        purp2Lot, purp2Pts, "n/a", "icon_purp2", "purp2",
+                        purp2Lot, purp2Pts, "n/a", "icon_purp", "purp",
                         "Old Town Sacramento, Particularly East And North Of The Railroad Museum—125 I Street.",
                         "Largest Swallows In North America, Nesting In Sacramento, Winter In South America",
                         "Weep Holes Under Freeway Overpasses"));
 
         trailHashMap.put("Purple Martins Site #3",
                 new Trail("Purple Martins Site #3",
-                        purp3Lot, purp3Pts, "n/a", "icon_purp3", "purp3",
+                        purp3Lot, purp3Pts, "n/a", "icon_purp", "purp",
                         "29th and 30th Streets Between R And S Streets, Particularly Near The Light Rail Station",
                         "Largest Swallows In North America Nesting In Sacramento, Winter In South America",
                         "Weep Holes Under Freeway Overpasses"));
@@ -330,35 +330,35 @@ public class TrailData {
 
         trailHashMap.put("Arcade Creek at American River College",
                 new Trail("Arcade Creek at American River College",
-                        arcadeCollegeLot, arcadeCollegePts, "9.09 miles", "icon_arcadeCollege", "arcadeCollege",
+                        arcadeCollegeLot, arcadeCollegePts, "9.09 miles", "icon_arcadeCollege", "arcade",
                         "6377 Bonham Cir., Citrus Heights, CA ",
                         "Good Birding Anytime Of The Day",
                         "Creek, Mountain Migrants, Nesting Birds, Various Warblers During Migration"));
 
         trailHashMap.put("Arcade Creek from Arden Creek Park",
                 new Trail("Arcade Creek from Arden Creek Park",
-                        arcadeArdenLot, arcadeArdenPts, "9.09 miles", "icon_arcadeArden", "arcadeArden",
+                        arcadeArdenLot, arcadeArdenPts, "9.09 miles", "icon_arcadeArden", "arcade",
                         "...",
                         "...",
                         "..."));
 
         trailHashMap.put("Rough Winged Swallows Site #1",
                 new Trail("Rough Winged Swallows Site #1",
-                        swallows1Lot, swallows1Pts, "n/a", "icon_swallows1", "swallows1",
+                        swallows1Lot, swallows1Pts, "n/a", "icon_swallows", "swallows",
                         "Interstate 5 and Seamas Blvd. Overpass, Sacramento, CA",
                         "From March Through Summer, The Birds Nest In Weep Holes In The Overpass",
                         "Weep Holes On Overpass"));
 
         trailHashMap.put("Rough Winged Swallows Site #2",
                 new Trail("Rough Winged Swallows Site #2",
-                        swallows2Lot, swallows2Pts, "n/a", "icon_swallows2", "swallows2",
+                        swallows2Lot, swallows2Pts, "n/a", "icon_swallows", "swallows",
                         "Interstate 5 And 35th Avenue Overpass, Sacramento, CA",
                         "From March Through Summer, The Birds Nest In Weep Holes In The Overpass",
                         "Weep Holes On Overpass"));
 
         trailHashMap.put("Rough Winged Swallows Site #3",
                 new Trail("Rough Winged Swallows Site #3",
-                        swallows3Lot, swallows3Pts, "n/a", "icon_swallows3", "swallows3",
+                        swallows3Lot, swallows3Pts, "n/a", "icon_swallows", "swallows",
                         "Interstate 5 And 43rd  Avenue Overpass, Sacramento, CA",
                         "From March Through Summer, The Birds Nest In Weep Holes In The Overpass",
                         "Weep Holes On Overpass"));
@@ -386,14 +386,14 @@ public class TrailData {
 
         trailHashMap.put("Garcia Bend",
                 new Trail("Garcia Bend",
-                        garciaBendLot, garciaBendPts, "9.09 miles", "icon_garciaBend", "garciaBend",
+                        garciaBendLot, garciaBendPts, "9.09 miles", "icon_garciaBend", "garcia_marriott",
                         "7654 Pocket Rd. Sacramento, CA",
                         "Migrating Landbirds, Caspian And Forster’s Terns",
                         "Riparian, Riverine"));
 
         trailHashMap.put("Marriott Park",
                 new Trail("Marriott Park",
-                        marriottLot, marriottPts, "9.09 miles", "icon_marriott", "marriott",
+                        marriottLot, marriottPts, "9.09 miles", "icon_marriott", "garcia_marriott",
                         "7658 El Douro Dr, Sacramento, CA",
                         "Migrating Warblers, Vireos, Tanagers",
                         "Large Valley Oaks"));

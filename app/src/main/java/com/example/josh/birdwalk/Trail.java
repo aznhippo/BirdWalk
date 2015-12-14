@@ -1,7 +1,6 @@
 package com.example.josh.birdwalk;
 
 import com.google.android.gms.maps.model.LatLng;
-
 import java.util.Comparator;
 
 /**
@@ -45,7 +44,7 @@ class Trail {
     public String getHabitats() {return habitats;}
 
     /*Comparator for sorting the list by Trail Name*/
-    public static Comparator<Trail> TrailComparator = new Comparator<Trail>() {
+    public static Comparator<Trail> TrailComparatorName = new Comparator<Trail>() {
 
         public int compare(Trail s1, Trail s2) {
             String TrailName1 = s1.getTrailName().toUpperCase();
@@ -53,6 +52,20 @@ class Trail {
 
             //ascending order
             return TrailName1.compareTo(TrailName2);
+
+            //descending order
+            //return TrailName2.compareTo(TrailName1);
+        }};
+
+    /*Comparator for sorting the list by Trail Distance*/
+    public static Comparator<Trail> TrailComparatorDist = new Comparator<Trail>() {
+
+        public int compare(Trail s1, Trail s2) {
+            String TrailDist1 = s1.getDistance();
+            String TrailDist2 = s2.getDistance();
+
+            //ascending order
+            return TrailDist1.compareTo(TrailDist2);
 
             //descending order
             //return TrailName2.compareTo(TrailName1);
