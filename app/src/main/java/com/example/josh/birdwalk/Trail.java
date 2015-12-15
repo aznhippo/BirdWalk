@@ -13,19 +13,21 @@ class Trail {
     private LatLng[] points;
     private String distance;
     private String iconName;
-    private String resName;
+    private String excName;
+    private String bgName;
     private String address;
     private String birds;
     private String habitats;
 
     public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sDistance,
-                 String sIconName, String sResName, String sAddress, String sBirds, String sHabitats){
+                 String sIconName, String sExcName, String sBgName, String sAddress, String sBirds, String sHabitats){
         trailName = sTrailName;
         lotPoint = sLotPoint;
         points = sPoints;
         distance = sDistance;
         iconName = sIconName;
-        resName = sResName;
+        excName = sExcName;
+        bgName = sBgName;
         address = sAddress;
         birds = sBirds;
         habitats = sHabitats;
@@ -38,7 +40,8 @@ class Trail {
     public Boolean lotIsStart() { return (lotPoint.equals(points[0]));}
     public String getDistance() {return distance;}
     public String getIconName() {return iconName;}
-    public String getResName() {return resName;}
+    public String getExcName() {return excName;}
+    public String getBgName() {return bgName;}
     public String getAddress() {return address;}
     public String getBirds() {return birds;}
     public String getHabitats() {return habitats;}

@@ -64,7 +64,7 @@ public class TrailActivity extends AppCompatActivity {
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(trail.getResName());
+            Field field = res.getField(trail.getBgName());
 
             int drawableId = field.getInt(null);
             iv.setImageResource(drawableId);
@@ -295,7 +295,7 @@ public class TrailActivity extends AppCompatActivity {
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
-        intent.putExtra("resName", trail.getResName());
+        intent.putExtra("resName", trail.getExcName());
         intent.putExtra("trailName", trailName);
         startActivity(intent);
     }
