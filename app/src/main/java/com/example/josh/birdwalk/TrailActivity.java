@@ -58,7 +58,7 @@ public class TrailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button button = (Button) this.findViewById(R.id.excerpt);
-        button.setText("Read more about " + trailName);
+        button.setText("More About " + trailName);
 
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
@@ -258,20 +258,24 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-        String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
+//        String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
+        String addrString = trail.getAddress();
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
         double miles = round(distance * .000621371,2);
-        String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
+        //String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
+        String distString = Double.toString(miles)+" miles";
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 
-        String birdsString = "<b>"+"Highlights: "+"</b>"+ trail.getBirds();
+        //String birdsString = "<b>"+"Highlights: "+"</b>"+ trail.getBirds();
+        String birdsString = trail.getBirds();
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(Html.fromHtml(birdsString));
 
-        String typeString = "<b>"+"Habitats: "+"</b>"+ trail.getHabitats();
+        //String typeString = "<b>"+"Habitats: "+"</b>"+ trail.getHabitats();
+        String typeString = trail.getHabitats();
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(Html.fromHtml(typeString));
     }

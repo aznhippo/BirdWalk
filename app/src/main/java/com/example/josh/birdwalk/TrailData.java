@@ -293,7 +293,7 @@ public class TrailData {
 
         trailHashMap.put("Upper Sunrise",
                 new Trail("Upper Sunrise",
-                        upSunriseLot, upSunrisePts, "9.09 miles", "icon_sunrise", "upSunrise", "upSunrise",
+                        upSunriseLot, upSunrisePts, "9.09 miles", "icon_sunrise", "upsunrise", "upsunrise",
                         "2001 Nimbus Rd, Gold River, CA",
                         "Barrow’s Goldeneye, Gulls",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine"));
