@@ -179,7 +179,7 @@ public class MapActivity extends AppCompatActivity {
 
         //add each trail marker to map
         for (Map.Entry<String, Trail> entry : map.entrySet()) {
-            String title = entry.getKey();
+            String title = entry.getKey() + "   \u27A4";
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
             mMap.addMarker(new MarkerOptions().position(start).title(title));
@@ -192,10 +192,19 @@ public class MapActivity extends AppCompatActivity {
         int padding = 100; // offset from edges of the map in pixels
         final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 10));
+        mMap.getUiSettings().setAllGesturesEnabled(false);
         mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
-                mMap.animateCamera(cu);
+                mMap.animateCamera(cu, new GoogleMap.CancelableCallback() {
+                    @Override
+                    public void onFinish() {
+                        mMap.getUiSettings().setAllGesturesEnabled(true);
+                    }
+
+                    @Override
+                    public void onCancel() {    }
+                });
             }
         });
 
@@ -203,14 +212,17 @@ public class MapActivity extends AppCompatActivity {
         mMap.setOnInfoWindowClickListener(
                 new GoogleMap.OnInfoWindowClickListener() {
                     public void onInfoWindowClick(Marker marker) {
+                        String str = marker.getTitle();
+                        String trailName = str.substring(0, str.length() - 4);
                         Intent intent = new Intent(MapActivity.this, TrailActivity.class);
-                        intent.putExtra("trailKey", marker.getTitle());
+                        intent.putExtra("trailKey", trailName);
                         startActivity(intent);
                     }
                 }
         );
 
     }
+
 
     public void showSelectedTrail(){
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);

@@ -68,7 +68,7 @@ public class TrailData {
             new LatLng(38.559607, -121.406420),
     };
 
-    static LatLng wattLot = new LatLng (38.559607, -121.406420);
+    static LatLng wattLot = new LatLng (38.565895, -121.381673);
     static LatLng[] wattPts = {
             new LatLng(38.565895, -121.381673),
     };
@@ -125,11 +125,17 @@ public class TrailData {
 
     //done
     static LatLng purp1Lot = new LatLng (38.561816, -121.486343);
-    static LatLng[] purp1Pts = { new LatLng(38.561816, -121.486343)};
+    static LatLng[] purp1Pts = {
+            new LatLng(38.561816, -121.486343)
+    };
     static LatLng purp2Lot = new LatLng (38.584245, -121.503890);
-    static LatLng[] purp2Pts = { new LatLng(38.584245, -121.503890)};
+    static LatLng[] purp2Pts = {
+            new LatLng(38.584245, -121.503890)
+    };
     static LatLng purp3Lot = new LatLng (38.564447, -121.471494);
-    static LatLng[] purp3Pts = { new LatLng(38.564447, -121.471494) };
+    static LatLng[] purp3Pts = {
+            new LatLng(38.564447, -121.471494)
+    };
     //
 
     static LatLng eastLawnLot = new LatLng (38.561201, -121.449865);
@@ -147,18 +153,39 @@ public class TrailData {
             new LatLng(38.656455, -121.335007),
     };
 
-    //done
-    static LatLng swallows1Lot = new LatLng (38.525773, -121.521545);
-    static LatLng[] swallows1Pts = { new LatLng(38.525773, -121.521545)};
-    static LatLng swallows2Lot = new LatLng (38.523123, -121.521359);
-    static LatLng[] swallows2Pts = { new LatLng(38.523123, -121.521359)};
-    static LatLng swallows3Lot = new LatLng (38.516309, -121.522323);
-    static LatLng[] swallows3Pts = { new LatLng(38.516309, -121.522323)};
-    //
 
-    static LatLng willParkLot = new LatLng (38.523094, -121.522252);
+    static LatLng swallows1Lot = new LatLng(38.525834,-121.521743);
+    static LatLng[] swallows1Pts = {
+            new LatLng(38.525834,-121.521743),
+            new LatLng(38.525597,-121.521810),
+            new LatLng(38.525415,-121.520809),
+            new LatLng(38.525644,-121.520737),
+            new LatLng(38.525834,-121.521743),
+    };
+    static LatLng swallows2Lot = new LatLng(38.516321,-121.522559);
+    static LatLng[] swallows2Pts = {
+            new LatLng(38.523115,-121.522098),
+            new LatLng(38.522938, -121.521121),
+            new LatLng(38.523079,-121.521050),
+            new LatLng(38.523296,-121.522098),
+            new LatLng(38.523115,-121.522098),
+    };
+    static LatLng swallows3Lot = new LatLng(38.516321, -121.522559);
+    static LatLng[] swallows3Pts = {
+            new LatLng(38.516321, -121.522559),
+            new LatLng(38.516133,-121.522541),
+            new LatLng(38.516093,-121.521498),
+            new LatLng(38.516321,-121.522559),
+            new LatLng(38.516321, -121.522559),
+    };
+
+    static LatLng willParkLot = new LatLng(38.547253, -121.507622);
     static LatLng[] willParkPts = {
-            new LatLng(38.523094, -121.522252),
+            new LatLng(38.547253, -121.507622),
+            new LatLng(38.545677,-121.508572),
+            new LatLng(38.544936,-121.505038),
+            new LatLng(38.546580,-121.504318),
+            new LatLng(38.547253, -121.507622),
     };
 
     static LatLng reichmuthLot = new LatLng (38.514887, -121.517806);
@@ -186,9 +213,9 @@ public class TrailData {
             new LatLng(38.497842, -121.492404),
     };
 
-    static LatLng riversideLot = new LatLng (38.523094, -121.522252);
+    static LatLng riversideLot = new LatLng (38.520348, -121.522852);
     static LatLng[] riversidePts = {
-            new LatLng(38.523094, -121.522252),
+            new LatLng(38.520348, -121.522852),
     };
 
 
@@ -234,12 +261,11 @@ public class TrailData {
                         "Wood Ducks, Belted Kingfishers, Green Herons, Black Phoebes",
                         "Cottonwood Stands, Riparian"));
 
-
         trailHashMap.put("Gristmill Recreation Area",
                 new Trail("Gristmill Recreation Area",
                         gristLot, gristPts, "9.09 miles", "icon_grist", "grist", "grist",
                         "Mira Del Rio Dr., Sacramento, CA",
-                        "Rarities, Small But Productive",
+                        "Rarities; Eastern Wood Pewee, Red-eyed vireo, Warblers",
                         "Riparian, Willows, Cottonwoods, Other Trees"));
 
         trailHashMap.put("William B. Pond Recreation Area",
@@ -309,21 +335,21 @@ public class TrailData {
                 new Trail("Purple Martins Site #1",
                         purp1Lot, purp1Pts, "n/a", "icon_purp", "purp", "purp",
                         "20th Street Between X And W Streets, Sacramento, CA",
-                        "Purple Martins Migrating from South America for Winter",
+                        "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses"));
 
         trailHashMap.put("Purple Martins Site #2",
                 new Trail("Purple Martins Site #2",
                         purp2Lot, purp2Pts, "n/a", "icon_purp", "purp", "purp",
                         "Old Town Sacramento, 125 I Street",
-                        "Purple Martins Migrating from South America for Winter",
+                        "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses"));
 
         trailHashMap.put("Purple Martins Site #3",
                 new Trail("Purple Martins Site #3",
                         purp3Lot, purp3Pts, "n/a", "icon_purp", "purp", "purp",
                         "29th and 30th Streets Between R and S Sts",
-                        "Purple Martins Migrating from South America for Winter",
+                        "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses"));
 
         trailHashMap.put("East Lawn Cemetery",
@@ -336,36 +362,36 @@ public class TrailData {
         trailHashMap.put("Arcade Creek at American River College",
                 new Trail("Arcade Creek at American River College",
                         arcadeCollegeLot, arcadeCollegePts, "9.09 miles", "icon_arcadeCollege", "arcade", "arcade",
-                        "6377 Bonham Cir., Citrus Heights, CA ",
-                        "Good Birding Anytime Of The Day",
+                        "4700 College Oak Dr, Sacramento, CA ",
+                        "Riparian Trees",
                         "Creek, Mountain Migrants, Nesting Birds"));
 
         trailHashMap.put("Arcade Creek from Arden Creek Park",
                 new Trail("Arcade Creek from Arden Creek Park",
                         arcadeArdenLot, arcadeArdenPts, "9.09 miles", "icon_arcadeArden", "arcade", "arcade",
-                        "...",
-                        "...",
-                        "..."));
+                        "5613 Omni Drive, Sacramento",
+                        "Mountain Migrants Nesting",
+                        "Riparian Trees"));
 
         trailHashMap.put("Rough Winged Swallows Site #1",
                 new Trail("Rough Winged Swallows Site #1",
                         swallows1Lot, swallows1Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 and Seamas Blvd. Overpass",
-                        "March-Summer, Nests In Weep Holes In The Overpass",
+                        "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass"));
 
         trailHashMap.put("Rough Winged Swallows Site #2",
                 new Trail("Rough Winged Swallows Site #2",
                         swallows2Lot, swallows2Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 And 35th Avenue Overpass",
-                        "March-Summer, Nests In Weep Holes In The Overpass",
+                        "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass"));
 
         trailHashMap.put("Rough Winged Swallows Site #3",
                 new Trail("Rough Winged Swallows Site #3",
                         swallows3Lot, swallows3Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 And 43rd  Avenue Overpass",
-                        "March-Summer, Nests In Weep Holes In The Overpass",
+                        "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass"));
 
         trailHashMap.put("William Land Park",
@@ -379,14 +405,14 @@ public class TrailData {
                 new Trail("Reichmuth Park",
                         reichmuthLot, reichmuthPts, "9.09 miles", "icon_reichmuth", "reichmuth", "reichmuth",
                         "6135 Gloria Dr. Sacramento, CA",
-                        "Magnet For Migrating Land Birds, Hooded Orioles",
+                        "Migrating Land Birds, Hooded Orioles",
                         "Formerly An Oxbow, Swampy Wooded Area"));
 
         trailHashMap.put("Green Haven Lake",
                 new Trail("Green Haven Lake",
                         greenHavenLot, greenHavenPts, "9.09 miles", "icon_greenhaven", "greenhaven", "greenhaven",
                         "Havenside Dr., Sacramento, CA",
-                        "Access Sites Available",
+                        "Mergansers, Cormorants, Gulls, Ducks",
                         "Shoreline, Lake"));
 
         trailHashMap.put("Garcia Bend",

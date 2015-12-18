@@ -34,7 +34,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff"
-            android:textSize="17dp" />
+            android:textSize="30dp" />
     </RelativeLayout>
 
     <LinearLayout
