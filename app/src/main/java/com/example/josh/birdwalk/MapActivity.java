@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.Map;
@@ -31,7 +32,7 @@ public class MapActivity extends AppCompatActivity {
 
     private GoogleMap mMap;
     TrailData trailData;
-    Trail currTrail;
+    Trail trail;
     String trailName;
     Toolbar toolbar;
     String intentString;
@@ -61,7 +62,7 @@ public class MapActivity extends AppCompatActivity {
             }
             if (intentString.equals("TrailActivity")) {
                 trailName = intent.getExtras().getString("trailKey");
-                currTrail = trailData.getValue(trailName);
+                trail = trailData.getValue(trailName);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle(trailName);
                 setSupportActionBar(toolbar);
@@ -106,7 +107,7 @@ public class MapActivity extends AppCompatActivity {
 
             case R.id.directions:
                 //convert the starting latlng into a string
-                LatLng lotPoint = currTrail.getLotPoint();
+                LatLng lotPoint = trail.getLotPoint();
                 Double lat = lotPoint.latitude;
                 Double lng = lotPoint.longitude;
                 String latString = lat.toString();
@@ -227,41 +228,49 @@ public class MapActivity extends AppCompatActivity {
     public void showSelectedTrail(){
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        mMap.addMarker(new MarkerOptions().position(currTrail.getStart()).title("Trail Start")).showInfoWindow();
-        if (!currTrail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(currTrail.getLotPoint()).title("Parking Lot"));
-
+        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
+        if (!trail.lotIsStart())
+            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking Lot"));
 
         //trail only has 1 point
-        if (currTrail.getPoints().length == 1){
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currTrail.getStart(), 15));
+        if (trail.getPoints().length == 1){
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //trail has multiple points
-        else{
-            PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
+        else {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = currTrail.getPoints().length;
-            LatLng[] points = currTrail.getPoints();
+            int numPoints = trail.getPoints().length;
+            LatLng[] points = trail.getPoints();
 
-            for (int i = 0; i < numPoints; i++){
-                TrailPoints.add(points[i]);
-                builder.include(points[i]);
+            //polygon or polyline
+            if (trail.getTrailName().equals("William Land Park")) {
+                PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
+                        .strokeColor(Color.GREEN).strokeWidth(0);
+                for (int i = 0; i < numPoints; i++) {
+                    trailPolygon.add(points[i]);
+                    builder.include(points[i]);
+                }
+                mMap.addPolygon(trailPolygon);
+            } else {
+                PolylineOptions trailLine = new PolylineOptions().color(Color.GREEN).width(5);
+                for (int i = 0; i < numPoints; i++) {
+                    trailLine.add(points[i]);
+                    builder.include(points[i]);
+                }
+                mMap.addPolyline(trailLine);
             }
 
-            //center to bounds
+            //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
             //int padding = 200; // offset from edges of the map in pixels
             //final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-
-            mMap.addPolyline(TrailPoints);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 15));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
 //            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
 //                @Override
 //                public void onMapLoaded() {
 //                    mMap.animateCamera(cu);
 //                }
 //            });
-
         }
     }
 

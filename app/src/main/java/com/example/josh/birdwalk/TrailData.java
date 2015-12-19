@@ -78,9 +78,9 @@ public class TrailData {
             new LatLng(38.574271, -121.344872),
     };
 
-    static LatLng willPondLot = new LatLng (38.545395, -121.507086);
+    static LatLng willPondLot = new LatLng (38.592002, -121.334241);
     static LatLng[] willPondPts = {
-            new LatLng(38.545395, -121.507086),
+            new LatLng(38.592002, -121.334241),
     };
 
     static LatLng riverBendLot = new LatLng (38.595127, -121.330402);
@@ -128,9 +128,26 @@ public class TrailData {
     static LatLng[] purp1Pts = {
             new LatLng(38.561816, -121.486343)
     };
-    static LatLng purp2Lot = new LatLng (38.584245, -121.503890);
+    static LatLng purp2Lot = new LatLng (38.584245,-121.503890);
     static LatLng[] purp2Pts = {
-            new LatLng(38.584245, -121.503890)
+            new LatLng( 38.584467, -121.503463),
+            new LatLng( 38.584538,-121.503447),
+            new LatLng( 38.584599,-121.503445),
+            new LatLng( 38.584640,-121.503453),
+            new LatLng( 38.584687,-121.503462),
+            new LatLng( 38.584736, -121.503476),
+            new LatLng( 38.584774,-121.503492),
+            new LatLng( 38.584816, -121.503530),
+            new LatLng( 38.584880, -121.503598),
+            new LatLng( 38.584918, -121.503669),
+            new LatLng( 38.584957,-121.50372),
+            new LatLng( 38.584992, -121.503806),
+            new LatLng( 38.585018,-121.503862),
+            new LatLng( 38.585068,-121.503949),
+            new LatLng( 38.5851006,-121.504004),
+            new LatLng( 38.585138,-121.504079),
+            new LatLng( 38.585190,-121.504195),
+            new LatLng( 38.585247,-121.504289),
     };
     static LatLng purp3Lot = new LatLng (38.564447, -121.471494);
     static LatLng[] purp3Pts = {
@@ -154,36 +171,30 @@ public class TrailData {
     };
 
 
-    static LatLng swallows1Lot = new LatLng(38.525834,-121.521743);
+    static LatLng swallows1Lot = new LatLng(38.525773,-121.521545);
     static LatLng[] swallows1Pts = {
-            new LatLng(38.525834,-121.521743),
-            new LatLng(38.525597,-121.521810),
-            new LatLng(38.525415,-121.520809),
-            new LatLng(38.525644,-121.520737),
-            new LatLng(38.525834,-121.521743),
+            new LatLng(38.525773,-121.521545)
     };
-    static LatLng swallows2Lot = new LatLng(38.516321,-121.522559);
+    static LatLng swallows2Lot = new LatLng(38.523123,-121.521359);
     static LatLng[] swallows2Pts = {
-            new LatLng(38.523115,-121.522098),
-            new LatLng(38.522938, -121.521121),
-            new LatLng(38.523079,-121.521050),
-            new LatLng(38.523296,-121.522098),
-            new LatLng(38.523115,-121.522098),
+            new LatLng(38.523123,-121.521359)
     };
-    static LatLng swallows3Lot = new LatLng(38.516321, -121.522559);
+    static LatLng swallows3Lot = new LatLng(38.516309, -121.522323);
     static LatLng[] swallows3Pts = {
-            new LatLng(38.516321, -121.522559),
-            new LatLng(38.516133,-121.522541),
-            new LatLng(38.516093,-121.521498),
-            new LatLng(38.516321,-121.522559),
-            new LatLng(38.516321, -121.522559),
+            new LatLng(38.516309, -121.522323)
     };
 
-    static LatLng willParkLot = new LatLng(38.547253, -121.507622);
+    static LatLng willParkLot = new LatLng(38.545395, -121.507086);
     static LatLng[] willParkPts = {
             new LatLng(38.547253, -121.507622),
             new LatLng(38.545677,-121.508572),
             new LatLng(38.544936,-121.505038),
+            new LatLng(38.544445, -121.502920),
+            new LatLng(38.544987,-121.50294),
+            new LatLng(38.545429,-121.503077),
+            new LatLng(38.545732, -121.503097),
+            new LatLng(38.546051,-121.503017),
+            new LatLng(38.546271,-121.502919),
             new LatLng(38.546580,-121.504318),
             new LatLng(38.547253, -121.507622),
     };
@@ -390,7 +401,7 @@ public class TrailData {
         trailHashMap.put("Rough Winged Swallows Site #3",
                 new Trail("Rough Winged Swallows Site #3",
                         swallows3Lot, swallows3Pts, "n/a", "icon_swallows", "swallows", "swallows",
-                        "Interstate 5 And 43rd  Avenue Overpass",
+                        "Interstate 5 And 43rd Avenue Overpass",
                         "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass"));
 
@@ -413,7 +424,7 @@ public class TrailData {
                         greenHavenLot, greenHavenPts, "9.09 miles", "icon_greenhaven", "greenhaven", "greenhaven",
                         "Havenside Dr., Sacramento, CA",
                         "Mergansers, Cormorants, Gulls, Ducks",
-                        "Shoreline, Lake"));
+                        "Views of Shoreline, Lake"));
 
         trailHashMap.put("Garcia Bend",
                 new Trail("Garcia Bend",

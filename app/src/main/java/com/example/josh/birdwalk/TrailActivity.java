@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.lang.reflect.Field;
@@ -198,7 +199,7 @@ public class TrailActivity extends AppCompatActivity {
     private void createTrailLine(){
         mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
         if (!trail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking Lot"));
+            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
 
 
         //trail only has 1 point
@@ -207,26 +208,40 @@ public class TrailActivity extends AppCompatActivity {
         }
         //trail has multiple points
         else{
-            PolylineOptions TrailPoints = new PolylineOptions().color(Color.GREEN).width(5);
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             int numPoints = trail.getPoints().length;
             LatLng[] points = trail.getPoints();
-
             distance = 0;
-            for (int i = 0; i < numPoints; i++){
-                TrailPoints.add(points[i]);
-                builder.include(points[i]);
 
-                if (i < numPoints-1)
-                    distance += distanceBetween(points[i], points[i+1]);
+            //polygon or polyline
+            if (trail.getTrailName().equals("William Land Park")){
+                PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
+                        .strokeColor(Color.GREEN).strokeWidth(0);
+                for (int i = 0; i < numPoints; i++) {
+                    trailPolygon.add(points[i]);
+                    builder.include(points[i]);
+
+                    if (i < numPoints - 1)
+                        distance += distanceBetween(points[i], points[i + 1]);
+                }
+                mMap.addPolygon(trailPolygon);
+            }
+            else {
+                PolylineOptions trailLine = new PolylineOptions().color(Color.GREEN).width(5);
+                for (int i = 0; i < numPoints; i++) {
+                    trailLine.add(points[i]);
+                    builder.include(points[i]);
+
+                    if (i < numPoints - 1)
+                        distance += distanceBetween(points[i], points[i + 1]);
+                }
+                mMap.addPolyline(trailLine);
             }
 
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
             int padding = 200; // offset from edges of the map in pixels
             final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-
-            mMap.addPolyline(TrailPoints);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
             mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                 @Override
