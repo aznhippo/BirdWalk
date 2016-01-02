@@ -18,9 +18,11 @@ class Trail {
     private String address;
     private String birds;
     private String habitats;
+    private Boolean isArea;
 
     public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sDistance,
-                 String sIconName, String sExcName, String sBgName, String sAddress, String sBirds, String sHabitats){
+                 String sIconName, String sExcName, String sBgName, String sAddress,
+                 String sBirds, String sHabitats, Boolean sisArea){
         trailName = sTrailName;
         lotPoint = sLotPoint;
         points = sPoints;
@@ -31,6 +33,7 @@ class Trail {
         address = sAddress;
         birds = sBirds;
         habitats = sHabitats;
+        isArea = sisArea;
     }
 
     public String getTrailName(){return trailName;}
@@ -45,6 +48,7 @@ class Trail {
     public String getAddress() {return address;}
     public String getBirds() {return birds;}
     public String getHabitats() {return habitats;}
+    public Boolean isArea() {return isArea;}
 
     /*Comparator for sorting the list by Trail Name*/
     public static Comparator<Trail> TrailComparatorName = new Comparator<Trail>() {

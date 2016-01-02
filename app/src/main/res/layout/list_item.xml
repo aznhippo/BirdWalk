@@ -17,7 +17,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/trailIcon"
             android:scaleType="centerCrop"
-            android:src="@drawable/icon_app_new"/>
+            android:src="@drawable/icon_app"/>
 
     </LinearLayout>
 

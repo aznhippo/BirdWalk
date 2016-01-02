@@ -63,6 +63,7 @@ public class TrailActivity extends AppCompatActivity {
 
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
+        iv.setImageResource(R.drawable.bg_trail);
         try {
             Class res = R.drawable.class;
             Field field = res.getField(trail.getBgName());
@@ -137,7 +138,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpMap() {
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         //suppress all map gestures
         //turn off current location button
         mMap.getUiSettings().setAllGesturesEnabled(false);
@@ -197,7 +198,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void createTrailLine(){
-        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Start")).showInfoWindow();
         if (!trail.lotIsStart())
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
 
@@ -214,7 +215,7 @@ public class TrailActivity extends AppCompatActivity {
             distance = 0;
 
             //polygon or polyline
-            if (trail.getTrailName().equals("William Land Park")){
+            if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
                 for (int i = 0; i < numPoints; i++) {
@@ -243,12 +244,12 @@ public class TrailActivity extends AppCompatActivity {
             int padding = 200; // offset from edges of the map in pixels
             final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-                @Override
-                public void onMapLoaded() {
-                    mMap.animateCamera(cu);
-                }
-            });
+//            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+//                @Override
+//                public void onMapLoaded() {
+//                    mMap.animateCamera(cu);
+//                }
+//            });
 
         }
     }
@@ -273,14 +274,14 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-//        String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
+        //String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
         String addrString = trail.getAddress();
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
         double miles = round(distance * .000621371,2);
         //String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
-        String distString = Double.toString(miles)+" miles";
+        String distString = Double.toString(miles)+" miles  \u27F3";
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 

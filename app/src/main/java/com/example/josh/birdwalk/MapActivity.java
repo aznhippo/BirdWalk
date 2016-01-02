@@ -226,11 +226,11 @@ public class MapActivity extends AppCompatActivity {
 
 
     public void showSelectedTrail(){
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Trail Start")).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Start")).showInfoWindow();
         if (!trail.lotIsStart())
-            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking Lot"));
+            mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
 
         //trail only has 1 point
         if (trail.getPoints().length == 1){
@@ -243,7 +243,7 @@ public class MapActivity extends AppCompatActivity {
             LatLng[] points = trail.getPoints();
 
             //polygon or polyline
-            if (trail.getTrailName().equals("William Land Park")) {
+            if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
                 for (int i = 0; i < numPoints; i++) {
