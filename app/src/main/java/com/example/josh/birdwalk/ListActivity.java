@@ -29,6 +29,8 @@ import java.util.Collections;
 public class ListActivity extends AppCompatActivity {
     TrailData trailData;
     ListView listView;
+    ArrayList<Trail> trailList;
+    TrailAdapter trailAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,10 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        //put trails into arraylist,
-        ArrayList<Trail> trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
+        //put trails into arraylist, sort alpha
+        trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
-        TrailAdapter trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
+        trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
 
@@ -57,34 +59,36 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_list_activity, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        switch (item.getItemId()) {
-//            case R.id.alpha:
-//
-//                return true;
-//            case R.id.dist:
-//
-//                return true;
-//
-//            default:
-//                // If we got here, the user's action was not recognized.
-//                // Invoke the superclass to handle it.
-//                return super.onOptionsItemSelected(item);
-//
-//        }
-//
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_list_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.alpha:
+                Collections.sort(trailList, Trail.TrailComparatorName);
+                trailAdapter.notifyDataSetChanged();
+                return true;
+            case R.id.dist:
+                Collections.sort(trailList, Trail.TrailComparatorDist);
+                trailAdapter.notifyDataSetChanged();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+
+    }
 }
 
 
@@ -124,6 +128,8 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         Trail trail = data.get(position);
         holder.distText.setText(trail.getDistance());
         holder.nameText.setText(trail.getTrailName());
+
+
 
         //if a trailicon exists, set it as the item image
         try {

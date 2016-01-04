@@ -72,11 +72,13 @@ class Trail {
             String TrailDist2 = s2.getDistance();
 
             //ascending order
-            return TrailDist1.compareTo(TrailDist2);
+            //return TrailDist1.compareTo(TrailDist2);
 
             //descending order
-            //return TrailName2.compareTo(TrailName1);
+            return TrailDist2.compareTo(TrailDist1);
         }};
+
+
 
 }
 

@@ -207,6 +207,19 @@ public class TrailActivity extends AppCompatActivity {
         if (trail.getPoints().length == 1){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
+        //special case, disjointed points
+        else if (trail.getTrailName().equals("Green Haven Lake")){
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            int numPoints = trail.getPoints().length;
+            LatLng[] points = trail.getPoints();
+            for (int i = 0; i < numPoints; i++) {
+                mMap.addMarker(new MarkerOptions().position(points[i]).title("View Point #" + (i+1)));
+                builder.include(points[i]);
+            }
+            LatLngBounds bounds = builder.build();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
+
+        }
         //trail has multiple points
         else{
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -214,7 +227,7 @@ public class TrailActivity extends AppCompatActivity {
             LatLng[] points = trail.getPoints();
             distance = 0;
 
-            //polygon or polyline
+            //build polygon
             if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
@@ -227,6 +240,7 @@ public class TrailActivity extends AppCompatActivity {
                 }
                 mMap.addPolygon(trailPolygon);
             }
+            //build polyline
             else {
                 PolylineOptions trailLine = new PolylineOptions().color(Color.GREEN).width(5);
                 for (int i = 0; i < numPoints; i++) {
@@ -281,7 +295,7 @@ public class TrailActivity extends AppCompatActivity {
 
         double miles = round(distance * .000621371,2);
         //String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
-        String distString = Double.toString(miles)+" miles  \u27F3";
+        String distString = Double.toString(miles)+" miles";
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 

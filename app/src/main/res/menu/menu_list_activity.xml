@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".ListActivity">
 
     <item android:id="@+id/alpha"
-        android:title="Sort Alphabetically"
+        android:title="Sort A-Z"
         android:orderInCategory="100"
         app:showAsAction="never"
         />

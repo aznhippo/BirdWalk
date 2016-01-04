@@ -183,7 +183,8 @@ public class MapActivity extends AppCompatActivity {
             String title = entry.getKey() + "   \u27A4";
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
-            mMap.addMarker(new MarkerOptions().position(start).title(title));
+            String dist = trail.getDistance();
+            mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(dist));
 
             builder.include(start);
         }
@@ -235,6 +236,19 @@ public class MapActivity extends AppCompatActivity {
         //trail only has 1 point
         if (trail.getPoints().length == 1){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
+        }
+        //special case, disjointed points
+        else if (trail.getTrailName().equals("Green Haven Lake")){
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            int numPoints = trail.getPoints().length;
+            LatLng[] points = trail.getPoints();
+            for (int i = 0; i < numPoints; i++) {
+                mMap.addMarker(new MarkerOptions().position(points[i]).title("View Point #" + (i+1)));
+                builder.include(points[i]);
+            }
+            LatLngBounds bounds = builder.build();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
+
         }
         //trail has multiple points
         else {
