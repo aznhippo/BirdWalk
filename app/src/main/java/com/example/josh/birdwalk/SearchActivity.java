@@ -30,37 +30,75 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 
-public class ListActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     TrailData trailData;
     ListView listView;
-    ArrayList<Trail> trailList;
     TrailAdapter trailAdapter;
+    Map<String, Trail> searchMap;
+    ArrayList<Trail> trailList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_search);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        //put trails into arraylist, sort alpha
-        trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
+        searchMap = trailData.trailHashMap;
+
+        trailList= new ArrayList<Trail>(trailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
+
         trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
+
+
 
         // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Trail trail = (Trail) (listView.getItemAtPosition(position));
-                Intent intent = new Intent(ListActivity.this, TrailActivity.class);
+                Intent intent = new Intent(SearchActivity.this, TrailActivity.class);
                 intent.putExtra("trailKey", trail.getTrailName());
                 startActivity(intent);
             }
         });
+
+
+        EditText input = (EditText) findViewById(R.id.search_text);
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                performSearch();
+
+                return false;
+            }
+        });
+
+
+    }
+
+    public void performSearch(){
+        EditText input = (EditText) findViewById(R.id.search_text);
+        String query = input.getText().toString();
+        trailList.clear();
+
+
+        //check each trail's title, birds
+        for (Map.Entry<String, Trail> entry : searchMap.entrySet()) {
+            String title = entry.getKey();
+            String birds = entry.getValue().getBirds();
+            Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
+            Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
+            if (inBirds || inTitle){
+                trailList.add(entry.getValue());
+            }
+        }
+        Collections.sort(trailList, Trail.TrailComparatorName);
+        trailAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -94,68 +132,5 @@ public class ListActivity extends AppCompatActivity {
 
     }
 }
-
-
-class TrailAdapter extends ArrayAdapter<Trail> {
-    private final Context context;
-    private final ArrayList<Trail> data;
-    private final int layoutResourceId;
-
-    public TrailAdapter(Context context, int layoutResourceId, ArrayList<Trail> data) {
-        super(context, layoutResourceId, data);
-        this.context = context;
-        this.data = data;
-        this.layoutResourceId = layoutResourceId;
-    }
-
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        ViewHolder holder = null;
-
-        if(row == null) {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-            row = inflater.inflate(layoutResourceId, parent, false);
-
-            holder = new ViewHolder();
-            holder.distText = (TextView)row.findViewById(R.id.trailDistance);
-            holder.nameText = (TextView)row.findViewById(R.id.trailName);
-            holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
-
-            row.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder)row.getTag();
-        }
-
-        Trail trail = data.get(position);
-        holder.distText.setText(trail.getDistance());
-        holder.nameText.setText(trail.getTrailName());
-
-
-
-        //if a trailicon exists, set it as the item image
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(trail.getIconName());
-            int drawableId = field.getInt(null);
-            holder.trailIcon.setImageResource(drawableId);
-        }
-        catch (Exception e) {
-            //Log.e("MyTag", "Failure to get drawable id.", e);
-            holder.trailIcon.setImageResource(R.drawable.icon_app);
-        }
-
-        return row;
-    }
-
-    static class ViewHolder {
-        TextView distText;
-        TextView nameText;
-        ImageView trailIcon;
-    }
-}
-
 
 

@@ -205,7 +205,7 @@ public class MapActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onCancel() {    }
+                    public void onCancel() { mMap.getUiSettings().setAllGesturesEnabled(true); }
                 });
             }
         });
@@ -287,8 +287,4 @@ public class MapActivity extends AppCompatActivity {
 //            });
         }
     }
-
-
-
-
 }

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     //called when user clicks list trails button
     public void goToList(View view) {
-        Intent intent = new Intent(this, ListActivity.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 

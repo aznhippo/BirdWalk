@@ -3674,7 +3674,7 @@ public class TrailData {
     static {
         trailHashMap.put("Discovery Park",
                 new Trail("Discovery Park",
-                        discLot, discPts, "1.56 miles  \u27F3", "icon_disc", "disc", "disc",
+                        discLot, discPts, "1.56 miles  \u21BB", "icon_disc", "disc", "disc",
                         "1000 Garden Hwy, Sacramento, CA",
                         "Yellow-billed Magpie, Western Bluebirds, Nesting Hawks",
                         "Streamside, Dense Shrubs, Riverside Woodlands, Water Features",
@@ -3682,7 +3682,7 @@ public class TrailData {
 
         trailHashMap.put("Bushy Lake and the Cal Expo Floodplain",
                 new Trail("Bushy Lake and the Cal Expo Floodplain",
-                        bushyLot, bushyPts, "3.19 miles  \u27F3", "icon_bushy", "bushy", "bushy",
+                        bushyLot, bushyPts, "3.19 miles  \u21BB", "icon_bushy", "bushy", "bushy",
                         "Cal Expo Gate #13, Sacramento, CA",
                         "Nesting Great Horned Owls, Migrating Warblers, Wood Ducks",
                         "Riparian Vegetation, Water Features",
@@ -3690,7 +3690,7 @@ public class TrailData {
 
         trailHashMap.put("California State University, Sacramento",
                 new Trail("California State University, Sacramento",
-                        csuLot,csuPts, "0.42 miles", "icon_csu", "csu", "csu",
+                        csuLot,csuPts, "0.42 miles (one-way)", "icon_csu", "csu", "csu",
                         "6000 J Street, Sacramento, CA",
                         "Seasonal Variety, Year-round White-tailed Kite",
                         "Streamside Woodlands, Hedges, Trees, Savannah",
@@ -3698,7 +3698,7 @@ public class TrailData {
 
         trailHashMap.put("Howe Ave River Access",
                 new Trail("Howe Ave River Access",
-                        howeLot, howePts, "1.81 miles  \u27F3", "icon_howe", "howe_watt", "howe",
+                        howeLot, howePts, "1.81 miles  \u21BB", "icon_howe", "howe_watt", "howe",
                         "The La Riviera Off-ramp to Entrance",
                         "Nesting Rough-Winged Swallows, Waterbirds",
                         "Riparian, Pond, Flooded Backwaters",
@@ -3706,7 +3706,7 @@ public class TrailData {
 
         trailHashMap.put("Watt Ave River Access",
                 new Trail("Watt Ave River Access",
-                        wattLot, wattPts, "1.64 miles", "icon_watt", "howe_watt", "watt",
+                        wattLot, wattPts, "1.64 miles (one-way)", "icon_watt", "howe_watt", "watt",
                         "Riviera Drive Off Watt Ave, Sacramento, CA",
                         "Wood Ducks, Belted Kingfishers, Green Herons, Black Phoebes",
                         "Cottonwood Stands, Riparian",
@@ -3714,7 +3714,7 @@ public class TrailData {
 
         trailHashMap.put("Gristmill Recreation Area",
                 new Trail("Gristmill Recreation Area",
-                        gristLot, gristPts, "1.47 miles", "icon_grist", "grist", "grist",
+                        gristLot, gristPts, "1.47 miles (one-way)", "icon_grist", "grist", "grist",
                         "Mira Del Rio Dr., Sacramento, CA",
                         "Rarities; Eastern Wood Pewee, Red-eyed vireo, Warblers",
                         "Riparian, Willows, Cottonwoods, Other Trees",
@@ -3722,7 +3722,7 @@ public class TrailData {
 
         trailHashMap.put("William B. Pond Recreation Area",
                 new Trail("William B. Pond Recreation Area",
-                        willPondLot, willPondPts, "2.17 miles  \u27F3", "icon_willpond", "willpond", "willpond",
+                        willPondLot, willPondPts, "2.17 miles  \u21BB", "icon_willpond", "willpond", "willpond",
                         "5700 Arden Way, Carmichael, CA",
                         "Great Blue Heron And Great Egret Nesting Rookery",
                         "Riparian, Riverine, Ponds, Grassland",
@@ -3730,7 +3730,7 @@ public class TrailData {
 
         trailHashMap.put("River Bend Park",
                 new Trail("River Bend Park",
-                        riverBendLot, riverBendPts, "1.69 miles  \u27F3", "icon_riverbend", "riverbend", "riverbend",
+                        riverBendLot, riverBendPts, "1.69 miles  \u21BB", "icon_riverbend", "riverbend", "riverbend",
                         "2300 Rod Beaudry Dr, Rancho Cordova, CA",
                         "Cliff Swallows Nests Under The Bike Bridge",
                         "Oak Woodlands, Riparian Woodlands, Riverine, Bridge",
@@ -3738,7 +3738,7 @@ public class TrailData {
 
         trailHashMap.put("Effie Yeaw Nature Center",
                 new Trail("Effie Yeaw Nature Center",
-                        effieLot, effiePts, "1.16 miles  \u27F3", "icon_effie", "effie", "effie",
+                        effieLot, effiePts, "1.16 miles  \u21BB", "icon_effie", "effie", "effie",
                         "6700 Tarshes Dr, Carmichael, CA",
                         "100+ Species Possible; Wild Turkeys",
                         "Riparian Woodlands, Riverine, Ponds, Grassland Open Areas",
@@ -3746,7 +3746,7 @@ public class TrailData {
 
         trailHashMap.put("Rossmoor Bar",
                 new Trail("Rossmoor Bar",
-                        rossmoorLot, rossmoorPts, "2.02 miles  \u27F3", "icon_rossmoor", "rossmoor", "rossmoor",
+                        rossmoorLot, rossmoorPts, "2.02 miles  \u21BB", "icon_rossmoor", "rossmoor", "rossmoor",
                         "1949 Rossmoor Dr, Rancho Cordova, CA",
                         "Active Bank Swallow Colony On North Bank Of The River",
                         "Low Bluffs, Riverine, Riparian Shrub, Oak Woodlands",
@@ -3754,7 +3754,7 @@ public class TrailData {
 
         trailHashMap.put("Sacramento Bar and Bannister Park",
                 new Trail("Sacramento Bar and Bannister Park",
-                        barLot, barPts, "2.63 miles  \u27F3", "icon_bar", "bar", "bar",
+                        barLot, barPts, "2.63 miles  \u21BB", "icon_bar", "bar", "bar",
                         "3820 Bannister Rd, Fair Oaks, CA",
                         "Breeding Yellow-breasted Chats",
                         "Riparian, Riverine, Gravel Tailings, Ponds",
@@ -3762,7 +3762,7 @@ public class TrailData {
 
         trailHashMap.put("Lower Sunrise Area",
                 new Trail("Lower Sunrise Area",
-                        lowSunriseLot, lowSunrisePts, "2.66 miles  \u27F3", "icon_sunrise", "lowsunrise", "lowsunrise",
+                        lowSunriseLot, lowSunrisePts, "2.66 miles  \u21BB", "icon_sunrise", "lowsunrise", "lowsunrise",
                         "At End Of Riverlite Ct., Rancho Cordova, CA",
                         "Acorn Woodpeckers, Tree Swallows, Hawks, Osprey",
                         "Low Bluffs, Riverine, Riparian Shrub, Oak Woodlands",
@@ -3770,7 +3770,7 @@ public class TrailData {
 
         trailHashMap.put("Sailor Bar",
                 new Trail("Sailor Bar",
-                        sailorLot, sailorPts, "3.31 miles  \u27F3", "icon_sailor", "sailor", "sailor",
+                        sailorLot, sailorPts, "3.31 miles  \u21BB", "icon_sailor", "sailor", "sailor",
                         "At End Of Illinois Ave., Sacramento, CA",
                         "Red-winged Blackbirds, Acorn Woodpeckers",
                         "Riparian, Woodland, Open Area, Gravel Tailings",
@@ -3778,7 +3778,7 @@ public class TrailData {
 
         trailHashMap.put("Upper Sunrise",
                 new Trail("Upper Sunrise",
-                        upSunriseLot, upSunrisePts, "3.36 miles", "icon_sunrise", "upsunrise", "upsunrise",
+                        upSunriseLot, upSunrisePts, "3.36 miles (one-way)", "icon_sunrise", "upsunrise", "upsunrise",
                         "2001 Nimbus Rd, Gold River, CA",
                         "Barrow’s Goldeneye, Gulls",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
@@ -3786,7 +3786,7 @@ public class TrailData {
 
         trailHashMap.put("Nimbus Hatchery",
                 new Trail("Nimbus Hatchery",
-                        nimbusLot, nimbusPts, "2.61 miles", "icon_nimbus", "nimbus", "nimbus",
+                        nimbusLot, nimbusPts, "2.61 miles (one-way)", "icon_nimbus", "nimbus", "nimbus",
                         "2001 Nimbus Rd, Gold River, CA",
                         "Bald Eagle During Salmon Run",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
@@ -3818,7 +3818,7 @@ public class TrailData {
 
         trailHashMap.put("East Lawn Cemetery",
                 new Trail("East Lawn Cemetery",
-                        eastLawnLot, eastLawnPts, "1.03 miles  \u27F3", "icon_eastlawn", "eastlawn", "eastlawn",
+                        eastLawnLot, eastLawnPts, "1.03 miles  \u21BB", "icon_eastlawn", "eastlawn", "eastlawn",
                         "4300 Folsom Boulevard, Sacramento, CA",
                         "Bushtits, Warblers, Robins, Flickers, Red-Tailed Hawk",
                         "Lawns, Tall Evergreens, Deciduous Trees, Shrubbery",
@@ -3826,7 +3826,7 @@ public class TrailData {
 
         trailHashMap.put("Arcade Creek at American River College",
                 new Trail("Arcade Creek at American River College",
-                        arcadeCollegeLot, arcadeCollegePts, "0.67 miles", "icon_arcadecollege", "arcade", "arcadecollege",
+                        arcadeCollegeLot, arcadeCollegePts, "0.67 miles (one-way)", "icon_arcadecollege", "arcade", "arcadecollege",
                         "4700 College Oak Dr, Sacramento, CA ",
                         "Riparian Trees",
                         "Creek, Mountain Migrants, Nesting Birds",
@@ -3834,7 +3834,7 @@ public class TrailData {
 
         trailHashMap.put("Arcade Creek from Arden Creek Park",
                 new Trail("Arcade Creek from Arden Creek Park",
-                        arcadeArdenLot, arcadeArdenPts, "0.69 miles", "icon_arcadearden", "arcade", "arcadearden",
+                        arcadeArdenLot, arcadeArdenPts, "0.69 miles (one-way)", "icon_arcadearden", "arcade", "arcadearden",
                         "5613 Omni Drive, Sacramento",
                         "Mountain Migrants Nesting",
                         "Riparian Trees",
@@ -3890,7 +3890,7 @@ public class TrailData {
 
         trailHashMap.put("Garcia Bend",
                 new Trail("Garcia Bend",
-                        garciaLot, garciaPts, "0.29 miles  \u27F3", "icon_garcia", "garcia_marriott", "garcia",
+                        garciaLot, garciaPts, "0.29 miles  \u21BB", "icon_garcia", "garcia_marriott", "garcia",
                         "7654 Pocket Rd. Sacramento, CA",
                         "Migrating Landbirds, Caspian And Forster’s Terns",
                         "Riparian, Riverine",
@@ -3914,7 +3914,7 @@ public class TrailData {
 
         trailHashMap.put("Riverside Trails",
                 new Trail("Riverside Trails",
-                        riversideLot, riversidePts, "0.89 miles", "icon_riverside", "riverside", "riverside",
+                        riversideLot, riversidePts, "0.89 miles (one-way)", "icon_riverside", "riverside", "riverside",
                         "Park 0/1 mis. South 35th",
                         "Mew Gull in Winter",
                         "Riparian Habitat",
