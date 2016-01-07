@@ -7,8 +7,8 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         />
-    <item android:id="@+id/dist"
-        android:title="Sort By Trail Distance"
+    <item android:id="@+id/length"
+        android:title="Sort By Trail Length"
         android:orderInCategory="100"
         app:showAsAction="never"
         />

@@ -41,7 +41,7 @@ public class TrailActivity extends AppCompatActivity {
     Trail trail;
     String trailName;
     Marker lastOpened = null;
-    float distance;
+    float length;
 
 
     @Override
@@ -225,7 +225,7 @@ public class TrailActivity extends AppCompatActivity {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             int numPoints = trail.getPoints().length;
             LatLng[] points = trail.getPoints();
-            distance = 0;
+            length = 0;
 
             //build polygon
             if (trail.isArea()){
@@ -236,7 +236,7 @@ public class TrailActivity extends AppCompatActivity {
                     builder.include(points[i]);
 
                     if (i < numPoints - 1)
-                        distance += distanceBetween(points[i], points[i + 1]);
+                        length += lengthBetween(points[i], points[i + 1]);
                 }
                 mMap.addPolygon(trailPolygon);
             }
@@ -248,7 +248,7 @@ public class TrailActivity extends AppCompatActivity {
                     builder.include(points[i]);
 
                     if (i < numPoints - 1)
-                        distance += distanceBetween(points[i], points[i + 1]);
+                        length += lengthBetween(points[i], points[i + 1]);
                 }
                 mMap.addPolyline(trailLine);
             }
@@ -268,7 +268,7 @@ public class TrailActivity extends AppCompatActivity {
         }
     }
 
-    private float distanceBetween(LatLng latLng1, LatLng latLng2) {
+    private float lengthBetween(LatLng latLng1, LatLng latLng2) {
         Location loc1 = new Location(LocationManager.GPS_PROVIDER);
         Location loc2 = new Location(LocationManager.GPS_PROVIDER);
         loc1.setLatitude(latLng1.latitude);
@@ -293,7 +293,7 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(Html.fromHtml(addrString));
 
-        double miles = round(distance * .000621371,2);
+        double miles = round(length * .000621371,2);
         //String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
         String distString = Double.toString(miles)+" miles";
         TextView tv2 = (TextView) findViewById(R.id.distText);

@@ -11,7 +11,7 @@ class Trail {
     private String trailName;
     private LatLng lotPoint;
     private LatLng[] points;
-    private String distance;
+    private String length;
     private String iconName;
     private String excName;
     private String bgName;
@@ -20,13 +20,13 @@ class Trail {
     private String habitats;
     private Boolean isArea;
 
-    public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sDistance,
+    public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sLength,
                  String sIconName, String sExcName, String sBgName, String sAddress,
                  String sBirds, String sHabitats, Boolean sisArea){
         trailName = sTrailName;
         lotPoint = sLotPoint;
         points = sPoints;
-        distance = sDistance;
+        length = sLength;
         iconName = sIconName;
         excName = sExcName;
         bgName = sBgName;
@@ -41,7 +41,7 @@ class Trail {
     public LatLng getStart(){return points[0];}
     public LatLng[] getPoints() {return points;}
     public Boolean lotIsStart() { return (lotPoint.equals(points[0]));}
-    public String getDistance() {return distance;}
+    public String getLength() {return length;}
     public String getIconName() {return iconName;}
     public String getExcName() {return excName;}
     public String getBgName() {return bgName;}
@@ -64,18 +64,31 @@ class Trail {
             //return TrailName2.compareTo(TrailName1);
         }};
 
-    /*Comparator for sorting the list by Trail Distance*/
-    public static Comparator<Trail> TrailComparatorDist = new Comparator<Trail>() {
+    /*Comparator for sorting the list by Trail Length*/
+    public static Comparator<Trail> TrailComparatorLength = new Comparator<Trail>() {
 
         public int compare(Trail s1, Trail s2) {
-            String TrailDist1 = s1.getDistance();
-            String TrailDist2 = s2.getDistance();
+            String TrailLen1, TrailLen2;
+            if (s1.getLength().equals("n/a")){
+                TrailLen1 = "0.00";
+            }
+            else {
+                TrailLen1 = s1.getLength();
+            }
+            if (s2.getLength().equals("n/a")){
+                TrailLen2 = "0.00";
+            }
+            else {
+                TrailLen2 = s2.getLength();
+            }
+
+
 
             //ascending order
-            //return TrailDist1.compareTo(TrailDist2);
+            //return TrailLen1.compareTo(TrailLen2);
 
             //descending order
-            return TrailDist2.compareTo(TrailDist1);
+            return TrailLen2.compareTo(TrailLen1);
         }};
 
 

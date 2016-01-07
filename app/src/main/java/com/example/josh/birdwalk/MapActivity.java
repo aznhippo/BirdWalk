@@ -183,8 +183,8 @@ public class MapActivity extends AppCompatActivity {
             String title = entry.getKey() + "   \u27A4";
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
-            String dist = trail.getDistance();
-            mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(dist));
+            String length = trail.getLength();
+            mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(length));
 
             builder.include(start);
         }

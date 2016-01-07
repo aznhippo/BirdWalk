@@ -10,7 +10,23 @@
     android:paddingBottom="7dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_list"
-    tools:context="com.example.josh.birdwalk.ListActivity">
+    tools:context="com.example.josh.birdwalk.SearchActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <EditText
+        android:id="@+id/search_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Search by trail or bird..."
+        android:imeActionLabel="Search"
+        android:background="#99ffffff"
+        android:padding="7dp"
+        android:textSize="20dp"
+        android:singleLine="true"
+        android:layout_marginBottom="7dp"
+        android:drawableLeft="@android:drawable/ic_menu_search"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -19,4 +35,17 @@
         android:layout_below="@+id/search_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear_search"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:onClick="clearText"/>
+
+
 </RelativeLayout>

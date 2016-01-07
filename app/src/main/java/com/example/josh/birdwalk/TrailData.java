@@ -2418,7 +2418,6 @@ public class TrailData {
             new LatLng(38.63858321378653, -121.2369450869644),
             new LatLng(38.63881922031214, -121.2369480038283),
             new LatLng(38.63900864533054, -121.2369832472349),
-
     };
 
     static LatLng upSunriseLot = new LatLng (38.635525, -121.264099);
@@ -3794,7 +3793,7 @@ public class TrailData {
 
         trailHashMap.put("Purple Martins Site #1",
                 new Trail("Purple Martins Site #1",
-                        purp1Lot, purp1Pts, "0.00 miles", "icon_purp", "purp", "purp",
+                        purp1Lot, purp1Pts, "n/a", "icon_purp", "purp", "purp",
                         "20th Street Between X And W Streets, Sacramento, CA",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
@@ -3802,7 +3801,7 @@ public class TrailData {
 
         trailHashMap.put("Purple Martins Site #2",
                 new Trail("Purple Martins Site #2",
-                        purp2Lot, purp2Pts, "0.08 miles", "icon_purp", "purp", "purp",
+                        purp2Lot, purp2Pts, "0.08 miles (one-way)", "icon_purp", "purp", "purp",
                         "Old Town Sacramento, 125 I Street",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
@@ -3810,7 +3809,7 @@ public class TrailData {
 
         trailHashMap.put("Purple Martins Site #3",
                 new Trail("Purple Martins Site #3",
-                        purp3Lot, purp3Pts, "0.00 miles", "icon_purp", "purp", "purp",
+                        purp3Lot, purp3Pts, "n/a", "icon_purp", "purp", "purp",
                         "29th and 30th Streets Between R and S Sts",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
@@ -3842,7 +3841,7 @@ public class TrailData {
 
         trailHashMap.put("Rough Winged Swallows Site #1",
                 new Trail("Rough Winged Swallows Site #1",
-                        swallows1Lot, swallows1Pts, "0.00 miles", "icon_swallows", "swallows", "swallows",
+                        swallows1Lot, swallows1Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 and Seamas Blvd. Overpass",
                         "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass",
@@ -3850,7 +3849,7 @@ public class TrailData {
 
         trailHashMap.put("Rough Winged Swallows Site #2",
                 new Trail("Rough Winged Swallows Site #2",
-                        swallows2Lot, swallows2Pts, "0.00 miles", "icon_swallows", "swallows", "swallows",
+                        swallows2Lot, swallows2Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 And 35th Avenue Overpass",
                         "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass",
@@ -3858,7 +3857,7 @@ public class TrailData {
 
         trailHashMap.put("Rough Winged Swallows Site #3",
                 new Trail("Rough Winged Swallows Site #3",
-                        swallows3Lot, swallows3Pts, "0.00 miles", "icon_swallows", "swallows", "swallows",
+                        swallows3Lot, swallows3Pts, "n/a", "icon_swallows", "swallows", "swallows",
                         "Interstate 5 And 43rd Avenue Overpass",
                         "Rough-winged Swallows Nesting ",
                         "Weep Holes On Overpass",
@@ -3882,7 +3881,7 @@ public class TrailData {
 
         trailHashMap.put("Green Haven Lake",
                 new Trail("Green Haven Lake",
-                        greenHavenLot, greenHavenPts, "0.00 miles", "icon_greenhaven", "greenhaven", "greenhaven",
+                        greenHavenLot, greenHavenPts, "n/a", "icon_greenhaven", "greenhaven", "greenhaven",
                         "Havenside Dr., Sacramento, CA",
                         "Mergansers, Cormorants, Gulls, Ducks",
                         "Views of Shoreline, Lake",

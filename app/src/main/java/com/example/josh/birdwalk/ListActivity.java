@@ -8,14 +8,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -33,8 +38,10 @@ import java.util.Map;
 public class ListActivity extends AppCompatActivity {
     TrailData trailData;
     ListView listView;
-    ArrayList<Trail> trailList;
     TrailAdapter trailAdapter;
+    Map<String, Trail> searchMap;
+    ArrayList<Trail> trailList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +51,10 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        //put trails into arraylist, sort alpha
-        trailList = new ArrayList<Trail>(trailData.trailHashMap.values());
+        searchMap = trailData.trailHashMap;
+        trailList= new ArrayList<Trail>(trailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
+
         trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
@@ -61,6 +69,72 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        final EditText input = (EditText) findViewById(R.id.search_text);
+        final Button clearButton = (Button) findViewById(R.id.clear_search);
+        clearButton.setVisibility(View.GONE);
+        //hide button, when field is empty
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (input.getText().toString().equals(""))
+                    clearButton.setVisibility(View.GONE);
+                else
+                    clearButton.setVisibility(View.VISIBLE);
+
+                performSearch(input.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                EditText input = (EditText) findViewById(R.id.search_text);
+                String query = input.getText().toString();
+                performSearch(query);
+                if(getCurrentFocus()!=null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+    }
+
+    //search trails for the query string
+    public void performSearch(String query){
+        trailList.clear();
+
+        //check each trail's title, birds
+        for (Map.Entry<String, Trail> entry : searchMap.entrySet()) {
+            String title = entry.getKey();
+            String birds = entry.getValue().getBirds();
+            Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
+            Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
+            if (inBirds || inTitle){
+                trailList.add(entry.getValue());
+            }
+        }
+        Collections.sort(trailList, Trail.TrailComparatorName);
+        trailAdapter.notifyDataSetChanged();
+    }
+
+    //delete the editText field, and show all trails
+    public void clearText(View v){
+        EditText input = (EditText) findViewById(R.id.search_text);
+        input.setText("");
+        performSearch("");
     }
 
     @Override
@@ -80,8 +154,8 @@ public class ListActivity extends AppCompatActivity {
                 Collections.sort(trailList, Trail.TrailComparatorName);
                 trailAdapter.notifyDataSetChanged();
                 return true;
-            case R.id.dist:
-                Collections.sort(trailList, Trail.TrailComparatorDist);
+            case R.id.length:
+                Collections.sort(trailList, Trail.TrailComparatorLength);
                 trailAdapter.notifyDataSetChanged();
                 return true;
 
@@ -119,7 +193,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
             row = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new ViewHolder();
-            holder.distText = (TextView)row.findViewById(R.id.trailDistance);
+            holder.lengthText = (TextView)row.findViewById(R.id.trailLength);
             holder.nameText = (TextView)row.findViewById(R.id.trailName);
             holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
 
@@ -130,7 +204,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
 
         Trail trail = data.get(position);
-        holder.distText.setText(trail.getDistance());
+        holder.lengthText.setText(trail.getLength());
         holder.nameText.setText(trail.getTrailName());
 
 
@@ -151,7 +225,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
     }
 
     static class ViewHolder {
-        TextView distText;
+        TextView lengthText;
         TextView nameText;
         ImageView trailIcon;
     }
