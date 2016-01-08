@@ -3,8 +3,11 @@ package com.example.josh.birdwalk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.graphics.Typeface;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,10 +27,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -70,10 +68,18 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        setUpSearchField();
+    }
 
+
+
+    public void setUpSearchField(){
+        //set up search field listeners
         final EditText input = (EditText) findViewById(R.id.search_text);
+        input.setTypeface(null, Typeface.ITALIC);
         final Button clearButton = (Button) findViewById(R.id.clear_search);
         clearButton.setVisibility(View.GONE);
+
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -96,9 +102,9 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
-
         input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
+            //perform search, and hide keyboard
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 EditText input = (EditText) findViewById(R.id.search_text);
                 String query = input.getText().toString();
@@ -158,6 +164,10 @@ public class ListActivity extends AppCompatActivity {
                 Collections.sort(trailList, Trail.TrailComparatorLength);
                 trailAdapter.notifyDataSetChanged();
                 return true;
+            case R.id.nearby:
+                Collections.sort(trailList, Trail.TrailComparatorLength);
+                trailAdapter.notifyDataSetChanged();
+                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -204,8 +214,17 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
 
         Trail trail = data.get(position);
-        holder.lengthText.setText(trail.getLength());
         holder.nameText.setText(trail.getTrailName());
+
+        //set loop icon visibility for looping trails
+        ImageView loop = (ImageView)row.findViewById(R.id.loop_icon);
+        loop.setVisibility(View.GONE);
+        if (trail.isLoop()){
+            loop.setVisibility(View.VISIBLE);
+            holder.lengthText.setText(trail.getLength().concat("   "));
+        }
+        else
+            holder.lengthText.setText(trail.getLength());
 
 
 

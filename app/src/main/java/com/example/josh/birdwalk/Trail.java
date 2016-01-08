@@ -19,10 +19,12 @@ class Trail {
     private String birds;
     private String habitats;
     private Boolean isArea;
+    private Boolean isLoop;
+    private String distAway;
 
     public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sLength,
                  String sIconName, String sExcName, String sBgName, String sAddress,
-                 String sBirds, String sHabitats, Boolean sisArea){
+                 String sBirds, String sHabitats, Boolean sIsArea, Boolean sIsLoop){
         trailName = sTrailName;
         lotPoint = sLotPoint;
         points = sPoints;
@@ -33,7 +35,8 @@ class Trail {
         address = sAddress;
         birds = sBirds;
         habitats = sHabitats;
-        isArea = sisArea;
+        isArea = sIsArea;
+        isLoop = sIsLoop;
     }
 
     public String getTrailName(){return trailName;}
@@ -49,6 +52,9 @@ class Trail {
     public String getBirds() {return birds;}
     public String getHabitats() {return habitats;}
     public Boolean isArea() {return isArea;}
+    public Boolean isLoop() {return isLoop;}
+    public void setDistAway(String dist) {distAway = dist;}
+    public String getDistAway() {return distAway;}
 
     /*Comparator for sorting the list by Trail Name*/
     public static Comparator<Trail> TrailComparatorName = new Comparator<Trail>() {
@@ -59,7 +65,6 @@ class Trail {
 
             //ascending order
             return TrailName1.compareTo(TrailName2);
-
             //descending order
             //return TrailName2.compareTo(TrailName1);
         }};
@@ -69,24 +74,18 @@ class Trail {
 
         public int compare(Trail s1, Trail s2) {
             String TrailLen1, TrailLen2;
-            if (s1.getLength().equals("n/a")){
+            if (s1.getLength().equals("n/a"))
                 TrailLen1 = "0.00";
-            }
-            else {
+            else
                 TrailLen1 = s1.getLength();
-            }
-            if (s2.getLength().equals("n/a")){
+            if (s2.getLength().equals("n/a"))
                 TrailLen2 = "0.00";
-            }
-            else {
+            else
                 TrailLen2 = s2.getLength();
-            }
-
 
 
             //ascending order
             //return TrailLen1.compareTo(TrailLen2);
-
             //descending order
             return TrailLen2.compareTo(TrailLen1);
         }};
