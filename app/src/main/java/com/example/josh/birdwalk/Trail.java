@@ -20,11 +20,12 @@ class Trail {
     private String habitats;
     private Boolean isArea;
     private Boolean isLoop;
+    private String birdText;
     private String distAway;
 
     public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sLength,
                  String sIconName, String sExcName, String sBgName, String sAddress,
-                 String sBirds, String sHabitats, Boolean sIsArea, Boolean sIsLoop){
+                 String sBirds, String sHabitats, Boolean sIsArea, Boolean sIsLoop, String sBirdText){
         trailName = sTrailName;
         lotPoint = sLotPoint;
         points = sPoints;
@@ -37,6 +38,7 @@ class Trail {
         habitats = sHabitats;
         isArea = sIsArea;
         isLoop = sIsLoop;
+        birdText = sBirdText;
     }
 
     public String getTrailName(){return trailName;}
@@ -53,6 +55,7 @@ class Trail {
     public String getHabitats() {return habitats;}
     public Boolean isArea() {return isArea;}
     public Boolean isLoop() {return isLoop;}
+    public String birdText() {return birdText;};
     public void setDistAway(String dist) {distAway = dist;}
     public String getDistAway() {return distAway;}
 

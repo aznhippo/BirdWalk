@@ -12,8 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,9 +27,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.Map;
 
 public class MapActivity extends AppCompatActivity {
-
     private GoogleMap mMap;
-    TrailData trailData;
     Trail trail;
     String trailName;
     Toolbar toolbar;
@@ -48,8 +44,6 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         setUpMapIfNeeded();
-
-        trailData = TrailData.getInstance();
         Intent intent = this.getIntent();
         if (intent != null) {
             intentString = intent.getExtras().getString("fromActivity");
@@ -62,7 +56,7 @@ public class MapActivity extends AppCompatActivity {
             }
             if (intentString.equals("TrailActivity")) {
                 trailName = intent.getExtras().getString("trailKey");
-                trail = trailData.getValue(trailName);
+                trail = TrailData.getValue(trailName);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle(trailName);
                 setSupportActionBar(toolbar);
@@ -174,7 +168,7 @@ public class MapActivity extends AppCompatActivity {
     public void showAllTrails(){
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        Map<String, Trail> map = trailData.trailHashMap;
+        Map<String, Trail> map = TrailData.trailHashMap;
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
 

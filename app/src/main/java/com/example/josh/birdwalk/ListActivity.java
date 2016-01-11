@@ -34,7 +34,6 @@ import java.util.Collections;
 import java.util.Map;
 
 public class ListActivity extends AppCompatActivity {
-    TrailData trailData;
     ListView listView;
     TrailAdapter trailAdapter;
     Map<String, Trail> searchMap;
@@ -49,8 +48,8 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        searchMap = trailData.trailHashMap;
-        trailList= new ArrayList<Trail>(trailData.trailHashMap.values());
+        searchMap = TrailData.trailHashMap;
+        trailList= new ArrayList<Trail>(TrailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
 
         trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
@@ -125,7 +124,7 @@ public class ListActivity extends AppCompatActivity {
         //check each trail's title, birds
         for (Map.Entry<String, Trail> entry : searchMap.entrySet()) {
             String title = entry.getKey();
-            String birds = entry.getValue().getBirds();
+            String birds = entry.getValue().birdText();
             Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
             Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
             if (inBirds || inTitle){

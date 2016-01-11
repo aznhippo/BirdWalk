@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -35,9 +34,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class TrailActivity extends AppCompatActivity {
-
     GoogleMap mMap;
-    TrailData trailData;
     Trail trail;
     String trailName;
     Marker lastOpened = null;
@@ -51,15 +48,15 @@ public class TrailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         trailName = intent.getExtras().getString("trailKey");
-        trailData = TrailData.getInstance();
-        trail = trailData.getValue(trailName);
+
+        trail = TrailData.getValue(trailName);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(trailName);
         setSupportActionBar(toolbar);
 
-        Button button = (Button) this.findViewById(R.id.excerpt);
-        button.setText("More About " + trailName);
+//        Button button = (Button) this.findViewById(R.id.excerpt);
+//        button.setText("More About " + trailName);
 
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
@@ -256,7 +253,7 @@ public class TrailActivity extends AppCompatActivity {
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
             int padding = 200; // offset from edges of the map in pixels
-            final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            //final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
 //            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
 //                @Override
@@ -294,8 +291,8 @@ public class TrailActivity extends AppCompatActivity {
         tv1.setText(Html.fromHtml(addrString));
 
         double miles = round(length * .000621371,2);
-        //String distString = "<b>"+"Trail Distance: "+"</b>"+Double.toString(miles)+" miles";
-        String distString = Double.toString(miles)+" miles";
+        String distString = "<b>"+"Trail Length: "+"</b>"+Double.toString(miles)+" miles";
+        //String distString = Double.toString(miles)+" miles";
         TextView tv2 = (TextView) findViewById(R.id.distText);
         tv2.setText(Html.fromHtml(distString));
 

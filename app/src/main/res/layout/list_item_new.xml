@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:orientation="horizontal"
-    android:background="#99000000">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,40 +19,82 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight=".75"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#33000000">
 
-        <TextView
-            android:id="@+id/trailDistance"
-            android:layout_width="fill_parent"
-            android:layout_height="26dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:ellipsize="marquee"
-            android:singleLine="true"
-            android:text="Distance"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:paddingLeft="7dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".75"
+            android:layout_marginLeft="7dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/trailName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/trailDistance"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignWithParentIfMissing="true"
-            android:gravity="center_vertical"
-            android:text="Arcade Creek at American River College"
-            android:textSize="16sp"
-            android:textColor="#ffffff"
-            android:singleLine="true"
-            android:paddingLeft="7dp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/trailName"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignWithParentIfMissing="true"
+                android:gravity="center_vertical"
+                android:text="Arcade Creek at American River College"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:singleLine="true"
+                android:layout_weight=".5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5">
+
+                <TextView
+                    android:id="@+id/trailLength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Length    "
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:layout_below="@+id/trailName"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/loop_icon"
+                    android:src="@drawable/icon_loop" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:src="@drawable/icon_go"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
