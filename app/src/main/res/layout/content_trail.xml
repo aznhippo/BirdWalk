@@ -112,7 +112,7 @@
                     android:gravity="center"/>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Trail Distance"
@@ -120,11 +120,10 @@
                     android:maxLines="1"
                     android:padding="10dp"
                     android:textSize="15dp"
-                    android:layout_below="@+id/view1"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
                     android:singleLine="true"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_alignTop="@+id/view1"
+                    android:layout_centerHorizontal="true" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -188,6 +187,14 @@
                     android:layout_below="@+id/birdsText"
                     android:layout_centerHorizontal="true" />
 
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/imageView6"
+                    android:src="@drawable/icon_loop"
+                    android:layout_alignTop="@+id/distText"
+                    android:layout_toLeftOf="@+id/distText"
+                    android:layout_toStartOf="@+id/distText" />
 
 
             </RelativeLayout>

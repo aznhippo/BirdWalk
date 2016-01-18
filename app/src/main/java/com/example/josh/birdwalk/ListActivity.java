@@ -1,7 +1,9 @@
 package com.example.josh.birdwalk;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.location.Location;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,21 +25,24 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Set;
 
 public class ListActivity extends AppCompatActivity {
     ListView listView;
     TrailAdapter trailAdapter;
-    Map<String, Trail> searchMap;
+    Map<String, Trail> map;
     ArrayList<Trail> trailList;
 
 
@@ -48,7 +54,7 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setTitle("List of Trails");
         setSupportActionBar(toolbar);
 
-        searchMap = TrailData.trailHashMap;
+        map = TrailData.trailHashMap;
         trailList= new ArrayList<Trail>(TrailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
 
@@ -74,18 +80,25 @@ public class ListActivity extends AppCompatActivity {
 
     public void setUpSearchField(){
         //set up search field listeners
-        final EditText input = (EditText) findViewById(R.id.search_text);
-        input.setTypeface(null, Typeface.ITALIC);
+        //final EditText input = (EditText) findViewById(R.id.search_text);
+        //input.setTypeface(null, Typeface.ITALIC);
         final Button clearButton = (Button) findViewById(R.id.clear_search);
         clearButton.setVisibility(View.GONE);
+
+        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_text);
+        Set<String> keys = map.keySet();
+        String[] trails = keys.toArray(new String[keys.size()]);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, trails);
+        input.setAdapter(adapter);
+        input.setThreshold(1);
+
+
 
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (input.getText().toString().equals(""))
@@ -93,22 +106,29 @@ public class ListActivity extends AppCompatActivity {
                 else
                     clearButton.setVisibility(View.VISIBLE);
 
-                performSearch(input.getText().toString());
+                //performSearch(input.getText().toString());
             }
-
             @Override
-            public void afterTextChanged(Editable s) {
-
+            public void afterTextChanged(Editable s) {}
+        });
+        //perform search for selected suggestion
+        input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                performSearch(input.getText().toString());
+                if (getCurrentFocus() != null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
             }
         });
+        //perform search, hide keyboard when 'search' is clicked
         input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             //perform search, and hide keyboard
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                EditText input = (EditText) findViewById(R.id.search_text);
-                String query = input.getText().toString();
-                performSearch(query);
-                if(getCurrentFocus()!=null) {
+                performSearch(input.getText().toString());
+                if (getCurrentFocus() != null) {
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
@@ -122,7 +142,7 @@ public class ListActivity extends AppCompatActivity {
         trailList.clear();
 
         //check each trail's title, birds
-        for (Map.Entry<String, Trail> entry : searchMap.entrySet()) {
+        for (Map.Entry<String, Trail> entry : map.entrySet()) {
             String title = entry.getKey();
             String birds = entry.getValue().birdText();
             Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
@@ -163,10 +183,6 @@ public class ListActivity extends AppCompatActivity {
                 Collections.sort(trailList, Trail.TrailComparatorLength);
                 trailAdapter.notifyDataSetChanged();
                 return true;
-            case R.id.nearby:
-                Collections.sort(trailList, Trail.TrailComparatorLength);
-                trailAdapter.notifyDataSetChanged();
-                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -175,6 +191,23 @@ public class ListActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void showLegend(View view){
+        // custom dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.legend);
+        dialog.setTitle("Icon Legend");
+//
+//        Button dialogButton = (Button) dialog.findViewById(R.id.dialogok);
+//        dialogButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+
+        dialog.show();
     }
 }
 
@@ -215,15 +248,31 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         Trail trail = data.get(position);
         holder.nameText.setText(trail.getTrailName());
 
-        //set loop icon visibility for looping trails
-        ImageView loop = (ImageView)row.findViewById(R.id.loop_icon);
-        loop.setVisibility(View.GONE);
+        //set length icon for loop, area, site, one-way
+        ImageView len_icon = (ImageView)row.findViewById(R.id.len_icon);
+        len_icon.setVisibility(View.VISIBLE);
         if (trail.isLoop()){
-            loop.setVisibility(View.VISIBLE);
-            holder.lengthText.setText(trail.getLength().concat("   "));
+            len_icon.setImageResource(R.drawable.icon_loop);
+            holder.lengthText.setText("   ".concat(trail.getLength()));
         }
-        else
-            holder.lengthText.setText(trail.getLength());
+        else if (trail.isArea()){
+            len_icon.setImageResource(R.drawable.icon_area3);
+            holder.lengthText.setText("Birding Area");
+        }
+        else if (trail.singlePoint()){
+            len_icon.setImageResource(R.drawable.icon_pin);
+            holder.lengthText.setText("Birding Viewpoint");
+        }
+        //special case
+        else if (trail.getTrailName().equals("Green Haven Lake")) {
+            len_icon.setImageResource(R.drawable.icon_pin);
+            holder.lengthText.setText("Birding Viewpoints");
+        }
+        else {
+            //len_icon.setVisibility(View.GONE);
+            len_icon.setImageResource(R.drawable.icon_oneway);
+            holder.lengthText.setText("   ".concat(trail.getLength()));
+        }
 
 
 

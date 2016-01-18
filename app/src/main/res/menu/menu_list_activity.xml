@@ -12,9 +12,5 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         />
-    <item android:id="@+id/nearby"
-        android:title="Sort By Nearby"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        />
+
 </menu>

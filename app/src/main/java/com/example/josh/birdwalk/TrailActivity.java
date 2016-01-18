@@ -55,9 +55,6 @@ public class TrailActivity extends AppCompatActivity {
         toolbar.setTitle(trailName);
         setSupportActionBar(toolbar);
 
-//        Button button = (Button) this.findViewById(R.id.excerpt);
-//        button.setText("More About " + trailName);
-
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
         iv.setImageResource(R.drawable.bg_trail);
@@ -285,26 +282,45 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     private void setUpInfo(){
-        //String addrString = "<b>"+"Address: "+"</b>" + trail.getAddress();
-        String addrString = trail.getAddress();
         TextView tv1 = (TextView) findViewById(R.id.addrText);
-        tv1.setText(Html.fromHtml(addrString));
+        tv1.setText(trail.getAddress());
 
-        double miles = round(length * .000621371,2);
-        String distString = "<b>"+"Trail Length: "+"</b>"+Double.toString(miles)+" miles";
+        TextView tv3 = (TextView) findViewById(R.id.birdsText);
+        tv3.setText(trail.getBirds());
+
+        TextView tv4 = (TextView) findViewById(R.id.typeText);
+        tv4.setText(trail.getHabitats());
+
+        //double miles = round(length * .000621371,2);
         //String distString = Double.toString(miles)+" miles";
         TextView tv2 = (TextView) findViewById(R.id.distText);
-        tv2.setText(Html.fromHtml(distString));
+        tv2.setText(trail.getLength());
 
-        //String birdsString = "<b>"+"Highlights: "+"</b>"+ trail.getBirds();
-        String birdsString = trail.getBirds();
-        TextView tv3 = (TextView) findViewById(R.id.birdsText);
-        tv3.setText(Html.fromHtml(birdsString));
-
-        //String typeString = "<b>"+"Habitats: "+"</b>"+ trail.getHabitats();
-        String typeString = trail.getHabitats();
-        TextView tv4 = (TextView) findViewById(R.id.typeText);
-        tv4.setText(Html.fromHtml(typeString));
+        //set length icon for loop, area, site, one-way
+        ImageView len_icon = (ImageView) findViewById(R.id.len_icon);
+        len_icon.setVisibility(View.VISIBLE);
+        if (trail.isLoop()){
+            len_icon.setImageResource(R.drawable.icon_loop);
+            tv2.setText("   ".concat(trail.getLength()));
+        }
+        else if (trail.isArea()){
+            len_icon.setImageResource(R.drawable.icon_area3);
+            tv2.setText("Birding Area");
+        }
+        else if (trail.singlePoint()){
+            len_icon.setImageResource(R.drawable.icon_pin);
+            tv2.setText("Birding Viewpoint");
+        }
+        //special case
+        else if (trail.getTrailName().equals("Green Haven Lake")) {
+            len_icon.setImageResource(R.drawable.icon_pin);
+            tv2.setText("Birding Viewpoints");
+        }
+        else {
+            //len_icon.setVisibility(View.GONE);
+            len_icon.setImageResource(R.drawable.icon_oneway);
+            tv2.setText("   ".concat(trail.getLength()));
+        }
     }
 
     public void launchDirections(View view){

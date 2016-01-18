@@ -178,7 +178,21 @@ public class MapActivity extends AppCompatActivity {
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
             String length = trail.getLength();
+            if (trail.isLoop()){
+                length += " (loop)";
+            }
+            else if (trail.isArea()){
+                length = "Birding Area";
+            }
+            else if (trail.singlePoint()){
+                length = "Birding Viewpoint";
+            }
+            else if (trail.getTrailName().equals("Green Haven Lake")){
+                length = "Birding Viewpoints";
+            }
+
             mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(length));
+
 
             builder.include(start);
         }

@@ -11,40 +11,33 @@ class Trail {
     private String trailName;
     private LatLng lotPoint;
     private LatLng[] points;
-    private String length;
-    private String iconName;
-    private String excName;
-    private String bgName;
-    private String address;
-    private String birds;
-    private String habitats;
-    private Boolean isArea;
-    private Boolean isLoop;
+    private String length, iconName, excName, bgName, address, birds, habitats;
+    private Boolean isArea, isLoop;
     private String birdText;
-    private String distAway;
 
-    public Trail(String sTrailName, LatLng sLotPoint, LatLng[] sPoints, String sLength,
-                 String sIconName, String sExcName, String sBgName, String sAddress,
-                 String sBirds, String sHabitats, Boolean sIsArea, Boolean sIsLoop, String sBirdText){
-        trailName = sTrailName;
-        lotPoint = sLotPoint;
-        points = sPoints;
-        length = sLength;
-        iconName = sIconName;
-        excName = sExcName;
-        bgName = sBgName;
-        address = sAddress;
-        birds = sBirds;
-        habitats = sHabitats;
-        isArea = sIsArea;
-        isLoop = sIsLoop;
-        birdText = sBirdText;
+    public Trail(String trailName, LatLng lotPoint, LatLng[] points, String length,
+                 String iconName, String excName, String bgName, String address,
+                 String birds, String habitats, Boolean isArea, Boolean isLoop, String birdText){
+        this.trailName = trailName;
+        this.lotPoint = lotPoint;
+        this.points = points;
+        this.length = length;
+        this.iconName = iconName;
+        this.excName = excName;
+        this.bgName = bgName;
+        this.address = address;
+        this.birds = birds;
+        this.habitats = habitats;
+        this.isArea = isArea;
+        this.isLoop = isLoop;
+        this.birdText = birdText;
     }
 
     public String getTrailName(){return trailName;}
     public LatLng getLotPoint() {return lotPoint;}
     public LatLng getStart(){return points[0];}
     public LatLng[] getPoints() {return points;}
+    public Boolean singlePoint() {return points.length==1;}
     public Boolean lotIsStart() { return (lotPoint.equals(points[0]));}
     public String getLength() {return length;}
     public String getIconName() {return iconName;}
@@ -55,9 +48,7 @@ class Trail {
     public String getHabitats() {return habitats;}
     public Boolean isArea() {return isArea;}
     public Boolean isLoop() {return isLoop;}
-    public String birdText() {return birdText;};
-    public void setDistAway(String dist) {distAway = dist;}
-    public String getDistAway() {return distAway;}
+    public String birdText() {return birdText;}
 
     /*Comparator for sorting the list by Trail Name*/
     public static Comparator<Trail> TrailComparatorName = new Comparator<Trail>() {
@@ -81,6 +72,7 @@ class Trail {
                 TrailLen1 = "0.00";
             else
                 TrailLen1 = s1.getLength();
+
             if (s2.getLength().equals("n/a"))
                 TrailLen2 = "0.00";
             else
