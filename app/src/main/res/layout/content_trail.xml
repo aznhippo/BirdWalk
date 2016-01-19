@@ -109,21 +109,43 @@
                     android:layout_alignParentStart="true"
                     android:singleLine="true"
                     android:clickable="true"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Trail Distance"
-                    android:id="@+id/distText"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textSize="15dp"
-                    android:singleLine="true"
                     android:gravity="center"
-                    android:layout_alignTop="@+id/view1"
-                    android:layout_centerHorizontal="true" />
+                    android:textIsSelectable="true"
+                    android:textColor="#000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal"
+                    android:id="@+id/distLayout">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Trail Distance"
+                        android:id="@+id/distText"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:textSize="15dp"
+                        android:singleLine="true"
+                        android:gravity="center|center_horizontal"
+                        android:textColor="#000000"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/len_icon"
+                        android:src="@drawable/icon_loop_1"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/distText"
+                        android:layout_toStartOf="@+id/distText" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -138,7 +160,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:singleLine="true"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -153,14 +176,15 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:singleLine="true"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textColor="#000000" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@android:color/black"
+                    android:background="#000000"
                     android:id="@+id/view1"
                     android:layout_below="@+id/addrText"
                     android:layout_alignParentLeft="true"
@@ -171,9 +195,9 @@
                     android:layout_height="1dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@android:color/black"
+                    android:background="#000000"
                     android:id="@+id/view2"
-                    android:layout_below="@+id/distText"
+                    android:layout_below="@+id/distLayout"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
@@ -182,19 +206,10 @@
                     android:layout_height="1dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@android:color/black"
+                    android:background="#000000"
                     android:id="@+id/view3"
                     android:layout_below="@+id/birdsText"
                     android:layout_centerHorizontal="true" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/imageView6"
-                    android:src="@drawable/icon_loop"
-                    android:layout_alignTop="@+id/distText"
-                    android:layout_toLeftOf="@+id/distText"
-                    android:layout_toStartOf="@+id/distText" />
 
 
             </RelativeLayout>

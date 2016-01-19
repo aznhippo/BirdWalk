@@ -3,18 +3,12 @@ package com.example.josh.birdwalk;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.Html;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -30,7 +24,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
@@ -92,6 +85,7 @@ public class ListActivity extends AppCompatActivity {
                 (this, android.R.layout.simple_list_item_1, trails);
         input.setAdapter(adapter);
         input.setThreshold(1);
+        input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
 
 
@@ -194,19 +188,8 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void showLegend(View view){
-        // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.legend);
-        dialog.setTitle("Icon Legend");
-//
-//        Button dialogButton = (Button) dialog.findViewById(R.id.dialogok);
-//        dialogButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-
         dialog.show();
     }
 }
@@ -257,16 +240,16 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
         else if (trail.isArea()){
             len_icon.setImageResource(R.drawable.icon_area3);
-            holder.lengthText.setText("Birding Area");
+            holder.lengthText.setText("");
         }
         else if (trail.singlePoint()){
             len_icon.setImageResource(R.drawable.icon_pin);
-            holder.lengthText.setText("Birding Viewpoint");
+            holder.lengthText.setText("");
         }
         //special case
         else if (trail.getTrailName().equals("Green Haven Lake")) {
             len_icon.setImageResource(R.drawable.icon_pin);
-            holder.lengthText.setText("Birding Viewpoints");
+            holder.lengthText.setText("");
         }
         else {
             //len_icon.setVisibility(View.GONE);

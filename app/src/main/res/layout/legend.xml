@@ -10,10 +10,44 @@
         android:id="@+id/relativeLayout"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_oneway"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="One-way Trail"
+            android:textSize="18dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginEnd="35dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout2"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/icon_loop"
@@ -23,7 +57,7 @@
             android:layout_marginStart="35dp" />
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
@@ -39,40 +73,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/relativeLayout2">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/icon_area3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="35dp"
-            android:layout_marginStart="35dp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="Birding Area"
-            android:textSize="18dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginEnd="35dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout2"
         android:layout_centerHorizontal="true"
-        android:id="@+id/relativeLayout3">
+        android:id="@+id/relativeLayout3"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -103,13 +107,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout4"
         android:layout_below="@+id/relativeLayout3"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/icon_oneway"
+            android:src="@drawable/icon_area3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="35dp"
@@ -120,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:text="One-way Trail"
+            android:text="Birding Area"
             android:textSize="18dp"
             android:layout_marginRight="35dp"
             android:layout_marginEnd="35dp"
@@ -128,6 +133,12 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/relativeLayout4"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

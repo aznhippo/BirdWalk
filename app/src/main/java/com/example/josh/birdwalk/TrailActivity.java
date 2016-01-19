@@ -1,6 +1,7 @@
 package com.example.josh.birdwalk;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -11,14 +12,13 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -28,10 +28,13 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.SphericalUtil;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import static com.google.maps.android.SphericalUtil.computeArea;
 
 public class TrailActivity extends AppCompatActivity {
     GoogleMap mMap;
@@ -193,8 +196,9 @@ public class TrailActivity extends AppCompatActivity {
 
     private void createTrailLine(){
         mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Start"));
-        if (!trail.lotIsStart())
+        if (!trail.lotIsStart()) {
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
+        }
 
 
         //trail only has 1 point
@@ -232,6 +236,7 @@ public class TrailActivity extends AppCompatActivity {
                     if (i < numPoints - 1)
                         length += lengthBetween(points[i], points[i + 1]);
                 }
+                //Double area = computeArea(trailPolygon);
                 mMap.addPolygon(trailPolygon);
             }
             //build polyline
@@ -250,14 +255,14 @@ public class TrailActivity extends AppCompatActivity {
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
             int padding = 200; // offset from edges of the map in pixels
-            //final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-//            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-//                @Override
-//                public void onMapLoaded() {
-//                    mMap.animateCamera(cu);
-//                }
-//            });
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    mMap.animateCamera(cu);
+                }
+            });
 
         }
     }
@@ -300,11 +305,11 @@ public class TrailActivity extends AppCompatActivity {
         ImageView len_icon = (ImageView) findViewById(R.id.len_icon);
         len_icon.setVisibility(View.VISIBLE);
         if (trail.isLoop()){
-            len_icon.setImageResource(R.drawable.icon_loop);
+            len_icon.setImageResource(R.drawable.icon_loop_1);
             tv2.setText("   ".concat(trail.getLength()));
         }
         else if (trail.isArea()){
-            len_icon.setImageResource(R.drawable.icon_area3);
+            len_icon.setImageResource(R.drawable.icon_area3_1);
             tv2.setText("Birding Area");
         }
         else if (trail.singlePoint()){
@@ -318,9 +323,15 @@ public class TrailActivity extends AppCompatActivity {
         }
         else {
             //len_icon.setVisibility(View.GONE);
-            len_icon.setImageResource(R.drawable.icon_oneway);
+            len_icon.setImageResource(R.drawable.icon_oneway_1);
             tv2.setText("   ".concat(trail.getLength()));
         }
+    }
+
+    public void showLegend(View view){
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.legend);
+        dialog.show();
     }
 
     public void launchDirections(View view){
