@@ -37,6 +37,7 @@ class Trail {
     public LatLng getLotPoint() {return lotPoint;}
     public LatLng getStart(){return points[0];}
     public LatLng[] getPoints() {return points;}
+    public int numPoints() {return points.length;}
     public Boolean singlePoint() {return points.length==1;}
     public Boolean lotIsStart() { return (lotPoint.equals(points[0]));}
     public String getLength() {return length;}

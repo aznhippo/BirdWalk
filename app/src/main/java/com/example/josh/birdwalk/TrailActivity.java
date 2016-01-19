@@ -33,15 +33,17 @@ import com.google.maps.android.SphericalUtil;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 
 import static com.google.maps.android.SphericalUtil.computeArea;
+import static com.google.maps.android.SphericalUtil.computeDistanceBetween;
+import static com.google.maps.android.SphericalUtil.computeLength;
 
 public class TrailActivity extends AppCompatActivity {
     GoogleMap mMap;
     Trail trail;
     String trailName;
     Marker lastOpened = null;
-    float length;
 
 
     @Override
@@ -60,7 +62,7 @@ public class TrailActivity extends AppCompatActivity {
 
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
-        iv.setImageResource(R.drawable.bg_trail);
+        //iv.setImageResource(R.drawable.bg_trail);
         try {
             Class res = R.drawable.class;
             Field field = res.getField(trail.getBgName());
@@ -202,17 +204,16 @@ public class TrailActivity extends AppCompatActivity {
 
 
         //trail only has 1 point
-        if (trail.getPoints().length == 1){
+        if (trail.numPoints() == 1){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //special case, disjointed points
         else if (trail.getTrailName().equals("Green Haven Lake")){
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = trail.getPoints().length;
-            LatLng[] points = trail.getPoints();
-            for (int i = 0; i < numPoints; i++) {
-                mMap.addMarker(new MarkerOptions().position(points[i]).title("View Point #" + (i+1)));
-                builder.include(points[i]);
+            for (int i = 0; i < trail.numPoints(); i++) {
+                mMap.addMarker(new MarkerOptions().position(trail.getPoints()[i])
+                        .title("View Point #" + (i+1)));
+                builder.include(trail.getPoints()[i]);
             }
             LatLngBounds bounds = builder.build();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
@@ -221,33 +222,23 @@ public class TrailActivity extends AppCompatActivity {
         //trail has multiple points
         else{
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = trail.getPoints().length;
-            LatLng[] points = trail.getPoints();
-            length = 0;
 
             //build polygon
             if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
-                for (int i = 0; i < numPoints; i++) {
-                    trailPolygon.add(points[i]);
-                    builder.include(points[i]);
-
-                    if (i < numPoints - 1)
-                        length += lengthBetween(points[i], points[i + 1]);
+                for (LatLng l : trail.getPoints()) {
+                    trailPolygon.add(l);
+                    builder.include(l);
                 }
-                //Double area = computeArea(trailPolygon);
                 mMap.addPolygon(trailPolygon);
             }
             //build polyline
             else {
                 PolylineOptions trailLine = new PolylineOptions().color(Color.GREEN).width(5);
-                for (int i = 0; i < numPoints; i++) {
-                    trailLine.add(points[i]);
-                    builder.include(points[i]);
-
-                    if (i < numPoints - 1)
-                        length += lengthBetween(points[i], points[i + 1]);
+                for (LatLng l : trail.getPoints()) {
+                    trailLine.add(l);
+                    builder.include(l);
                 }
                 mMap.addPolyline(trailLine);
             }
@@ -267,16 +258,6 @@ public class TrailActivity extends AppCompatActivity {
         }
     }
 
-    private float lengthBetween(LatLng latLng1, LatLng latLng2) {
-        Location loc1 = new Location(LocationManager.GPS_PROVIDER);
-        Location loc2 = new Location(LocationManager.GPS_PROVIDER);
-        loc1.setLatitude(latLng1.latitude);
-        loc1.setLongitude(latLng1.longitude);
-        loc2.setLatitude(latLng2.latitude);
-        loc2.setLongitude(latLng2.longitude);
-        return loc1.distanceTo(loc2);
-    }
-
     private static double round(double value, int places) {
         //http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
         if (places < 0) throw new IllegalArgumentException();
@@ -289,28 +270,28 @@ public class TrailActivity extends AppCompatActivity {
     private void setUpInfo(){
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(trail.getAddress());
-
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(trail.getBirds());
-
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(trail.getHabitats());
 
-        //double miles = round(length * .000621371,2);
-        //String distString = Double.toString(miles)+" miles";
-        TextView tv2 = (TextView) findViewById(R.id.distText);
-        tv2.setText(trail.getLength());
 
-        //set length icon for loop, area, site, one-way
+        //set length icon and text for loop, area, site, one-way
+        TextView tv2 = (TextView) findViewById(R.id.distText);
         ImageView len_icon = (ImageView) findViewById(R.id.len_icon);
-        len_icon.setVisibility(View.VISIBLE);
         if (trail.isLoop()){
             len_icon.setImageResource(R.drawable.icon_loop_1);
-            tv2.setText("   ".concat(trail.getLength()));
+            double length = computeLength(Arrays.asList(trail.getPoints()));
+            double miles = round(length * .000621371,2);
+            String distString = Double.toString(miles)+" miles";
+            tv2.setText(distString);
         }
         else if (trail.isArea()){
             len_icon.setImageResource(R.drawable.icon_area3_1);
-            tv2.setText("Birding Area");
+            double area = computeArea(Arrays.asList(trail.getPoints()));
+            double sqmiles = round(area * .00000038610216,2);
+            String areaString = Double.toString(sqmiles)+" miles\u00b2";
+            tv2.setText(areaString);
         }
         else if (trail.singlePoint()){
             len_icon.setImageResource(R.drawable.icon_pin);
@@ -322,9 +303,11 @@ public class TrailActivity extends AppCompatActivity {
             tv2.setText("Birding Viewpoints");
         }
         else {
-            //len_icon.setVisibility(View.GONE);
             len_icon.setImageResource(R.drawable.icon_oneway_1);
-            tv2.setText("   ".concat(trail.getLength()));
+            double length = computeLength(Arrays.asList(trail.getPoints()));
+            double miles = round(length * .000621371,2);
+            String distString = Double.toString(miles)+" miles";
+            tv2.setText(distString);
         }
     }
 

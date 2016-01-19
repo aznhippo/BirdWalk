@@ -192,8 +192,6 @@ public class MapActivity extends AppCompatActivity {
             }
 
             mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(length));
-
-
             builder.include(start);
         }
 
@@ -242,17 +240,16 @@ public class MapActivity extends AppCompatActivity {
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
 
         //trail only has 1 point
-        if (trail.getPoints().length == 1){
+        if (trail.numPoints() == 1){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //special case, disjointed points
         else if (trail.getTrailName().equals("Green Haven Lake")){
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = trail.getPoints().length;
-            LatLng[] points = trail.getPoints();
-            for (int i = 0; i < numPoints; i++) {
-                mMap.addMarker(new MarkerOptions().position(points[i]).title("View Point #" + (i+1)));
-                builder.include(points[i]);
+            for (int i = 0; i < trail.numPoints(); i++) {
+                mMap.addMarker(new MarkerOptions().position(trail.getPoints()[i])
+                        .title("View Point #" + (i + 1)));
+                builder.include(trail.getPoints()[i]);
             }
             LatLngBounds bounds = builder.build();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
@@ -261,23 +258,21 @@ public class MapActivity extends AppCompatActivity {
         //trail has multiple points
         else {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            int numPoints = trail.getPoints().length;
-            LatLng[] points = trail.getPoints();
-
             //polygon or polyline
             if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
-                for (int i = 0; i < numPoints; i++) {
-                    trailPolygon.add(points[i]);
-                    builder.include(points[i]);
+                for (LatLng l : trail.getPoints()) {
+                    trailPolygon.add(l);
+                    builder.include(l);
                 }
                 mMap.addPolygon(trailPolygon);
-            } else {
+            }
+            else {
                 PolylineOptions trailLine = new PolylineOptions().color(Color.GREEN).width(5);
-                for (int i = 0; i < numPoints; i++) {
-                    trailLine.add(points[i]);
-                    builder.include(points[i]);
+                for (LatLng l : trail.getPoints()) {
+                    trailLine.add(l);
+                    builder.include(l);
                 }
                 mMap.addPolyline(trailLine);
             }

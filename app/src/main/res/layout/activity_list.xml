@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.josh.birdwalk.ListActivity"
-    android:background="@drawable/bg_list">
+    android:background="@drawable/bg_trail">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
