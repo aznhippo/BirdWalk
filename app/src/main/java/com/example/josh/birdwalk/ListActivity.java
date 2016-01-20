@@ -70,22 +70,32 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-
     public void setUpSearchField(){
         //set up search field listeners
-        //final EditText input = (EditText) findViewById(R.id.search_text);
-        //input.setTypeface(null, Typeface.ITALIC);
         final Button clearButton = (Button) findViewById(R.id.clear_search);
         clearButton.setVisibility(View.GONE);
 
-        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_text);
+
         Set<String> keys = map.keySet();
         String[] trails = keys.toArray(new String[keys.size()]);
+        String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
+        for (int i=0; i<trails.length;i++){
+            birdsAndTrails[i] = trails[i];
+        }
+        int k = trails.length;
+        for (int j=0; j<TrailBirds.allBirds.length; j++){
+            birdsAndTrails[k] = TrailBirds.allBirds[j];
+            k++;
+        }
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, trails);
+                (this, android.R.layout.simple_list_item_1, birdsAndTrails);
+        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_text);
         input.setAdapter(adapter);
         input.setThreshold(1);
         input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
 
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
@@ -97,8 +107,6 @@ public class ListActivity extends AppCompatActivity {
                     clearButton.setVisibility(View.GONE);
                 else
                     clearButton.setVisibility(View.VISIBLE);
-
-                //performSearch(input.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) {}
@@ -254,8 +262,6 @@ class TrailAdapter extends ArrayAdapter<Trail> {
             len_icon.setImageResource(R.drawable.icon_oneway);
             holder.lengthText.setText("   ".concat(trail.getLength()));
         }
-
-
 
         //if a trailicon exists, set it as the item image
         try {

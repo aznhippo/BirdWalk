@@ -3,12 +3,11 @@ package com.example.josh.birdwalk;
 /**
  * Created by Josh on 1/9/16.
  */
-public class TrailBirds {
-    static String chorley = "white-tailed kites";
+public class TrailBirds {static String chorley = "white-tailed kites";
 
 
     static String disc =
-            "hermit thrush, the crowned sparrows, white-throated sparrow, lincoln’s sparrow, " +
+            "hermit thrush,  sparrows, white-throated sparrow, lincoln’s sparrow, " +
                     "fox sparrow.  california quail, bewick’s wren, house wren, nuttall’s woodpecker, " +
                     "downy woodpecker, lazuli bunting, blue grosbeak,  common goldeneye, barrow’s goldeneye," +
                     "peregrine falcons, western bluebirds, american kestrel, white-tailed kite, " +
@@ -96,7 +95,7 @@ public class TrailBirds {
                     "cooper’s hawks , common goldeneyes,barrow’s goldeneye, common mergansers, gulls ," +
                     "turkey vultures ,california gulls, herring gulls ,ring-billed gulls, glaucous-winged gulls, " +
                     "thayer’s gulls, mew gulls,osprey ,bald eagle, black phoebes, belted kingfishers," +
-                    "white-crowned sparrows and golden-crowned sparrows, lincoln’s sparrows, fox sparrows" +
+                    "white-crowned sparrows, golden-crowned sparrows, lincoln’s sparrows, fox sparrows" +
                     "dark-eyed juncos, hermit thrush, ruby-crowned kinglets";
 
 
@@ -180,4 +179,6 @@ public class TrailBirds {
 
     static String marriott =
             "migrating warblers, vireos, tanagers";
+
+        static String[] allBirds = {"white-tailed kite", "hermit thrush", "crowned sparrow", "white-throated sparrow", "lincoln’s sparrow", "fox sparrow", "california quail", "bewick’s wren", "house wren", "nuttall’s woodpecker", "downy woodpecker", "lazuli bunting", "blue grosbeak", "common goldeneye", "barrow’s goldeneye", "peregrine falcon", "western bluebird", "american kestrel", "red-shouldered hawk", "red-tailed hawk", "cooper’s hawk", "sharp-shinned hawk", "migrating warbler", "vireo", "flycatcher", "great egret", "great blue heron", "wood duck", "mallard", "common moorhen", "great horned owl", "california gull", "white-throated swift", "green heron", "western screech-owl", "anna’s hummingbird", "yellow-billed magpie", "oak titmouse", "belted kingfisher", "black phoebe", "northern rough-winged swallow", "waterbird", "eastern wood-pewee", "chestnut-sided", "bay-breasted warbler", "blackpoll warbler", "common merganser", "black-throated gray warbler", "magpie", "lark sparrow", "double-crested cormorant", "canada goose", "snowy egret", "killdeer", "greater yellowleg", "spotted sandpiper", "osprey", "turkey vulture", "herring gull", "ring-billed gull", "forster’s tern", "cliff swallows", "ash-throated flycatcher", "white-breasted nuthatch", "bushtit", "western scrub-jay", "spotted towhee", "yellow-rumped warbler", "mourning dove", "western kingbird", "california towhee", "lesser goldfinch", "american goldfinch", "american crow", "house finch", "northern flicker", "tree swallow", "orange-crowned warbler", "song sparrow", "wild turkey", "acorn woodpecker", "western wood pewee", "ruby-crowned kinglet", "dark-eyed junco", "house finch", "black-chinned hummingbird", "white-crowned sparrow", "golden-crowned sparrow", "spotted california towhee", "tree swallows killdeer", "gull", "bank swallow", "yellow-breasted chat", "townsend’s warbler", "hermit warbler", "nashville warbler", "wilson’s warbler", "bullock’s oriole", "black-headed grosbeak", "glaucous-winged gull", "thayer’s gull", "mew gull", "bald eagle", "pied-billed grebe", "domestic duck", "red-winged blackbird", "red-shouldered", "hutton's vireo", "purple finch", "white-crowned", "house finche", "bullock's oriole", "rufous hummingbird", "barn swallow", "caspian tern", "spotted sandpiper", "lesser goldfinch", "red-breasted merganser", "western gull", "glaucous gull", "purple martin", "american robin", "northern mockingbird", "golden-crowned kinglet", "brown creeper", "nuthatch", "red-breasted sapsucker", "vagrant warbler", "varied thrush", "black-and-white warbler", "warbler", "blackbird", "american pipit", "thrush", "lewis’s woodpecker", "cedar waxwing", "red-breasted sapsucker", "red-naped", "yellow-bellied sapsucker", "winter wren", "grosbeak", "tanager", "swainson’s hawk", "rough winged swallow", "black-and-white", "northern parula", "american redstart", "hooded warbler", "canada warbler", "warbling vireo", "western tanager", "pacific-slope flycatcher", "willow flycatcher", "olive-sided flycatcher", "hammond’s flycatcher", "dusky flycatcher", "cassin’s vireo", "hooded oriole", "swainson’s thrush", "allen’s hummingbird", "sparrow", "ring-billed", "western grebe", "clark’s grebe", "ring-necked duck", "bufflehead", "canvasback", };
 }
