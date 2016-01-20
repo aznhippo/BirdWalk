@@ -87,8 +87,6 @@ public class ListActivity extends AppCompatActivity {
         input.setThreshold(1);
         input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-
-
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -240,7 +238,7 @@ class TrailAdapter extends ArrayAdapter<Trail> {
         }
         else if (trail.isArea()){
             len_icon.setImageResource(R.drawable.icon_area3);
-            holder.lengthText.setText("");
+            holder.lengthText.setText("   ".concat(trail.getLength()));
         }
         else if (trail.singlePoint()){
             len_icon.setImageResource(R.drawable.icon_pin);

@@ -1584,7 +1584,7 @@ public class TrailData {
 
         trailHashMap.put("California State University, Sacramento",
                 new Trail("California State University, Sacramento",
-                        csuLot,csuPts, "", "icon_csu", "csu", "csu",
+                        csuLot,csuPts, "0.01 miles\u00b2", "icon_csu", "csu", "csu",
                         "6000 J Street, Sacramento, CA",
                         "Seasonal Variety, Year-round White-tailed Kite",
                         "Streamside Woodlands, Hedges, Trees, Savannah",
@@ -1664,7 +1664,7 @@ public class TrailData {
 
         trailHashMap.put("Sailor Bar",
                 new Trail("Sailor Bar",
-                        TrailCoords.sailorLot, TrailCoords.sailorPts, "3.31 miles", "icon_sailor", "sailor", "sailor",
+                        TrailCoords.sailorLot, TrailCoords.sailorPts, "3.3 miles", "icon_sailor", "sailor", "sailor",
                         "At End Of Illinois Ave., Sacramento, CA",
                         "Red-winged Blackbirds, Acorn Woodpeckers",
                         "Riparian, Woodland, Open Area, Gravel Tailings",
@@ -1672,7 +1672,7 @@ public class TrailData {
 
         trailHashMap.put("Upper Sunrise",
                 new Trail("Upper Sunrise",
-                        TrailCoords.upSunriseLot, TrailCoords.upSunrisePts, "3.36 miles", "icon_sunrise", "upsunrise", "upsunrise",
+                        TrailCoords.upSunriseLot, TrailCoords.upSunrisePts, "3.35 miles", "icon_sunrise", "upsunrise", "upsunrise",
                         "2001 Nimbus Rd, Gold River, CA",
                         "Barrow’s Goldeneye, Gulls",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
@@ -1680,7 +1680,7 @@ public class TrailData {
 
         trailHashMap.put("Nimbus Hatchery",
                 new Trail("Nimbus Hatchery",
-                        TrailCoords.nimbusLot, TrailCoords.nimbusPts, "2.61 miles", "icon_nimbus", "nimbus", "nimbus",
+                        TrailCoords.nimbusLot, TrailCoords.nimbusPts, "2.6 miles", "icon_nimbus", "nimbus", "nimbus",
                         "2001 Nimbus Rd, Gold River, CA",
                         "Bald Eagle During Salmon Run",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
@@ -1760,7 +1760,7 @@ public class TrailData {
 
         trailHashMap.put("William Land Park",
                 new Trail("William Land Park",
-                        TrailCoords.willParkLot, TrailCoords.willParkPts, "", "icon_willpark", "willpark", "willpark",
+                        TrailCoords.willParkLot, TrailCoords.willParkPts, "0.04 miles\u00b2", "icon_willpark", "willpark", "willpark",
                         "3800 W Land Park Dr, Sacramento, CA",
                         "Bird “Panhandle”",
                         "Large Conifers, Shrubs, Mature Trees",
@@ -1768,7 +1768,7 @@ public class TrailData {
 
         trailHashMap.put("Reichmuth Park",
                 new Trail("Reichmuth Park",
-                        TrailCoords.reichmuthLot, TrailCoords.reichmuthPts, "", "icon_reichmuth", "reichmuth", "reichmuth",
+                        TrailCoords.reichmuthLot, TrailCoords.reichmuthPts, "0.03 miles\u00b2", "icon_reichmuth", "reichmuth", "reichmuth",
                         "6135 Gloria Dr. Sacramento, CA",
                         "Migrating Land Birds, Hooded Orioles",
                         "Formerly An Oxbow, Swampy Wooded Area",
@@ -1784,7 +1784,7 @@ public class TrailData {
 
         trailHashMap.put("Garcia Bend",
                 new Trail("Garcia Bend",
-                        TrailCoords.garciaLot, TrailCoords.garciaPts, "", "icon_garcia", "garcia_marriott", "garcia",
+                        TrailCoords.garciaLot, TrailCoords.garciaPts, "0.0 miles\u00b2", "icon_garcia", "garcia_marriott", "garcia",
                         "7654 Pocket Rd. Sacramento, CA",
                         "Migrating Landbirds, Caspian And Forster’s Terns",
                         "Riparian, Riverine",
@@ -1792,7 +1792,7 @@ public class TrailData {
 
         trailHashMap.put("Marriott Park",
                 new Trail("Marriott Park",
-                        TrailCoords.marriottLot, TrailCoords.marriottPts, "", "icon_marriott", "garcia_marriott", "marriott",
+                        TrailCoords.marriottLot, TrailCoords.marriottPts, "0.01 miles\u00b2", "icon_marriott", "garcia_marriott", "marriott",
                         "7658 El Douro Dr, Sacramento, CA",
                         "Migrating Warblers, Vireos, Tanagers",
                         "Large Valley Oaks",
@@ -1800,7 +1800,7 @@ public class TrailData {
 
         trailHashMap.put("Chorley Park",
                 new Trail("Chorley Park",
-                        TrailCoords.chorleyLot, TrailCoords.chorleyPts, "", "icon_chorley", "chorley", "chorley",
+                        TrailCoords.chorleyLot, TrailCoords.chorleyPts, "0.05 miles\u00b2", "icon_chorley", "chorley", "chorley",
                         "7000 20th Street, Sacramento, CA",
                         "Nature Area",
                         "Mowed Lawns, Willows and Cottonwoods",

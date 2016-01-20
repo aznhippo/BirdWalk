@@ -110,7 +110,6 @@
                     android:singleLine="true"
                     android:clickable="true"
                     android:gravity="center"
-                    android:textIsSelectable="true"
                     android:textColor="#000000" />
 
                 <RelativeLayout

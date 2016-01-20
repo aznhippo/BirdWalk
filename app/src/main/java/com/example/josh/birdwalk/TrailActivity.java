@@ -2,6 +2,7 @@ package com.example.josh.birdwalk;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -270,6 +272,20 @@ public class TrailActivity extends AppCompatActivity {
     private void setUpInfo(){
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(trail.getAddress());
+        tv1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("Address", trail.getAddress());
+                clipboard.setPrimaryClip(clip);
+
+                Toast toast = Toast.makeText(getApplicationContext(), "Address copied to clipboard", Toast.LENGTH_SHORT);
+                toast.show();
+                return false;
+            }
+        });
+
+
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(trail.getBirds());
         TextView tv4 = (TextView) findViewById(R.id.typeText);

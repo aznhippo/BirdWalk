@@ -182,7 +182,7 @@ public class MapActivity extends AppCompatActivity {
                 length += " (loop)";
             }
             else if (trail.isArea()){
-                length = "Birding Area";
+                length = trail.getLength();
             }
             else if (trail.singlePoint()){
                 length = "Birding Viewpoint";
