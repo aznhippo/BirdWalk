@@ -7,16 +7,16 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_trail"
     tools:context="com.example.josh.birdwalk.TrailActivity"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:id="@+id/trailContent">
 
     <!--android:background="@drawable/bg_trail">-->
 
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
         android:background="#646464">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,8 +47,8 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight=".6">
 
         <ImageView

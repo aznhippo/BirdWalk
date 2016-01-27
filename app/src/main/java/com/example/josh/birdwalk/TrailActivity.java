@@ -1,6 +1,7 @@
 package com.example.josh.birdwalk;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +14,12 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -204,7 +208,6 @@ public class TrailActivity extends AppCompatActivity {
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
         }
 
-
         //trail only has 1 point
         if (trail.numPoints() == 1){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
@@ -219,12 +222,10 @@ public class TrailActivity extends AppCompatActivity {
             }
             LatLngBounds bounds = builder.build();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-
         }
         //trail has multiple points
         else{
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-
             //build polygon
             if (trail.isArea()){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
@@ -244,19 +245,17 @@ public class TrailActivity extends AppCompatActivity {
                 }
                 mMap.addPolyline(trailLine);
             }
-
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
             int padding = 200; // offset from edges of the map in pixels
             final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-                @Override
-                public void onMapLoaded() {
-                    mMap.animateCamera(cu);
-                }
-            });
-
+//            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+//                @Override
+//                public void onMapLoaded() {
+//                    mMap.animateCamera(cu);
+//                }
+//            });
         }
     }
 
@@ -278,19 +277,16 @@ public class TrailActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clip = android.content.ClipData.newPlainText("Address", trail.getAddress());
                 clipboard.setPrimaryClip(clip);
-
                 Toast toast = Toast.makeText(getApplicationContext(), "Address copied to clipboard", Toast.LENGTH_SHORT);
                 toast.show();
                 return false;
             }
         });
 
-
         TextView tv3 = (TextView) findViewById(R.id.birdsText);
         tv3.setText(trail.getBirds());
         TextView tv4 = (TextView) findViewById(R.id.typeText);
         tv4.setText(trail.getHabitats());
-
 
         //set length icon and text for loop, area, site, one-way
         TextView tv2 = (TextView) findViewById(R.id.distText);
@@ -328,9 +324,13 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     public void showLegend(View view){
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.legend);
-        dialog.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.legend, null);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
     }
 
     public void launchDirections(View view){

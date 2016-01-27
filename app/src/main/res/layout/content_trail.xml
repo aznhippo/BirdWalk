@@ -58,183 +58,190 @@
             android:src="@drawable/bg_trail"
             android:scaleType="centerCrop" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            android:orientation="vertical">
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get Directions"
-                android:id="@+id/direct"
-                android:onClick="launchDirections"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="20dp"
-                android:background="#99000000"
-                android:longClickable="false"
-                android:textColor="#ffffff"
-                android:drawableLeft="@android:drawable/ic_menu_directions"
-                android:drawableRight="@drawable/icon_go"
-                android:paddingLeft="16dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginLeft="7dp"
+                android:layout_height="match_parent"
 
-                android:singleLine="true"
-                android:textAlignment="center" />
+                android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="7dp"
-                android:background="#CCFFFFFF">
-
-                <TextView
+                <Button
+                    style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Address"
-                    android:id="@+id/addrText"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textSize="15dp"
+                    android:text="Get Directions"
+                    android:id="@+id/direct"
+                    android:onClick="launchDirections"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:textSize="20dp"
+                    android:background="#99000000"
+                    android:longClickable="false"
+                    android:textColor="#ffffff"
+                    android:drawableLeft="@android:drawable/ic_menu_directions"
+                    android:drawableRight="@drawable/icon_go"
+                    android:paddingLeft="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
+
                     android:singleLine="true"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:textColor="#000000" />
+                    android:textAlignment="center" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/view1"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:orientation="horizontal"
-                    android:id="@+id/distLayout">
+                    android:orientation="vertical"
+                    android:layout_margin="7dp"
+                    android:background="#CCFFFFFF">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Trail Distance"
-                        android:id="@+id/distText"
+                        android:text="Address"
+                        android:id="@+id/addrText"
                         android:maxLines="1"
                         android:padding="10dp"
                         android:textSize="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
                         android:singleLine="true"
-                        android:gravity="center|center_horizontal"
-                        android:textColor="#000000"
-                        android:layout_alignParentTop="true"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:textColor="#000000" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:orientation="horizontal"
+                        android:id="@+id/distLayout">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Trail Distance"
+                            android:id="@+id/distText"
+                            android:maxLines="1"
+                            android:padding="10dp"
+                            android:textSize="15dp"
+                            android:singleLine="true"
+                            android:gravity="center|center_horizontal"
+                            android:textColor="#000000"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:id="@+id/len_icon"
+                            android:src="@drawable/icon_loop_1"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/distText"
+                            android:layout_toStartOf="@+id/distText" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Birds"
+                        android:id="@+id/birdsText"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/view2"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:singleLine="true"
+                        android:gravity="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Trail Type"
+                        android:id="@+id/typeText"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/view3"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:singleLine="true"
+                        android:gravity="center"
+                        android:textColor="#000000" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="#000000"
+                        android:id="@+id/view1"
+                        android:layout_below="@+id/addrText"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="#000000"
+                        android:id="@+id/view2"
+                        android:layout_below="@+id/distLayout"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="#000000"
+                        android:id="@+id/view3"
+                        android:layout_below="@+id/birdsText"
                         android:layout_centerHorizontal="true" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:id="@+id/len_icon"
-                        android:src="@drawable/icon_loop_1"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/distText"
-                        android:layout_toStartOf="@+id/distText" />
 
                 </RelativeLayout>
 
-                <TextView
+                <Button
+                    style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Birds"
-                    android:id="@+id/birdsText"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textSize="15dp"
-                    android:layout_below="@+id/view2"
+                    android:text="Read More..."
+                    android:id="@+id/excerpt"
+                    android:onClick="launchExcerpt"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:singleLine="true"
-                    android:gravity="center"
-                    android:textColor="#000000" />
+                    android:textSize="20dp"
+                    android:background="#99000000"
+                    android:longClickable="false"
+                    android:textColor="#ffffff"
+                    android:drawableLeft="@android:drawable/ic_menu_info_details"
+                    android:drawableRight="@drawable/icon_go"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Trail Type"
-                    android:id="@+id/typeText"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textSize="15dp"
-                    android:layout_below="@+id/view3"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:singleLine="true"
-                    android:gravity="center"
-                    android:textColor="#000000" />
+            </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="#000000"
-                    android:id="@+id/view1"
-                    android:layout_below="@+id/addrText"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+        </ScrollView>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="#000000"
-                    android:id="@+id/view2"
-                    android:layout_below="@+id/distLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="#000000"
-                    android:id="@+id/view3"
-                    android:layout_below="@+id/birdsText"
-                    android:layout_centerHorizontal="true" />
-
-
-            </RelativeLayout>
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Read More..."
-                android:id="@+id/excerpt"
-                android:onClick="launchExcerpt"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="20dp"
-                android:background="#99000000"
-                android:longClickable="false"
-                android:textColor="#ffffff"
-                android:drawableLeft="@android:drawable/ic_menu_info_details"
-                android:drawableRight="@drawable/icon_go"
-                android:layout_marginRight="7dp"
-                android:layout_marginLeft="7dp"
-                android:paddingLeft="16dp"
-                android:singleLine="true" />
-
-        </LinearLayout>
 
     </FrameLayout>
 

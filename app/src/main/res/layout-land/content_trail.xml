@@ -7,16 +7,16 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_trail"
     tools:context="com.example.josh.birdwalk.TrailActivity"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:id="@+id/trailContent">
 
     <!--android:background="@drawable/bg_trail">-->
 
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
         android:background="#646464">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,8 +47,8 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight=".6">
 
         <ImageView
@@ -68,19 +68,17 @@
 
                 android:orientation="vertical">
 
-
-
                 <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
+                    android:layout_height="wrap_content"
                     android:text="Get Directions"
                     android:id="@+id/direct"
                     android:onClick="launchDirections"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:textSize="23dp"
+                    android:textSize="20dp"
                     android:background="#99000000"
                     android:longClickable="false"
                     android:textColor="#ffffff"
@@ -88,18 +86,19 @@
                     android:drawableRight="@drawable/icon_go"
                     android:paddingLeft="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
 
                     android:singleLine="true"
-                    android:textAlignment="center"
-                    android:layout_margin="14dp" />
+                    android:textAlignment="center" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#CCFFFFFF"
-                    android:layout_marginRight="14dp"
-                    android:layout_marginLeft="14dp">
+                    android:layout_margin="7dp"
+                    android:background="#CCFFFFFF">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -108,8 +107,8 @@
                         android:text="Address"
                         android:id="@+id/addrText"
                         android:maxLines="1"
-                        android:padding="15dp"
-                        android:textSize="18dp"
+                        android:padding="10dp"
+                        android:textSize="15dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:singleLine="true"
@@ -132,8 +131,8 @@
                             android:text="Trail Distance"
                             android:id="@+id/distText"
                             android:maxLines="1"
-                            android:padding="15dp"
-                            android:textSize="18dp"
+                            android:padding="10dp"
+                            android:textSize="15dp"
                             android:singleLine="true"
                             android:gravity="center|center_horizontal"
                             android:textColor="#000000"
@@ -141,8 +140,8 @@
                             android:layout_centerHorizontal="true" />
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:id="@+id/len_icon"
                             android:src="@drawable/icon_loop_1"
                             android:layout_centerVertical="true"
@@ -151,7 +150,6 @@
 
                     </RelativeLayout>
 
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -159,8 +157,8 @@
                         android:text="Birds"
                         android:id="@+id/birdsText"
                         android:maxLines="1"
-                        android:padding="15dp"
-                        android:textSize="18dp"
+                        android:padding="10dp"
+                        android:textSize="15dp"
                         android:layout_below="@+id/view2"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
@@ -175,8 +173,8 @@
                         android:text="Trail Type"
                         android:id="@+id/typeText"
                         android:maxLines="1"
-                        android:padding="15dp"
-                        android:textSize="18dp"
+                        android:padding="10dp"
+                        android:textSize="15dp"
                         android:layout_below="@+id/view3"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
@@ -222,22 +220,23 @@
                 <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
+                    android:layout_height="wrap_content"
                     android:text="Read More..."
                     android:id="@+id/excerpt"
                     android:onClick="launchExcerpt"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:textSize="23dp"
+                    android:textSize="20dp"
                     android:background="#99000000"
                     android:longClickable="false"
                     android:textColor="#ffffff"
                     android:drawableLeft="@android:drawable/ic_menu_info_details"
                     android:drawableRight="@drawable/icon_go"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
                     android:paddingLeft="16dp"
-                    android:singleLine="true"
-                    android:layout_margin="14dp" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 

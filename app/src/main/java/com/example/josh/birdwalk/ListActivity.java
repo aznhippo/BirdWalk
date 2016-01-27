@@ -1,21 +1,25 @@
 package com.example.josh.birdwalk;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -194,96 +198,102 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void showLegend(View view){
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.legend);
-        dialog.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.legend, null);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
+
+    }
+
+    static class TrailAdapter extends ArrayAdapter<Trail> {
+        private final Context context;
+        private final ArrayList<Trail> data;
+        private final int layoutResourceId;
+
+        public TrailAdapter(Context context, int layoutResourceId, ArrayList<Trail> data) {
+            super(context, layoutResourceId, data);
+            this.context = context;
+            this.data = data;
+            this.layoutResourceId = layoutResourceId;
+        }
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View row = convertView;
+            ViewHolder holder = null;
+
+            if(row == null) {
+                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+                row = inflater.inflate(layoutResourceId, parent, false);
+
+                holder = new ViewHolder();
+                holder.lengthText = (TextView)row.findViewById(R.id.trailLength);
+                holder.nameText = (TextView)row.findViewById(R.id.trailName);
+                holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
+
+                row.setTag(holder);
+            }
+            else {
+                holder = (ViewHolder)row.getTag();
+            }
+
+            Trail trail = data.get(position);
+            holder.nameText.setText(trail.getTrailName());
+
+            //set length icon for loop, area, site, one-way
+            ImageView len_icon = (ImageView)row.findViewById(R.id.len_icon);
+            len_icon.setVisibility(View.VISIBLE);
+            if (trail.isLoop()){
+                len_icon.setImageResource(R.drawable.icon_loop);
+                holder.lengthText.setText("   ".concat(trail.getLength()));
+            }
+            else if (trail.isArea()){
+                len_icon.setImageResource(R.drawable.icon_area3);
+                holder.lengthText.setText("   ".concat(trail.getLength()));
+            }
+            else if (trail.singlePoint()){
+                len_icon.setImageResource(R.drawable.icon_pin);
+                holder.lengthText.setText("");
+            }
+            //special case
+            else if (trail.getTrailName().equals("Green Haven Lake")) {
+                len_icon.setImageResource(R.drawable.icon_pin);
+                holder.lengthText.setText("");
+            }
+            else {
+                len_icon.setImageResource(R.drawable.icon_oneway);
+                holder.lengthText.setText("   ".concat(trail.getLength()));
+            }
+
+            //if a trailicon exists, set it as the item image
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(trail.getIconName());
+                int drawableId = field.getInt(null);
+                holder.trailIcon.setImageResource(drawableId);
+            }
+            catch (Exception e) {
+                //Log.e("MyTag", "Failure to get drawable id.", e);
+                holder.trailIcon.setImageResource(R.drawable.icon_app);
+            }
+
+            return row;
+        }
+
+        static class ViewHolder {
+            TextView lengthText;
+            TextView nameText;
+            ImageView trailIcon;
+        }
     }
 }
 
 
-class TrailAdapter extends ArrayAdapter<Trail> {
-    private final Context context;
-    private final ArrayList<Trail> data;
-    private final int layoutResourceId;
 
-    public TrailAdapter(Context context, int layoutResourceId, ArrayList<Trail> data) {
-        super(context, layoutResourceId, data);
-        this.context = context;
-        this.data = data;
-        this.layoutResourceId = layoutResourceId;
-    }
-
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        ViewHolder holder = null;
-
-        if(row == null) {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-            row = inflater.inflate(layoutResourceId, parent, false);
-
-            holder = new ViewHolder();
-            holder.lengthText = (TextView)row.findViewById(R.id.trailLength);
-            holder.nameText = (TextView)row.findViewById(R.id.trailName);
-            holder.trailIcon = (ImageView)row.findViewById(R.id.trailIcon);
-
-            row.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder)row.getTag();
-        }
-
-        Trail trail = data.get(position);
-        holder.nameText.setText(trail.getTrailName());
-
-        //set length icon for loop, area, site, one-way
-        ImageView len_icon = (ImageView)row.findViewById(R.id.len_icon);
-        len_icon.setVisibility(View.VISIBLE);
-        if (trail.isLoop()){
-            len_icon.setImageResource(R.drawable.icon_loop);
-            holder.lengthText.setText("   ".concat(trail.getLength()));
-        }
-        else if (trail.isArea()){
-            len_icon.setImageResource(R.drawable.icon_area3);
-            holder.lengthText.setText("   ".concat(trail.getLength()));
-        }
-        else if (trail.singlePoint()){
-            len_icon.setImageResource(R.drawable.icon_pin);
-            holder.lengthText.setText("");
-        }
-        //special case
-        else if (trail.getTrailName().equals("Green Haven Lake")) {
-            len_icon.setImageResource(R.drawable.icon_pin);
-            holder.lengthText.setText("");
-        }
-        else {
-            //len_icon.setVisibility(View.GONE);
-            len_icon.setImageResource(R.drawable.icon_oneway);
-            holder.lengthText.setText("   ".concat(trail.getLength()));
-        }
-
-        //if a trailicon exists, set it as the item image
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(trail.getIconName());
-            int drawableId = field.getInt(null);
-            holder.trailIcon.setImageResource(drawableId);
-        }
-        catch (Exception e) {
-            //Log.e("MyTag", "Failure to get drawable id.", e);
-            holder.trailIcon.setImageResource(R.drawable.icon_app);
-        }
-
-        return row;
-    }
-
-    static class ViewHolder {
-        TextView lengthText;
-        TextView nameText;
-        ImageView trailIcon;
-    }
-}
 
 
 
