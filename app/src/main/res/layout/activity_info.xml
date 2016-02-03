@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="com.example.josh.birdwalk.InfoActivity"
+    tools:context="com.jle.josh.birdwalk.InfoActivity"
     >
 
     <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
@@ -37,8 +37,25 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_dialog_email"
-        android:onClick="launchEmail"
-        />
+        android:onClick="launchEmail"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_menu_share"
+        android:onClick="launchShare"
+        app:backgroundTint="@color/colorPrimary" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|center"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@android:drawable/ic_menu_share"-->
+        <!--android:onClick="launchShare"-->
+        <!--app:backgroundTint="@color/colorPrimaryDark" />-->
 
     <include layout="@layout/content_info" />
 

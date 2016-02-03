@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.josh.birdwalk" >
+    package="com.jle.josh.birdwalk" >
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.jle.josh.birdwalk.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -43,22 +43,22 @@
             android:value="AIzaSyCQE8u76Qt1SKe8kveKmLqAMVl8xQE_b9k" />
 
         <activity
-            android:name=".TrailActivity"
+            android:name="com.jle.josh.birdwalk.TrailActivity"
             android:label="@string/title_activity_trail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".InfoActivity"
+            android:name="com.jle.josh.birdwalk.InfoActivity"
             android:label="@string/title_activity_info"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ListActivity"
+            android:name="com.jle.josh.birdwalk.ListActivity"
             android:label="@string/title_activity_list"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".MapActivity"
+            android:name="com.jle.josh.birdwalk.MapActivity"
             android:label="@string/title_activity_map"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>

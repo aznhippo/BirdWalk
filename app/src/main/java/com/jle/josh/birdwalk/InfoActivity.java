@@ -1,5 +1,7 @@
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -33,7 +35,7 @@ public class InfoActivity extends AppCompatActivity {
                 setWebView("about");
                 fab.setVisibility(View.VISIBLE);
             }
-            if (intentString.equals("TrailActivity")) {
+            else if (intentString.equals("TrailActivity")) {
                 String trailName = intent.getExtras().getString("trailName");
                 toolbar.setTitle(trailName);
                 setSupportActionBar(toolbar);
@@ -61,5 +63,29 @@ public class InfoActivity extends AppCompatActivity {
         intent.setType("plain/text");
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"birdwalk.app@gmail.com"});
         startActivity(intent);
+    }
+
+    public void launchShare(View view){
+//        Context context = getApplicationContext();
+//        Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+//        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+//        // To count with Play market backstack, After pressing back button,
+//        // to taken back to our application, we need to add following flags to intent.
+//        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+//                Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET |
+//                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+//        try {
+//            startActivity(goToMarket);
+//        } catch (ActivityNotFoundException e) {
+//            startActivity(new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+//        }
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "https://play.google.com/store/apps/details?id=com.jle.josh.birdwalk";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "BirdWalk App");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 }

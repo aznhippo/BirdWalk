@@ -1,4 +1,4 @@
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
 import org.junit.Test;
 

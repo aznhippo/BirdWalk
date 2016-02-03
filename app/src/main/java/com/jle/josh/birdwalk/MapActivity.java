@@ -1,6 +1,8 @@
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -10,8 +12,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,7 +54,6 @@ public class MapActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         if (intent != null) {
             intentString = intent.getExtras().getString("fromActivity");
-
             if (intentString.equals("MainActivity")) {
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle("Map Overview");
@@ -62,9 +68,7 @@ public class MapActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 showSelectedTrail();
             }
-
         }
-
     }
 
     @Override
@@ -166,32 +170,60 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void showAllTrails(){
+        ImageButton legend = (ImageButton) findViewById(R.id.legend);
+        legend.setVisibility(View.VISIBLE);
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                View v = getLayoutInflater().inflate(R.layout.marker_info, null);
+                TextView title = (TextView) v.findViewById(R.id.trailName);
+                TextView lengthText = (TextView) v.findViewById(R.id.trailLength);
+                ImageView len_icon = (ImageView) v.findViewById(R.id.len_icon);
+                title.setText(marker.getTitle());
+
+                Trail t = TrailData.getValue(marker.getTitle());
+                //set length icon for loop, area, site, one-way
+                if (t.isLoop()){
+                    len_icon.setImageResource(R.drawable.icon_loop_1);
+                    lengthText.setText("   ".concat(t.getLength()));
+                }
+                else if (t.isArea()){
+                    len_icon.setImageResource(R.drawable.icon_area3_1);
+                    lengthText.setText("   ".concat(t.getLength()));
+                }
+                else if (t.singlePoint()){
+                    len_icon.setImageResource(R.drawable.icon_pin);
+                    lengthText.setText("   Birding Viewpoint");
+                }
+                //special case
+                else if (t.getTrailName().equals("Green Haven Lake")) {
+                    len_icon.setImageResource(R.drawable.icon_pin);
+                    lengthText.setText("   Birding Viewpoints");
+                }
+                else {
+                    len_icon.setImageResource(R.drawable.icon_oneway_1);
+                    lengthText.setText("   ".concat(t.getLength()));
+                }
+                return v;
+            }
+        });
+
         Map<String, Trail> map = TrailData.trailHashMap;
-
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
-
         //add each trail marker to map
         for (Map.Entry<String, Trail> entry : map.entrySet()) {
-            String title = entry.getKey() + "   \u27A4";
+            String title = entry.getKey();
             Trail trail = entry.getValue();
             LatLng start = trail.getStart();
-            String length = trail.getLength();
-            if (trail.isLoop()){
-                length += " (loop)";
-            }
-            else if (trail.isArea()){
-                length = trail.getLength();
-            }
-            else if (trail.singlePoint()){
-                length = "Birding Viewpoint";
-            }
-            else if (trail.getTrailName().equals("Green Haven Lake")){
-                length = "Birding Viewpoints";
-            }
 
-            mMap.addMarker(new MarkerOptions().position(start).title(title).snippet(length));
+            mMap.addMarker(new MarkerOptions().position(start).title(title));
             builder.include(start);
         }
 
@@ -220,8 +252,7 @@ public class MapActivity extends AppCompatActivity {
         mMap.setOnInfoWindowClickListener(
                 new GoogleMap.OnInfoWindowClickListener() {
                     public void onInfoWindowClick(Marker marker) {
-                        String str = marker.getTitle();
-                        String trailName = str.substring(0, str.length() - 4);
+                        String trailName = marker.getTitle();
                         Intent intent = new Intent(MapActivity.this, TrailActivity.class);
                         intent.putExtra("trailKey", trailName);
                         startActivity(intent);
@@ -231,8 +262,9 @@ public class MapActivity extends AppCompatActivity {
 
     }
 
-
     public void showSelectedTrail(){
+        ImageButton legend = (ImageButton) findViewById(R.id.legend);
+        legend.setVisibility(View.GONE);
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Start")).showInfoWindow();
@@ -289,5 +321,16 @@ public class MapActivity extends AppCompatActivity {
 //                }
 //            });
         }
+    }
+
+    public void showLegend(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.legend, null);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
+
     }
 }

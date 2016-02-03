@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
 import android.Manifest;
 import android.app.AlertDialog;

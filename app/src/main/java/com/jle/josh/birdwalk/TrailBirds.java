@@ -1,4 +1,4 @@
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
 /**
  * Created by Josh on 1/9/16.

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.josh.birdwalk.ListActivity"
+    tools:context="com.jle.josh.birdwalk.ListActivity"
     android:background="@drawable/bg_trail">
 
     <android.support.design.widget.AppBarLayout

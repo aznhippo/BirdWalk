@@ -1,4 +1,4 @@
-package com.example.josh.birdwalk;
+package com.jle.josh.birdwalk;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/trailName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:text="Arcade Creek at American River College"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:singleLine="true"
+            android:layout_weight=".5" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:id="@+id/len_icon"
+                android:src="@drawable/icon_loop_1" />
+
+            <TextView
+                android:id="@+id/trailLength"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:text="    Length"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="fill_parent">-->
+        <!--<ImageView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:id="@+id/goIcon"-->
+            <!--android:background="@drawable/icon_go_1" />-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

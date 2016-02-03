@@ -33,9 +33,6 @@
             android:id="@+id/trailName"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignWithParentIfMissing="true"
             android:gravity="center_vertical"
             android:text="Arcade Creek at American River College"
             android:textSize="18sp"
@@ -63,9 +60,6 @@
                 android:text="    Length"
                 android:textSize="14sp"
                 android:textColor="#ffffff"
-                android:layout_below="@+id/trailName"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:gravity="center_vertical" />
 
         </LinearLayout>
@@ -81,10 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
-            android:src="@drawable/icon_go"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:src="@drawable/icon_go" />
     </LinearLayout>
 
 
