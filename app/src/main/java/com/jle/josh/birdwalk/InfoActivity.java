@@ -20,10 +20,12 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
         p.setAnchorId(View.NO_ID);
         fab.setLayoutParams(p);
         fab.setVisibility(View.GONE);
+        fab2.setVisibility(View.GONE);
 
         Intent intent = this.getIntent();
         if (intent != null) {
@@ -34,6 +36,7 @@ public class InfoActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 setWebView("about");
                 fab.setVisibility(View.VISIBLE);
+                fab2.setVisibility(View.VISIBLE);
             }
             else if (intentString.equals("TrailActivity")) {
                 String trailName = intent.getExtras().getString("trailName");
@@ -66,21 +69,6 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void launchShare(View view){
-//        Context context = getApplicationContext();
-//        Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
-//        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-//        // To count with Play market backstack, After pressing back button,
-//        // to taken back to our application, we need to add following flags to intent.
-//        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-//                Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET |
-//                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-//        try {
-//            startActivity(goToMarket);
-//        } catch (ActivityNotFoundException e) {
-//            startActivity(new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
-//        }
-
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         String shareBody = "https://play.google.com/store/apps/details?id=com.jle.josh.birdwalk";

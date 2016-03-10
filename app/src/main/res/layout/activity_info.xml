@@ -46,16 +46,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_menu_share"
         android:onClick="launchShare"
-        app:backgroundTint="@color/colorPrimary" />
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|center"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--android:src="@android:drawable/ic_menu_share"-->
-        <!--android:onClick="launchShare"-->
-        <!--app:backgroundTint="@color/colorPrimaryDark" />-->
+        app:backgroundTint="@color/colorPrimaryDark" />
 
     <include layout="@layout/content_info" />
 

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -227,6 +228,18 @@ public class MapActivity extends AppCompatActivity {
             builder.include(start);
         }
 
+        //launch trailActivity for clicked on marker
+        mMap.setOnInfoWindowClickListener(
+                new GoogleMap.OnInfoWindowClickListener() {
+                    public void onInfoWindowClick(Marker marker) {
+                        String trailName = marker.getTitle();
+                        Intent intent = new Intent(MapActivity.this, TrailActivity.class);
+                        intent.putExtra("trailKey", trailName);
+                        startActivity(intent);
+                    }
+                }
+        );
+
         //center to bounds, zoom when map loaded
         LatLngBounds bounds = builder.build();
         int padding = 100; // offset from edges of the map in pixels
@@ -243,22 +256,14 @@ public class MapActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onCancel() { mMap.getUiSettings().setAllGesturesEnabled(true); }
+                    public void onCancel() {
+                        mMap.getUiSettings().setAllGesturesEnabled(true);
+                    }
                 });
             }
         });
 
-        //launch trailActivity for clicked on marker
-        mMap.setOnInfoWindowClickListener(
-                new GoogleMap.OnInfoWindowClickListener() {
-                    public void onInfoWindowClick(Marker marker) {
-                        String trailName = marker.getTitle();
-                        Intent intent = new Intent(MapActivity.this, TrailActivity.class);
-                        intent.putExtra("trailKey", trailName);
-                        startActivity(intent);
-                    }
-                }
-        );
+
 
     }
 
@@ -285,7 +290,6 @@ public class MapActivity extends AppCompatActivity {
             }
             LatLngBounds bounds = builder.build();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-
         }
         //trail has multiple points
         else {

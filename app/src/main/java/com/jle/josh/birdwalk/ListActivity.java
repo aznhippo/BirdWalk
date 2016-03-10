@@ -253,12 +253,12 @@ public class ListActivity extends AppCompatActivity {
             }
             else if (trail.singlePoint()){
                 len_icon.setImageResource(R.drawable.icon_pin);
-                holder.lengthText.setText("");
+                holder.lengthText.setText("   Birding Viewpoint");
             }
             //special case
             else if (trail.getTrailName().equals("Green Haven Lake")) {
                 len_icon.setImageResource(R.drawable.icon_pin);
-                holder.lengthText.setText("");
+                holder.lengthText.setText("   Birding Viewpoints");
             }
             else {
                 len_icon.setImageResource(R.drawable.icon_oneway);
