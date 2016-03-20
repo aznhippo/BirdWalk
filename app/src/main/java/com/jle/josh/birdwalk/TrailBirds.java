@@ -181,5 +181,58 @@ public class TrailBirds {
         static String marriott =
                 "migrating warblers, vireos, tanagers";
 
+        static String natomas =
+                "common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        static String nimbusFlat =
+                "gulls, common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        static String overlook =
+                "rufous-crowned sparrows, phainopeplas, common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        static String willow =
+                "great blue heron, great egret, double-crested cormorant, common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        static String negro =
+                "rufous-crowned sparrows, common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        static String rodeo =
+                "common loons, pacific loon, horned grebes, red-breasted merganser, red-necked grebe";
+
+        ///////same list for folsom point, mormon island, browns ravine, falcon crest, sweetwater
+        static String folsomPoint =
+                " waterbirds, Western bluebirds, red-breasted sapsuckers, wood ducks, hooded mergansers"+
+                        "rufous-crowned sparrows, phainopeplas,hairy woodpeckers, purple finches, "+
+                        "california thrashers, yellow-breasted chats, mountain quail, california gulls "+
+                        "herring, ring-billed gulls, mew gulls, thayer’s gulls, glaucous-winged gulls"+
+                        "common loons, pacific loons, scoter, sabine’s gull, common tern, western grebes, " +
+                        "clark’s grebes, eared grebes, horned grebes";
+
+        static String beals =
+                "gulls, rock wrens, rufous-crowned sparrows, california gulls, herring, ring-billed gulls,  " +
+                        "mew gulls, thayer’s gulls, glaucous-winged gulls, common loons, pacific loons, scoter, " +
+                        "sabine’s gull, common tern, western grebes, clark’s grebes,  eared grebes,  horned grebes";
+
+        static String beeks =
+                "calliope hummingbirds, costa’s hummingbirds, rock wrens, canyon wrens, rufous-crowned sparrows, " +
+                        "common poorwills, ash-throated flycatchers, black-headed grosbeaks, western kingbirds, " +
+                        "lawrence’s goldfinches, lazuli buntings, orange-crowned warblers, nashville warblers " +
+                        "yellow-breasted chats, western tanagers, red-tailed hawk, violet-green swallow, " +
+                        "lesser goldfinch, bewick’s wren, bullock’s oriole, and oak titmouse,  lesser goldfinch, " +
+                        "blue-gray gnatcatchers, chipping sparrows, common loons, canada geese, common mergansers, " +
+                        "western grebes, western screech-owls, greater roadrunner, bald eagle, thrasher, wrentit";
+
+        static String pioneer =
+                "bald eagles, osprey, california quail, anna’s hummingbird, northern flicker, acorn, downy and nuttall’s woodpeckers, black phoebe, yellow-billed magpie, oak titmouse, bushtit, bewick’s wren, hermit thrush, western bluebird, ruby-crowned kinglet, yellow-rumped warbler, spotted and california towhees, lark sparrow, crowned sparrows,  cooper’s  hawks, sharp-shinned hawks, wild turkey, band-tailed pigeon, red-breasted sapsucker, wrentit, phainopepla, hutton’s vireo,  purple finch, common loon, canada geese, horned, eared, western and clark’s grebes, common goldeneye, ruddy duck, lesser scaup, common merganser, gulls, spotted sandpipers, greater yellowlegs, rock wrens, ash-throated flycatchers, bewick’s wrens,house wrens, rufous-crowned sparrows, belted kingfisher, green heron, wood ducks, black-chinned hummingbird, western wood peewee, pacific-slope flycatcher, western kingbird, black phoebe, common yellowthroat, orange-crowned, wilson’s warblers, western screech-owls, northern pygmy-owls, great horned owls, common poorwills";
+
+        static String folsomPeninsula =
+                "california thrashers, sage sparrows,  lewis’s woodpeckers phainopeplas,rock wrens, lewis's woodpeckers, varied thrushes,  bald eagles, burrowing owls, northern shrike, red-breasted sapsuckers, ";
+
+
+
+
+
+
+
         static String[] allBirds = {"white-tailed kite", "hermit thrush", "crowned sparrow", "white-throated sparrow", "Lincoln’s sparrow", "fox sparrow", "California quail", "Bewick’s wren", "house wren", "Nuttall’s woodpecker", "downy woodpecker", "lazuli bunting", "blue grosbeak", "common goldeneye", "Barrow’s goldeneye", "peregrine falcon", "Western bluebird", "American kestrel", "red-shouldered hawk", "red-tailed hawk", "Cooper’s hawk", "sharp-shinned hawk", "migrating warbler", "vireo", "flycatcher", "great egret", "great blue heron", "wood duck", "mallard", "common moorhen", "great horned owl", "California gull", "white-throated swift", "green heron", "Western screech-owl", "Anna’s hummingbird", "yellow-billed magpie", "oak titmouse", "belted kingfisher", "black phoebe", "Northern rough-winged swallow", "waterbird", "Eastern wood-pewee", "chestnut-sided", "bay-breasted warbler", "blackpoll warbler", "common merganser", "black-throated gray warbler", "magpie", "lark sparrow", "double-crested cormorant", "canada goose", "snowy egret", "killdeer", "greater yellow-leg", "spotted sandpiper", "osprey", "turkey vulture", "herring gull", "ring-billed gull", "Forster’s tern", "cliff swallows", "ash-throated flycatcher", "white-breasted nuthatch", "bushtit", "Western scrub-jay", "spotted towhee", "yellow-rumped warbler", "mourning dove", "Western kingbird", "California towhee", "lesser goldfinch", "American goldfinch", "American crow", "house finch", "Northern flicker", "tree swallow", "orange-crowned warbler", "song sparrow", "wild turkey", "acorn woodpecker", "Western wood pewee", "ruby-crowned kinglet", "dark-eyed junco", "black-chinned hummingbird", "white-crowned sparrow", "golden-crowned sparrow", "spotted California towhee", "tree swallows", "gull", "bank swallow", "yellow-breasted chat", "Townsend’s warbler", "hermit warbler", "Nashville warbler", "Wilson’s warbler", "Bullock’s oriole", "black-headed grosbeak", "glaucous-winged gull", "Thayer’s gull", "mew gull", "bald eagle", "pied-billed grebe", "domestic duck", "red-winged blackbird", "Hutton's vireo", "purple finch", "house finch", "Bullock's oriole", "Rufous hummingbird", "barn swallow", "Caspian tern", "spotted sandpiper", "lesser goldfinch", "red-breasted merganser", "Western gull", "glaucous gull", "purple martin", "American robin", "Northern mockingbird", "golden-crowned kinglet", "brown creeper", "nuthatch", "red-breasted sapsucker", "vagrant warbler", "varied thrush", "black-and-white warbler", "warbler", "blackbird", "American pipit", "thrush", "Lewis’s woodpecker", "cedar waxwing", "red-naped sapsucker", "yellow-bellied sapsucker", "winter wren", "grosbeak", "tanager", "Swainson’s hawk", "rough winged swallow", "black-and-white", "Northern parula", "American redstart", "hooded warbler", "Canada warbler", "warbling vireo", "Western tanager", "pacific-slope flycatcher", "willow flycatcher", "olive-sided flycatcher", "Hammond’s flycatcher", "dusky flycatcher", "Cassin’s vireo", "hooded oriole", "Swainson’s thrush", "Allen’s hummingbird", "sparrow", "ring-billed", "Western grebe", "Clark’s grebe", "ring-necked duck", "bufflehead", "canvasback",};
 }

@@ -276,119 +276,126 @@ public class TrailData {
         ////////////
         trailHashMap.put("North Natomas",
                 new Trail("North Natomas",
-                        TrailCoords2.natomasLot, TrailCoords2.natomasPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.natomasLot, TrailCoords2.natomasPts, "TBA", "icon_natomas", "natomas", "natomas",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.natomas));
         trailHashMap.put("Wolf Ranch Wildlife Sanctuary",
                 new Trail("Wolf Ranch Wildlife Sanctuary",
-                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "TBA", "icon_wolf", "wolf", "wolf",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Bufferlands",
                 new Trail("Bufferlands",
-                        TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "TBA", "icon_bufferlands", "bufferlands", "bufferlands",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Cosumnes River Preserve",
                 new Trail("Cosumnes River Preserve",
-                        TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "TBA", "icon_cosumnes", "cosumnes", "cosumnes",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Rancho Seco RA",
                 new Trail("Rancho Seco RA",
-                        TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "TBA", "icon_rancho", "rancho", "rancho",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("The Howard Ranch Trail",
                 new Trail("The Howard Ranch Trail",
-                        TrailCoords2.howardLot, TrailCoords2.howardPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.howardLot, TrailCoords2.howardPts, "TBA", "icon_howard", "howard", "howard",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Delta Loop",
                 new Trail("Delta Loop",
-                        TrailCoords2.deltaLot, TrailCoords2.deltaPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.deltaLot, TrailCoords2.deltaPts, "TBA", "icon_delta", "delta", "delta",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Korth’s Marina",
                 new Trail("Korth’s Marina",
-                        TrailCoords2.korthsLot, TrailCoords2.korthsPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.korthsLot, TrailCoords2.korthsPts, "TBA", "icon_korths", "korths", "korths",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Sherman Island",
                 new Trail("Sherman Island",
-                        TrailCoords2.shermanLot, TrailCoords2.shermanPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.shermanLot, TrailCoords2.shermanPts, "TBA", "icon_sherman", "sherman", "sherman",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Brannan Island",
                 new Trail("Brannan Island",
-                        TrailCoords2.brannanLot, TrailCoords2.brannanPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.brannanLot, TrailCoords2.brannanPts, "TBA", "icon_brannan", "brannan", "brannan",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Eddo’s RV Park",
                 new Trail("Eddo’s RV Park",
-                        TrailCoords2.eddosLot, TrailCoords2.eddosPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.eddosLot, TrailCoords2.eddosPts, "TBA", "icon_eddos", "eddos", "eddos",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Mather Lake",
                 new Trail("Mather Lake",
-                        TrailCoords2.matherLot, TrailCoords2.matherPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.matherLot, TrailCoords2.matherPts, "TBA", "icon_mather", "mather", "mather",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("White Rock and Payen Roads",
                 new Trail("White Rock and Payen Roads",
-                        TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "TBA", "icon_white_rock", "white_rock", "white_rock",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Scott Road",
                 new Trail("Scott Road",
-                        TrailCoords2.scottLot, TrailCoords2.scottPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.scottLot, TrailCoords2.scottPts, "TBA", "icon_scott", "scott", "scott",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Latrobe Road (Deer Creek Hills)",
                 new Trail("Latrobe Road (Deer Creek Hills)",
-                        TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "TBA", "icon_latrobe", "latrobe", "latrobe",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Michigan Bar",
                 new Trail("Michigan Bar",
-                        TrailCoords2.michiganLot, TrailCoords2.michiganPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.michiganLot, TrailCoords2.michiganPts, "TBA", "icon_michigan", "michigan", "michigan",
                         "TBA",
                         "TBA",
                         "TBA",
                         false, false, TrailBirds.riverside));
         trailHashMap.put("Meiss Road",
                 new Trail("Meiss Road",
-                        TrailCoords2.meissLot, TrailCoords2.meissPts, "TBA", "icon_", "r", "r",
+                        TrailCoords2.meissLot, TrailCoords2.meissPts, "TBA", "icon_meiss", "meiss", "meiss",
+                        "TBA",
+                        "TBA",
+                        "TBA",
+                        false, false, TrailBirds.riverside));
+        trailHashMap.put("Stone Lake",
+                new Trail("Stone Lake",
+                        TrailCoords2.stoneLot, TrailCoords2.stonePts, "TBA", "icon_stone", "stone", "stone",
                         "TBA",
                         "TBA",
                         "TBA",
@@ -402,70 +409,70 @@ public class TrailData {
                             "TBA",
                             "TBA",
                             "TBA",
-                            false, false, TrailBirds.riverside));
+                            false, false, TrailBirds.nimbusFlat));
         trailHashMap.put("Lake Overlook Access",
                 new Trail("Lake Overlook Access",
                         TrailCoords2.overlookLot, TrailCoords2.overlookPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.overlook));
         trailHashMap.put("Willow Creek Access",
                 new Trail("Willow Creek Access",
                         TrailCoords2.willowLot, TrailCoords2.willowPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.willow));
         trailHashMap.put("Negro Bar",
                 new Trail("Negro Bar",
                         TrailCoords2.negroLot, TrailCoords2.negroPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.negro));
         trailHashMap.put("Folsom Rodeo Grounds",
                 new Trail("Folsom Rodeo Grounds",
                         TrailCoords2.rodeoLot, TrailCoords2.rodeoPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.rodeo));
         trailHashMap.put("Folsom Point",
                 new Trail("Folsom Point",
                         TrailCoords2.folsomPointLot, TrailCoords2.folsomPointPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Mormon Island Preserve",
                 new Trail("Mormon Island Preserve",
                         TrailCoords2.mormonPreserveLot, TrailCoords2.mormonPreservePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Mormon Island Lake Access",
                 new Trail("Mormon Island Lake Access",
                         TrailCoords2.mormonLakeLot, TrailCoords2.mormonLakePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Brown’s Ravine",
                 new Trail("Brown’s Ravine",
                         TrailCoords2.brownsLot, TrailCoords2.brownsPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Falcon Crest Lane",
                 new Trail("Falcon Crest Lane",
                         TrailCoords2.falconLot, TrailCoords2.falconPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Sweetwater Creek",
                 new Trail("Sweetwater Creek",
                         TrailCoords2.sweetwaterCreekLot, TrailCoords2.sweetwaterCreekPts, "TBA", "icon_", "r", "r",
@@ -479,14 +486,14 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPoint));
         trailHashMap.put("Beal’s Point",
                 new Trail("Beal’s Point",
                         TrailCoords2.bealsLot, TrailCoords2.bealsPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.beals));
         trailHashMap.put("Granite Bay Entrance",
                 new Trail("Granite Bay Entrance",
                         TrailCoords2.graniteLot, TrailCoords2.granitePts, "TBA", "icon_", "r", "r",
@@ -500,21 +507,21 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.beeks));
         trailHashMap.put("Pioneer Express Trail",
                 new Trail("Pioneer Express Trail",
                         TrailCoords2.pioneerLot, TrailCoords2.pioneerPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.pioneer));
         trailHashMap.put("Folsom Lake Peninsula",
                 new Trail("Folsom Lake Peninsula",
                         TrailCoords2.folsomPeninsulaLot, TrailCoords2.folsomPeninsulaPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.folsomPeninsula));
 
         ///////////////////////////////////////
 
