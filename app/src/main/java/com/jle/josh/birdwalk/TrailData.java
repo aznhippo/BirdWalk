@@ -287,28 +287,28 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.wolf));
         trailHashMap.put("Bufferlands",
                 new Trail("Bufferlands",
                         TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "TBA", "icon_bufferlands", "bufferlands", "bufferlands",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.bufferlands));
         trailHashMap.put("Cosumnes River Preserve",
                 new Trail("Cosumnes River Preserve",
                         TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "TBA", "icon_cosumnes", "cosumnes", "cosumnes",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.cosumnes));
         trailHashMap.put("Rancho Seco RA",
                 new Trail("Rancho Seco RA",
                         TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "TBA", "icon_rancho", "rancho", "rancho",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.rancho));
         trailHashMap.put("The Howard Ranch Trail",
                 new Trail("The Howard Ranch Trail",
                         TrailCoords2.howardLot, TrailCoords2.howardPts, "TBA", "icon_howard", "howard", "howard",
@@ -357,49 +357,49 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.mather));
         trailHashMap.put("White Rock and Payen Roads",
                 new Trail("White Rock and Payen Roads",
                         TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "TBA", "icon_white_rock", "white_rock", "white_rock",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.whiteRock));
         trailHashMap.put("Scott Road",
                 new Trail("Scott Road",
                         TrailCoords2.scottLot, TrailCoords2.scottPts, "TBA", "icon_scott", "scott", "scott",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.scott));
         trailHashMap.put("Latrobe Road (Deer Creek Hills)",
                 new Trail("Latrobe Road (Deer Creek Hills)",
                         TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "TBA", "icon_latrobe", "latrobe", "latrobe",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.latrobe));
         trailHashMap.put("Michigan Bar",
                 new Trail("Michigan Bar",
                         TrailCoords2.michiganLot, TrailCoords2.michiganPts, "TBA", "icon_michigan", "michigan", "michigan",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.michigan));
         trailHashMap.put("Meiss Road",
                 new Trail("Meiss Road",
                         TrailCoords2.meissLot, TrailCoords2.meissPts, "TBA", "icon_meiss", "meiss", "meiss",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.meiss));
         trailHashMap.put("Stone Lake",
                 new Trail("Stone Lake",
                         TrailCoords2.stoneLot, TrailCoords2.stonePts, "TBA", "icon_stone", "stone", "stone",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.noBirds));
+                        false, false, TrailBirds.stone));
 
 
         ////////////
