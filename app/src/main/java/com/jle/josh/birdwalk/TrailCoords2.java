@@ -465,6 +465,10 @@ public class TrailCoords2 {
         static LatLng[] meissPts = {
                 new LatLng(38.474144, -121.171418),
         };
+        static LatLng stoneLot = new LatLng (38.369909,-121.495490);
+        static LatLng[] stonePts = {
+                new LatLng(38.369909,-121.495490),
+        };
 
         //////////////
         static LatLng nimbusFlatLot = new LatLng (38.635550,-121.216856);
@@ -578,9 +582,9 @@ public class TrailCoords2 {
         static LatLng[] solanoPts = {
                 new LatLng(38.491671, -122.027794),
         };
-        static LatLng stebbinsLot = new LatLng (38.509425, 38.509425);
+        static LatLng stebbinsLot = new LatLng (38.509425, -122.0969303);
         static LatLng[] stebbinsPts = {
-                new LatLng(38.509425, 38.509425),
+                new LatLng(38.509425, -122.0969303),
         };
         static LatLng robinsonLot = new LatLng (38.241726, -121.805278);
         static LatLng[] robinsonPts = {
@@ -638,9 +642,9 @@ public class TrailCoords2 {
         static LatLng[] mosquitoPts = {
                 new LatLng(39.019104, -120.825908),
         };
-        static LatLng rivertonLot = new LatLng (38.769649, 38.769649);
+        static LatLng rivertonLot = new LatLng (38.769649, -120.447327);
         static LatLng[] rivertonPts = {
-                new LatLng(38.769649, 38.769649),
+                new LatLng(38.769649, -120.447327),
         };
 
         ////////////////////////////////

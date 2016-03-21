@@ -287,119 +287,119 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Bufferlands",
                 new Trail("Bufferlands",
                         TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "TBA", "icon_bufferlands", "bufferlands", "bufferlands",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Cosumnes River Preserve",
                 new Trail("Cosumnes River Preserve",
                         TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "TBA", "icon_cosumnes", "cosumnes", "cosumnes",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Rancho Seco RA",
                 new Trail("Rancho Seco RA",
                         TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "TBA", "icon_rancho", "rancho", "rancho",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("The Howard Ranch Trail",
                 new Trail("The Howard Ranch Trail",
                         TrailCoords2.howardLot, TrailCoords2.howardPts, "TBA", "icon_howard", "howard", "howard",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Delta Loop",
                 new Trail("Delta Loop",
                         TrailCoords2.deltaLot, TrailCoords2.deltaPts, "TBA", "icon_delta", "delta", "delta",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Korth’s Marina",
                 new Trail("Korth’s Marina",
                         TrailCoords2.korthsLot, TrailCoords2.korthsPts, "TBA", "icon_korths", "korths", "korths",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Sherman Island",
                 new Trail("Sherman Island",
                         TrailCoords2.shermanLot, TrailCoords2.shermanPts, "TBA", "icon_sherman", "sherman", "sherman",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Brannan Island",
                 new Trail("Brannan Island",
                         TrailCoords2.brannanLot, TrailCoords2.brannanPts, "TBA", "icon_brannan", "brannan", "brannan",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Eddo’s RV Park",
                 new Trail("Eddo’s RV Park",
                         TrailCoords2.eddosLot, TrailCoords2.eddosPts, "TBA", "icon_eddos", "eddos", "eddos",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Mather Lake",
                 new Trail("Mather Lake",
                         TrailCoords2.matherLot, TrailCoords2.matherPts, "TBA", "icon_mather", "mather", "mather",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("White Rock and Payen Roads",
                 new Trail("White Rock and Payen Roads",
                         TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "TBA", "icon_white_rock", "white_rock", "white_rock",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Scott Road",
                 new Trail("Scott Road",
                         TrailCoords2.scottLot, TrailCoords2.scottPts, "TBA", "icon_scott", "scott", "scott",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Latrobe Road (Deer Creek Hills)",
                 new Trail("Latrobe Road (Deer Creek Hills)",
                         TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "TBA", "icon_latrobe", "latrobe", "latrobe",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Michigan Bar",
                 new Trail("Michigan Bar",
                         TrailCoords2.michiganLot, TrailCoords2.michiganPts, "TBA", "icon_michigan", "michigan", "michigan",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Meiss Road",
                 new Trail("Meiss Road",
                         TrailCoords2.meissLot, TrailCoords2.meissPts, "TBA", "icon_meiss", "meiss", "meiss",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Stone Lake",
                 new Trail("Stone Lake",
                         TrailCoords2.stoneLot, TrailCoords2.stonePts, "TBA", "icon_stone", "stone", "stone",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
 
 
         ////////////
@@ -479,7 +479,7 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Sweetwater Trail",
                 new Trail("Sweetwater Trail",
                         TrailCoords2.sweetwaterTrailLot, TrailCoords2.sweetwaterTrailPts, "TBA", "icon_", "r", "r",
@@ -500,7 +500,7 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Beek’s Bight",
                 new Trail("Beek’s Bight",
                         TrailCoords2.beeksLot, TrailCoords2.beeksPts, "TBA", "icon_", "r", "r",
@@ -531,182 +531,182 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.brewer));
         trailHashMap.put("Bobelaine Audobon Sanctuary",
                 new Trail("Bobelaine Audobon Sanctuary",
                         TrailCoords2.bobelaineLot, TrailCoords2.bobelainePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.bobelaine));
         trailHashMap.put("Sand Creek Road",
                 new Trail("Sand Creek Road",
                         TrailCoords2.sandCreekLot, TrailCoords2.sandCreekPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.sandCreek));
         trailHashMap.put("Bear Valley",
                 new Trail("Bear Valley",
                         TrailCoords2.bearValleyLot, TrailCoords2.bearValleyPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.bearValley));
         trailHashMap.put("Gray Lodge Wildlife Area",
                 new Trail("Gray Lodge Wildlife Area",
                         TrailCoords2.grayLodgeLot, TrailCoords2.grayLodgePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.grayLodge));
         trailHashMap.put("Woodbridge Ecological Reserve",
                 new Trail("Woodbridge Ecological Reserve",
                         TrailCoords2.woodbridgeEcoLot, TrailCoords2.woodbridgeEcoPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.woodbridgeEco));
         trailHashMap.put("Staten Island",
                 new Trail("Staten Island",
                         TrailCoords2.statenLot, TrailCoords2.statenPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Woodbridge Regional Park",
                 new Trail("Woodbridge Regional Park",
                         TrailCoords2.woodbridgeParkLot, TrailCoords2.woodbridgeParkPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.woodbridgePark));
         trailHashMap.put("Lodi Lake",
                 new Trail("Lodi Lake",
                         TrailCoords2.lodiLot, TrailCoords2.lodiPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.lodi));
         trailHashMap.put("Lake Solano Park",
                 new Trail("Lake Solano Park",
                         TrailCoords2.solanoLot, TrailCoords2.solanoPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.solano));
         trailHashMap.put("Stebbins Cold Canyon Reserve",
                 new Trail("Stebbins Cold Canyon Reserve",
                         TrailCoords2.stebbinsLot, TrailCoords2.stebbinsPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.stebbins));
         trailHashMap.put("Robinson Road",
                 new Trail("Robinson Road",
                         TrailCoords2.robinsonLot, TrailCoords2.robinsonPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.robinson));
         trailHashMap.put("Lagoon Valley Regional Park",
                 new Trail("Lagoon Valley Regional Park",
                         TrailCoords2.lagoonLot, TrailCoords2.lagoonPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.lagoon));
         trailHashMap.put("New York Creek, El Dorado Hills",
                 new Trail("New York Creek, El Dorado Hills",
                         TrailCoords2.newYorkLot, TrailCoords2.newYorkPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.newYork));
         trailHashMap.put("Cronan Ranch Regional Trails Park",
                 new Trail("Cronan Ranch Regional Trails Park",
                         TrailCoords2.cronanLot, TrailCoords2.cronanPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.cronan));
         trailHashMap.put("Greenwood Unit",
                 new Trail("Greenwood Unit",
                         TrailCoords2.greenwoodLot, TrailCoords2.greenwoodPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.greenwood));
         trailHashMap.put("Marshall Gold Discovery State Historic Park",
                 new Trail("Marshall Gold Discovery State Historic Park",
                         TrailCoords2.marshallLot, TrailCoords2.marshallPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.marshall));
         trailHashMap.put("Dave Moore Nature Area",
                 new Trail("Dave Moore Nature Area",
                         TrailCoords2.daveLot, TrailCoords2.davePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.dave));
         trailHashMap.put("Old Stage Road Trailhead",
                 new Trail("Old Stage Road Trailhead",
                         TrailCoords2.oldStageLot, TrailCoords2.oldStagePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.oldStage));
         trailHashMap.put("Old Foresthill Road",
                 new Trail("Old Foresthill Road",
                         TrailCoords2.oldForesthillLot, TrailCoords2.oldForesthillPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Old Quarry Road",
                 new Trail("Old Quarry Road",
                         TrailCoords2.oldQuarryLot, TrailCoords2.oldQuarryPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("No Hands Bridge",
                 new Trail("No Hands Bridge",
                         TrailCoords2.noHandsLot, TrailCoords2.noHandsPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Lake Clementine",
                 new Trail("Lake Clementine",
                         TrailCoords2.clementineLot, TrailCoords2.clementinePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.clementine));
         trailHashMap.put("Driver’s Flat",
                 new Trail("Driver’s Flat",
                         TrailCoords2.driversLot, TrailCoords2.driversPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.drivers));
         trailHashMap.put("Mosquito Ridge Road",
                 new Trail("Mosquito Ridge Road",
                         TrailCoords2.mosquitoLot, TrailCoords2.mosquitoPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Riverton-Crystal Basin Area",
                 new Trail("Riverton-Crystal Basin Area",
                         TrailCoords2.rivertonLot, TrailCoords2.rivertonPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.riverton));
 
 
         /////////////////////
@@ -716,112 +716,112 @@ public class TrailData {
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.yolo));
         trailHashMap.put("Wood Ducks Pond",
                 new Trail("Wood Ducks Pond",
                         TrailCoords2.woodDucksLot, TrailCoords2.woodDucksPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.woodDucks));
         trailHashMap.put("Babel Slough Road",
                 new Trail("Babel Slough Road",
                         TrailCoords2.babelLot, TrailCoords2.babelPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.babel));
         trailHashMap.put("UCD, Davis Arboretum",
                 new Trail("UCD, Davis Arboretum",
                         TrailCoords2.arboretumLot, TrailCoords2.arboretumPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.arboretum));
         trailHashMap.put("Putah Creek Riparian Preserve",
                 new Trail("Putah Creek Riparian Preserve",
                         TrailCoords2.putahLot, TrailCoords2.putahPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Slide Hill Park",
                 new Trail("Slide Hill Park",
                         TrailCoords2.slideLot, TrailCoords2.slidePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.slide));
         trailHashMap.put("North Pond",
                 new Trail("North Pond",
                         TrailCoords2.northPondLot, TrailCoords2.northPondPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.northPond));
         trailHashMap.put("North Davis Farms",
                 new Trail("North Davis Farms",
                         TrailCoords2.northDavisLot, TrailCoords2.northDavisPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.noBirds));
         trailHashMap.put("Wildhorse Golf Course",
                 new Trail("Wildhorse Golf Course",
                         TrailCoords2.wildhorseLot, TrailCoords2.wildhorsePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.wildhorse));
         trailHashMap.put("Willow Bank Ditch",
                 new Trail("Willow Bank Ditch",
                         TrailCoords2.willowBankLot, TrailCoords2.willowBankPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.willowBank));
         trailHashMap.put("Davis Wastewater Treatment Plant",
                 new Trail("Davis Wastewater Treatment Plant",
                         TrailCoords2.wastewaterLot, TrailCoords2.wastewaterPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.wastewater));
         trailHashMap.put("City of Davis Wetlands",
                 new Trail("City of Davis Wetlands",
                         TrailCoords2.wetlandsLot, TrailCoords2.wetlandsPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.wetlands));
         trailHashMap.put("Yolo Egret and Heron Rookery",
                 new Trail("Yolo Egret and Heron Rookery",
                         TrailCoords2.rookeryLot, TrailCoords2.rookeryPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.rookery));
         trailHashMap.put("Woodland Waste Water Treatment Plant",
                 new Trail("Woodland Waste Water Treatment Plant",
                         TrailCoords2.woodlandLot, TrailCoords2.woodlandPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.woodland));
         trailHashMap.put("Dunnigan Hills, Longspur Corner",
                 new Trail("Dunnigan Hills, Longspur Corner",
                         TrailCoords2.dunniganLot, TrailCoords2.dunniganPts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.dunnigan));
         trailHashMap.put("Rayhouse Road",
                 new Trail("Rayhouse Road",
                         TrailCoords2.rayhouseLot, TrailCoords2.rayhousePts, "TBA", "icon_", "r", "r",
                         "TBA",
                         "TBA",
                         "TBA",
-                        false, false, TrailBirds.riverside));
+                        false, false, TrailBirds.rayhouse));
 
 
 
