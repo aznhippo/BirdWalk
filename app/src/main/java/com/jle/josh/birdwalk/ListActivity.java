@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,9 +27,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -141,18 +147,43 @@ public class ListActivity extends AppCompatActivity {
     public void performSearch(String query){
         trailList.clear();
 
-        //check each trail's title, birds
-        for (Map.Entry<String, Trail> entry : map.entrySet()) {
-            String title = entry.getKey();
-            String birds = entry.getValue().birdText();
-            Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
-            Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
-            if (inBirds || inTitle){
-                trailList.add(entry.getValue());
+        //check for trails without narratives
+        if (query.equals("nonarr")){
+            AssetManager mg = getResources().getAssets();
+            List<String> list = null;
+            try{
+                list = Arrays.asList(getResources().getAssets().list(""));
+            } catch (IOException e){
+
             }
+
+
+            for (Map.Entry<String, Trail> entry : map.entrySet()) {
+                String assetPath = "file:///android_asset/" + entry.getValue().getExcName() + ".html";
+
+                if (!list.contains(entry.getValue().getExcName() + ".html")){
+                    trailList.add(entry.getValue());
+                }
+
+            }
+            Collections.sort(trailList, Trail.TrailComparatorName);
+            trailAdapter.notifyDataSetChanged();
         }
-        Collections.sort(trailList, Trail.TrailComparatorName);
-        trailAdapter.notifyDataSetChanged();
+
+        else {
+            //check each trail's title, birds
+            for (Map.Entry<String, Trail> entry : map.entrySet()) {
+                String title = entry.getKey();
+                String birds = entry.getValue().birdText();
+                Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
+                Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
+                if (inBirds || inTitle) {
+                    trailList.add(entry.getValue());
+                }
+            }
+            Collections.sort(trailList, Trail.TrailComparatorName);
+            trailAdapter.notifyDataSetChanged();
+        }
     }
 
     //delete the editText field, and show all trails
@@ -193,6 +224,7 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
+    //show the legend of icons
     public void showLegend(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater)
