@@ -149,22 +149,15 @@ public class ListActivity extends AppCompatActivity {
 
         //check for trails without narratives
         if (query.equals("nonarr")){
-            AssetManager mg = getResources().getAssets();
             List<String> list = null;
             try{
                 list = Arrays.asList(getResources().getAssets().list(""));
             } catch (IOException e){
-
             }
 
-
             for (Map.Entry<String, Trail> entry : map.entrySet()) {
-                String assetPath = "file:///android_asset/" + entry.getValue().getExcName() + ".html";
-
-                if (!list.contains(entry.getValue().getExcName() + ".html")){
+                if (!list.contains(entry.getValue().getExcName() + ".html"))
                     trailList.add(entry.getValue());
-                }
-
             }
             Collections.sort(trailList, Trail.TrailComparatorName);
             trailAdapter.notifyDataSetChanged();
