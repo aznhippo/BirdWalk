@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -344,6 +345,24 @@ public class TrailActivity extends AppCompatActivity {
         intent.putExtra("fromActivity", "TrailActivity");
         intent.putExtra("resName", trail.getExcName());
         intent.putExtra("trailName", trailName);
+        startActivity(intent);
+    }
+
+    public void showSubmit(View view){
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.submit_pics, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
+    }
+
+    public void launchSubmit(View view){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"birdwalk.app@gmail.com"});
         startActivity(intent);
     }
 
