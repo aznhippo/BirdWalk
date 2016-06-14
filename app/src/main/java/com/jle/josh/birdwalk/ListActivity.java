@@ -106,7 +106,9 @@ public class ListActivity extends AppCompatActivity {
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (input.getText().toString().equals(""))
@@ -114,8 +116,10 @@ public class ListActivity extends AppCompatActivity {
                 else
                     clearButton.setVisibility(View.VISIBLE);
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         //perform search for selected suggestion
         input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -227,6 +231,22 @@ public class ListActivity extends AppCompatActivity {
         AlertDialog ad = builder.create();
         ad.show();
 
+    }
+
+    public void showSubmit(View view){
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.submit_pics, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
+    }
+
+    public void launchSubmit(View view){
+        Intent intent = new Intent(this, UploadActivity.class);
+        startActivity(intent);
     }
 
     static class TrailAdapter extends ArrayAdapter<Trail> {

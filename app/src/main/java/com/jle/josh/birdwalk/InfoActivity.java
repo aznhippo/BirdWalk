@@ -1,5 +1,6 @@
 package com.jle.josh.birdwalk;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -75,5 +77,21 @@ public class InfoActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "BirdWalk App");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
+    public void showSubmit(View view){
+        LayoutInflater inflater = (LayoutInflater)
+                this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.submit_pics, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(v);
+        AlertDialog ad = builder.create();
+        ad.show();
+    }
+
+    public void launchSubmit(View view){
+        Intent intent = new Intent(this, UploadActivity.class);
+        startActivity(intent);
     }
 }

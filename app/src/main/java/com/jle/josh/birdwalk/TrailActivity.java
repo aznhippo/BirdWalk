@@ -62,18 +62,18 @@ public class TrailActivity extends AppCompatActivity {
 
         //if a trail pic exists, set it as the background image
         ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
-        //iv.setImageResource(R.drawable.bg_trail);
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(trail.getBgName());
-
-            int drawableId = field.getInt(null);
-            iv.setImageResource(drawableId);
-        }
-        catch (Exception e) {
-            //Log.e("MyTag", "Failure to get drawable id.", e);
-            iv.setImageResource(R.drawable.bg_trail);
-        }
+        iv.setImageResource(R.drawable.bg_trail);
+//        try {
+//            Class res = R.drawable.class;
+//            Field field = res.getField(trail.getBgName());
+//
+//            int drawableId = field.getInt(null);
+//            iv.setImageResource(drawableId);
+//        }
+//        catch (Exception e) {
+//            //Log.e("MyTag", "Failure to get drawable id.", e);
+//            iv.setImageResource(R.drawable.bg_trail);
+//        }
 
         setUpMapIfNeeded();
         setUpInfo();
@@ -204,7 +204,7 @@ public class TrailActivity extends AppCompatActivity {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //special case, disjointed points
-        else if (trail.getTrailName().equals("Green Haven Lake")){
+        else if (trail.getTrailName().equals("Green Haven Lake") || trail.getTrailName().equals("Rough Winged Swallows Sites")){
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (int i = 0; i < trail.numPoints(); i++) {
                 mMap.addMarker(new MarkerOptions().position(trail.getPoints()[i])
@@ -360,9 +360,7 @@ public class TrailActivity extends AppCompatActivity {
     }
 
     public void launchSubmit(View view){
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("plain/text");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"birdwalk.app@gmail.com"});
+        Intent intent = new Intent(this, UploadActivity.class);
         startActivity(intent);
     }
 

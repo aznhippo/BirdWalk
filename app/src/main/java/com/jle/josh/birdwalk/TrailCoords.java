@@ -1521,16 +1521,19 @@ public class TrailCoords {
 
     static LatLng swallows1Lot = new LatLng(38.525773,-121.521545);
     static LatLng[] swallows1Pts = {
-            new LatLng(38.525773,-121.521545)
-    };
-    static LatLng swallows2Lot = new LatLng(38.523123,-121.521359);
-    static LatLng[] swallows2Pts = {
-            new LatLng(38.523123,-121.521359)
-    };
-    static LatLng swallows3Lot = new LatLng(38.516309, -121.522323);
-    static LatLng[] swallows3Pts = {
+            new LatLng(38.525773,-121.521545),
+            new LatLng(38.523123,-121.521359),
             new LatLng(38.516309, -121.522323)
+
     };
+//    static LatLng swallows2Lot = new LatLng(38.523123,-121.521359);
+//    static LatLng[] swallows2Pts = {
+//            new LatLng(38.523123,-121.521359)
+//    };
+//    static LatLng swallows3Lot = new LatLng(38.516309, -121.522323);
+//    static LatLng[] swallows3Pts = {
+//            new LatLng(38.516309, -121.522323)
+//    };
 
     static LatLng willParkLot = new LatLng(38.54691520318332,-121.5061285788549);
     static LatLng[] willParkPts = {

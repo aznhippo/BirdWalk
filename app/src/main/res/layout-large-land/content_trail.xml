@@ -223,7 +223,7 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
-                    android:text="Read More..."
+                    android:text="Read More"
                     android:id="@+id/excerpt"
                     android:onClick="launchExcerpt"
                     android:layout_alignParentBottom="true"

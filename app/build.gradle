@@ -26,4 +26,7 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.google.maps.android:android-maps-utils:0.3+'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile files('libs/android-async-http-1.4.9.jar')
+    compile files('libs/httpclient-4.3.6.jar')
 }

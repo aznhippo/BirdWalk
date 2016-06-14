@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="If you have pictures of any of the trails in BirdWalk, please send them to us and we can add them into the app!"
+        android:text="If you have pictures of any of the trails without pictures in BirdWalk, please send them to us and we can add them into the app!"
         android:id="@+id/textView5"
         android:layout_gravity="center_horizontal"
         android:paddingTop="10dp"

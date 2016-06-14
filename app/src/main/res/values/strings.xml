@@ -13,4 +13,5 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_upload">UploadActivity</string>
 </resources>
