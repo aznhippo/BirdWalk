@@ -1,10 +1,9 @@
 package com.jle.josh.birdwalk;
+
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -13,61 +12,62 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Base64;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+public class UploadActivity extends AppCompatActivity {
 
-public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String UPLOAD_URL = "http://birdwalk.hopto.org/upload.php";
     public static final String UPLOAD_KEY = "image";
-    public static final String TAG = "MY MESSAGE";
 
     private int PICK_IMAGE_REQUEST = 1;
-
-    private Button buttonChoose;
-    private Button buttonUpload;
-    private Button buttonView;
 
     private ImageView imageView;
 
     private Bitmap bitmap;
-
     private Uri filePath;
+
+    private Boolean imagePicked = false;
 
     private static final int READ_EXTERNAL_STORAGE_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.upload);
-
-        buttonChoose = (Button) findViewById(R.id.buttonChoose);
-        buttonUpload = (Button) findViewById(R.id.buttonUpload);
-        buttonView = (Button) findViewById(R.id.buttonViewImage);
+        setContentView(R.layout.activity_upload);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Upload Your Trail Picture");
 
         imageView = (ImageView) findViewById(R.id.imageView);
 
         requestStoragePermission();
-
-        buttonChoose.setOnClickListener(this);
-        buttonUpload.setOnClickListener(this);
+        setUpSearchField();
     }
 
     private void requestStoragePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {
-        return;
+            return;
         } else {
             // Show rationale and request permission.
 //            showMissingPermissionError();
@@ -83,16 +83,16 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         if (requestCode != READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
             return;
         }
-
-        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-        } else {
-            // Display the missing permission error dialog when the fragments resume.
-        }
+//
+//        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
+//                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+//
+//        } else {
+//            // Display the missing permission error dialog when the fragments resume.
+//        }
     }
 
-    private void showFileChooser() {
+    public void showFileChooser(View v) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -109,6 +109,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
+                imagePicked = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -123,9 +124,14 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         return encodedImage;
     }
 
-    private void uploadImage(){
-        class UploadImage extends AsyncTask<Bitmap,Void,String>{
+    public void uploadImage(View v){
+        if (!imagePicked) {
+            Toast.makeText(getApplicationContext(),"No image selected",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+
+        class UploadImage extends AsyncTask<Bitmap,Void,String>{
             ProgressDialog loading;
             RequestHandler rh = new RequestHandler();
 
@@ -150,8 +156,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 HashMap<String,String> data = new HashMap<>();
                 data.put(UPLOAD_KEY, uploadImage);
 
-                String fileNameSegs[] = filePath.toString().split("/");
-
+                File myFile = new File(filePath.toString());
+                String fileNameSegs[] = myFile.getAbsolutePath().split("/");
                 data.put("filename", fileNameSegs[fileNameSegs.length-1]);
 
                 String result = rh.sendPostRequest(UPLOAD_URL,data);
@@ -164,13 +170,73 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         ui.execute(bitmap);
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == buttonChoose) {
-            showFileChooser();
-        }
-        if(v == buttonUpload){
-            uploadImage();
-        }
+
+    public void setUpSearchField(){
+        //set up search field listeners
+        final Button clearButton = (Button) findViewById(R.id.clear_search);
+        clearButton.setVisibility(View.GONE);
+
+        Map<String, Trail> map = TrailData.trailHashMap;
+        Set<String> keys = map.keySet();
+        String[] trails = keys.toArray(new String[keys.size()]);
+//        String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
+//        for (int i=0; i<trails.length;i++){
+//            birdsAndTrails[i] = trails[i];
+//        }
+//        int k = trails.length;
+//        for (int j=0; j<TrailBirds.allBirds.length; j++){
+//            birdsAndTrails[k] = TrailBirds.allBirds[j];
+//            k++;
+//        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, trails);
+        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_trail);
+        input.setAdapter(adapter);
+        input.setThreshold(1);
+        input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
+
+        //hide button, when field is empty
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (input.getText().toString().equals(""))
+                    clearButton.setVisibility(View.GONE);
+                else
+                    clearButton.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //perform search for selected suggestion
+        input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (getCurrentFocus() != null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+            }
+        });
+//        //perform search, hide keyboard when 'search' is clicked
+//        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            //perform search, and hide keyboard
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (getCurrentFocus() != null) {
+//                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//                }
+//                return false;
+//            }
+//        });
     }
 }
