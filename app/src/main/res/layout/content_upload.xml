@@ -24,6 +24,7 @@
         android:singleLine="true"
         android:layout_marginBottom="7dp"
         android:drawableLeft="@android:drawable/ic_menu_search"
+        android:imeOptions="actionDone"
         />
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -68,7 +69,9 @@
         android:layout_marginBottom="7dp"
         android:background="#99ffffff"
         android:drawableLeft="@drawable/icon_contact"
-        android:gravity="center_vertical|center_horizontal" />
+        android:singleLine="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:imeOptions="actionDone"/>
 
 
     <Button

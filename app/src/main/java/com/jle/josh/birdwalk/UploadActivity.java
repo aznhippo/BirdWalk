@@ -38,7 +38,6 @@ import java.util.Set;
 public class UploadActivity extends AppCompatActivity {
 
     public static final String UPLOAD_URL = "http://birdwalk.hopto.org/upload.php";
-    public static final String UPLOAD_KEY = "image";
 
     private int PICK_IMAGE_REQUEST = 1;
 
@@ -66,6 +65,15 @@ public class UploadActivity extends AppCompatActivity {
         input = (AutoCompleteTextView) findViewById(R.id.search_trail);
         contact = (EditText) findViewById(R.id.contact);
 
+        Intent intent = this.getIntent();
+        if (intent != null) {
+            String intentString = intent.getExtras().getString("fromActivity");
+
+            if (intentString.equals("TrailActivity")) {
+                trailPicked = true;
+                input.setText(intent.getExtras().getString("trailName"));
+            }
+        }
 
         setUpSearchField();
     }
@@ -99,7 +107,7 @@ public class UploadActivity extends AppCompatActivity {
 //    }
 
     public void showFileChooser(View v) {
-        requestStoragePermission();
+//        requestStoragePermission();
 
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -169,13 +177,13 @@ public class UploadActivity extends AppCompatActivity {
                 String uploadImage = getStringImage(bitmap);
 
                 HashMap<String,String> data = new HashMap<>();
-                data.put(UPLOAD_KEY, uploadImage);
+                data.put("image", uploadImage);
 
                 File myFile = new File(filePath.toString());
                 String fileNameSegs[] = myFile.getAbsolutePath().split("/");
-                data.put("filename", fileNameSegs[fileNameSegs.length-1]);
+                data.put("imagename", fileNameSegs[fileNameSegs.length-1]);
                 data.put("trailname", trailName);
-                data.put("contactName", contactName);
+                data.put("contactname", contactName);
 
 
                 String result = rh.sendPostRequest(UPLOAD_URL,data);

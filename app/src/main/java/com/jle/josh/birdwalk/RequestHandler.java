@@ -74,6 +74,7 @@ public class RequestHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            response = "Error encountered, please try again";
         }
 
         return response;

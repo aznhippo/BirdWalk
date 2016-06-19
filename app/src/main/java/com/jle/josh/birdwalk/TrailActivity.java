@@ -368,6 +368,8 @@ public class TrailActivity extends AppCompatActivity {
 
     public void launchSubmit(View view){
         Intent intent = new Intent(this, UploadActivity.class);
+        intent.putExtra("fromActivity", "TrailActivity");
+        intent.putExtra("trailName", trailName);
         startActivity(intent);
     }
 
