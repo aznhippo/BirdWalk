@@ -32,8 +32,18 @@
             android:layout_gravity="right"
             android:layout_marginRight="15dp"
             android:background="?selectableItemBackground"
-            android:id="@+id/submitPics"
+            android:id="@+id/submitPic"
             android:onClick="showSubmit"/>
+
+        <ImageButton
+            android:src="@drawable/button_show_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:background="?selectableItemBackground"
+            android:id="@+id/showPic"
+            android:onClick="showPicture"/>
         </android.support.v7.widget.Toolbar>
 
 

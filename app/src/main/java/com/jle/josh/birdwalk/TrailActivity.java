@@ -2,10 +2,14 @@ package com.jle.josh.birdwalk;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,8 +19,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,27 +61,26 @@ public class TrailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         trailName = intent.getExtras().getString("trailKey");
-
         trail = TrailData.getValue(trailName);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(trailName);
         setSupportActionBar(toolbar);
 
-        //if a trail pic exists, set it as the background image
-        ImageView iv = (ImageView) this.findViewById(R.id.trail_image);
-        iv.setImageResource(R.drawable.bg_trail);
-//        try {
-//            Class res = R.drawable.class;
-//            Field field = res.getField(trail.getBgName());
-//
-//            int drawableId = field.getInt(null);
-//            iv.setImageResource(drawableId);
-//        }
-//        catch (Exception e) {
-//            //Log.e("MyTag", "Failure to get drawable id.", e);
-//            iv.setImageResource(R.drawable.bg_trail);
-//        }
+        //if a trail pic exists, set up correct button
+        ImageButton ib;
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(trail.getBgName());
+            int drawableId = field.getInt(null);
+            ib = (ImageButton) findViewById(R.id.submitPic);
+            ib.setVisibility(View.GONE);
+        }
+        catch (Exception e) {
+            //Log.e("MyTag", "Failure to get drawable id.", e);
+            ib = (ImageButton) findViewById(R.id.showPic);
+            ib.setVisibility(View.GONE);
+        }
 
         setUpMapIfNeeded();
         setUpInfo();
@@ -301,7 +308,7 @@ public class TrailActivity extends AppCompatActivity {
             tv2.setText("Birding Viewpoint");
         }
         //special case
-        else if (trail.getTrailName().equals("Green Haven Lake")) {
+        else if (trail.getTrailName().equals("Green Haven Lake") || trail.getTrailName().equals("Rough Winged Swallows Sites")) {
             len_icon.setImageResource(R.drawable.icon_pin);
             tv2.setText("Birding Viewpoints");
         }
@@ -363,5 +370,38 @@ public class TrailActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UploadActivity.class);
         startActivity(intent);
     }
+
+    public void showPicture(View view){
+        //http://stackoverflow.com/questions/7693633/android-image-dialog-popup
+        int drawableId = 0;
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(trail.getBgName());
+            drawableId = field.getInt(null);
+        }
+        catch (Exception e){
+            Toast.makeText(getApplicationContext(),"No picture for "+ trailName,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Dialog builder = new Dialog(this);
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        builder.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //nothing;
+            }
+        });
+
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(drawableId);
+        builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        builder.show();
+    }
+
+
 
 }

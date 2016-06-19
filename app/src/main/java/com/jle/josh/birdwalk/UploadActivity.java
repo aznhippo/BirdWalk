@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,6 @@ import java.util.Map;
 import java.util.Set;
 public class UploadActivity extends AppCompatActivity {
 
-
     public static final String UPLOAD_URL = "http://birdwalk.hopto.org/upload.php";
     public static final String UPLOAD_KEY = "image";
 
@@ -48,8 +48,12 @@ public class UploadActivity extends AppCompatActivity {
     private Uri filePath;
 
     private Boolean imagePicked = false;
+    private Boolean trailPicked = false;
 
     private static final int READ_EXTERNAL_STORAGE_PERMISSION_CODE = 1;
+
+    private AutoCompleteTextView input;
+    private EditText contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,10 @@ public class UploadActivity extends AppCompatActivity {
         toolbar.setTitle("Upload Your Trail Picture");
 
         imageView = (ImageView) findViewById(R.id.imageView);
+        input = (AutoCompleteTextView) findViewById(R.id.search_trail);
+        contact = (EditText) findViewById(R.id.contact);
 
-        requestStoragePermission();
+
         setUpSearchField();
     }
 
@@ -76,23 +82,25 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        //https://github.com/googlemaps/android-samples/blob/master/ApiDemos/app/src/main/java/com/example/mapdemo/MyLocationDemoActivity.java
-        if (requestCode != READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
-            return;
-        }
-//
-//        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-//                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//
-//        } else {
-//            // Display the missing permission error dialog when the fragments resume.
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        //https://github.com/googlemaps/android-samples/blob/master/ApiDemos/app/src/main/java/com/example/mapdemo/MyLocationDemoActivity.java
+//        if (requestCode != READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
+//            return;
 //        }
-    }
+////
+////        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
+////                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+////
+////        } else {
+////            // Display the missing permission error dialog when the fragments resume.
+////        }
+//    }
 
     public void showFileChooser(View v) {
+        requestStoragePermission();
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -129,6 +137,13 @@ public class UploadActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"No image selected",Toast.LENGTH_SHORT).show();
             return;
         }
+        else if (!trailPicked){
+            Toast.makeText(getApplicationContext(),"No trail selected",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        final String trailName = input.getText().toString();
+        final String contactName = contact.getText().toString();
 
 
         class UploadImage extends AsyncTask<Bitmap,Void,String>{
@@ -159,6 +174,9 @@ public class UploadActivity extends AppCompatActivity {
                 File myFile = new File(filePath.toString());
                 String fileNameSegs[] = myFile.getAbsolutePath().split("/");
                 data.put("filename", fileNameSegs[fileNameSegs.length-1]);
+                data.put("trailname", trailName);
+                data.put("contactName", contactName);
+
 
                 String result = rh.sendPostRequest(UPLOAD_URL,data);
 
@@ -170,7 +188,6 @@ public class UploadActivity extends AppCompatActivity {
         ui.execute(bitmap);
     }
 
-
     public void setUpSearchField(){
         //set up search field listeners
         final Button clearButton = (Button) findViewById(R.id.clear_search);
@@ -179,20 +196,10 @@ public class UploadActivity extends AppCompatActivity {
         Map<String, Trail> map = TrailData.trailHashMap;
         Set<String> keys = map.keySet();
         String[] trails = keys.toArray(new String[keys.size()]);
-//        String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
-//        for (int i=0; i<trails.length;i++){
-//            birdsAndTrails[i] = trails[i];
-//        }
-//        int k = trails.length;
-//        for (int j=0; j<TrailBirds.allBirds.length; j++){
-//            birdsAndTrails[k] = TrailBirds.allBirds[j];
-//            k++;
-//        }
-
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, trails);
-        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_trail);
+
         input.setAdapter(adapter);
         input.setThreshold(1);
         input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -216,7 +223,7 @@ public class UploadActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-        //perform search for selected suggestion
+        //set trailpicked to true
         input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -224,19 +231,24 @@ public class UploadActivity extends AppCompatActivity {
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
+                trailPicked = true;
             }
         });
-//        //perform search, hide keyboard when 'search' is clicked
-//        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            //perform search, and hide keyboard
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if (getCurrentFocus() != null) {
-//                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-//                }
-//                return false;
-//            }
-//        });
+        //perform search, hide keyboard when 'search' is clicked
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            //perform search, and hide keyboard
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (getCurrentFocus() != null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+    }
+
+    public void clearText(View v){
+        input.setText("");
     }
 }

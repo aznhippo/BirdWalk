@@ -15,7 +15,7 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by Belal on 8/19/2015.
+ * https://www.simplifiedcoding.net/android-upload-image-to-server-using-php-mysql/
  */
 
 public class RequestHandler {

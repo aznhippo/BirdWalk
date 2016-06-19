@@ -69,12 +69,12 @@ class Trail {
 
         public int compare(Trail s1, Trail s2) {
             String TrailLen1, TrailLen2;
-            if (s1.getLength().equals("n/a"))
+            if (s1.getLength().equals(""))
                 TrailLen1 = "0.00";
             else
                 TrailLen1 = s1.getLength();
 
-            if (s2.getLength().equals("n/a"))
+            if (s2.getLength().equals(""))
                 TrailLen2 = "0.00";
             else
                 TrailLen2 = s2.getLength();

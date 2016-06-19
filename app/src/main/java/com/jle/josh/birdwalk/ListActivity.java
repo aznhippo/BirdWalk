@@ -301,7 +301,7 @@ public class ListActivity extends AppCompatActivity {
                 holder.lengthText.setText("   Birding Viewpoint");
             }
             //special case
-            else if (trail.getTrailName().equals("Green Haven Lake")) {
+            else if (trail.getTrailName().equals("Green Haven Lake")|| trail.getTrailName().equals("Rough Winged Swallows Sites")) {
                 len_icon.setImageResource(R.drawable.icon_pin);
                 holder.lengthText.setText("   Birding Viewpoints");
             }
