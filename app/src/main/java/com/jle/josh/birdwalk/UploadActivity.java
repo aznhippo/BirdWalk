@@ -90,21 +90,6 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-//                                           @NonNull int[] grantResults) {
-//        //https://github.com/googlemaps/android-samples/blob/master/ApiDemos/app/src/main/java/com/example/mapdemo/MyLocationDemoActivity.java
-//        if (requestCode != READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
-//            return;
-//        }
-////
-////        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-////                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-////
-////        } else {
-////            // Display the missing permission error dialog when the fragments resume.
-////        }
-//    }
 
     public void showFileChooser(View v) {
 //        requestStoragePermission();
@@ -136,8 +121,7 @@ public class UploadActivity extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
     public void uploadImage(View v){
@@ -185,10 +169,7 @@ public class UploadActivity extends AppCompatActivity {
                 data.put("trailname", trailName);
                 data.put("contactname", contactName);
 
-
-                String result = rh.sendPostRequest(UPLOAD_URL,data);
-
-                return result;
+                return rh.sendPostRequest(UPLOAD_URL,data);
             }
         }
 
@@ -231,7 +212,7 @@ public class UploadActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-        //set trailpicked to true
+        //set trailpicked to true, hide keyboard
         input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -242,7 +223,7 @@ public class UploadActivity extends AppCompatActivity {
                 trailPicked = true;
             }
         });
-        //perform search, hide keyboard when 'search' is clicked
+        //hide keyboard when 'done' is clicked
         input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             //perform search, and hide keyboard

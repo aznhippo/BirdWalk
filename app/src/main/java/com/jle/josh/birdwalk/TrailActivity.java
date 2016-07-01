@@ -225,7 +225,7 @@ public class TrailActivity extends AppCompatActivity {
         else{
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             //build polygon
-            if (trail.isArea()){
+            if (trail.getTypeCode() == 2){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
                 for (LatLng l : trail.getPoints()) {
@@ -289,35 +289,75 @@ public class TrailActivity extends AppCompatActivity {
         //set length icon and text for loop, area, site, one-way
         TextView tv2 = (TextView) findViewById(R.id.distText);
         ImageView len_icon = (ImageView) findViewById(R.id.len_icon);
-        if (trail.isLoop()){
-            len_icon.setImageResource(R.drawable.icon_loop_1);
-            double length = computeLength(Arrays.asList(trail.getPoints()));
-            double miles = round(length * .000621371,2);
-            String distString = Double.toString(miles)+" miles";
-            tv2.setText(distString);
-        }
-        else if (trail.isArea()){
-            len_icon.setImageResource(R.drawable.icon_area3_1);
-            double area = computeArea(Arrays.asList(trail.getPoints()));
-            double sqmiles = round(area * .00000038610216,2);
-            String areaString = Double.toString(sqmiles)+" miles\u00b2";
-            tv2.setText(areaString);
-        }
-        else if (trail.singlePoint()){
-            len_icon.setImageResource(R.drawable.icon_pin);
-            tv2.setText("Birding Viewpoint");
-        }
-        //special case
-        else if (trail.getTrailName().equals("Green Haven Lake") || trail.getTrailName().equals("Rough Winged Swallows Sites")) {
-            len_icon.setImageResource(R.drawable.icon_pin);
-            tv2.setText("Birding Viewpoints");
-        }
-        else {
-            len_icon.setImageResource(R.drawable.icon_oneway_1);
-            double length = computeLength(Arrays.asList(trail.getPoints()));
-            double miles = round(length * .000621371,2);
-            String distString = Double.toString(miles)+" miles";
-            tv2.setText(distString);
+//        if (trail.isLoop()){
+//            len_icon.setImageResource(R.drawable.icon_loop_1);
+//            double length = computeLength(Arrays.asList(trail.getPoints()));
+//            double miles = round(length * .000621371,2);
+//            String distString = Double.toString(miles)+" miles";
+//            tv2.setText(distString);
+//        }
+//        else if (trail.isArea()){
+//            len_icon.setImageResource(R.drawable.icon_area3_1);
+//            double area = computeArea(Arrays.asList(trail.getPoints()));
+//            double sqmiles = round(area * .00000038610216,2);
+//            String areaString = Double.toString(sqmiles)+" miles\u00b2";
+//            tv2.setText(areaString);
+//        }
+//        else if (trail.singlePoint()){
+//            len_icon.setImageResource(R.drawable.icon_pin);
+//            tv2.setText("Birding Viewpoint");
+//        }
+//        //special case
+//        else if (trail.getTrailName().equals("Green Haven Lake") || trail.getTrailName().equals("Rough Winged Swallows Sites")) {
+//            len_icon.setImageResource(R.drawable.icon_pin);
+//            tv2.setText("Birding Viewpoints");
+//        }
+//        else {
+//            len_icon.setImageResource(R.drawable.icon_oneway_1);
+//            double length = computeLength(Arrays.asList(trail.getPoints()));
+//            double miles = round(length * .000621371,2);
+//            String distString = Double.toString(miles)+" miles";
+//            tv2.setText(distString);
+//        }
+
+        int typeCode = trail.getTypeCode();
+        switch (typeCode) {
+            case 0: if (trail.singlePoint()){
+                        len_icon.setImageResource(R.drawable.icon_pin);
+                        tv2.setText("Birding Viewpoint");
+                    }
+                    else {
+                        len_icon.setImageResource(R.drawable.icon_oneway_1);
+                        double length = computeLength(Arrays.asList(trail.getPoints()));
+                        double miles = round(length * .000621371,2);
+                        String distString = Double.toString(miles)+" miles";
+                        tv2.setText(distString);
+                    }
+                    break;
+            case 1: len_icon.setImageResource(R.drawable.icon_loop_1);
+                double length = computeLength(Arrays.asList(trail.getPoints()));
+                double miles = round(length * .000621371,2);
+                String distString = Double.toString(miles)+" miles";
+                tv2.setText(distString);
+                break;
+            case 2: len_icon.setImageResource(R.drawable.icon_area3_1);
+                double area = computeArea(Arrays.asList(trail.getPoints()));
+                double sqmiles = round(area * .00000038610216,2);
+                String areaString = Double.toString(sqmiles)+" miles\u00b2";
+                tv2.setText(areaString);
+                break;
+            case 3: len_icon.setImageResource(R.drawable.icon_pin);
+                tv2.setText("Birding Viewpoints");
+                break;
+            case 4: len_icon.setImageResource(R.drawable.icon_trailhead_1);
+                tv2.setText("Trailhead");
+                break;
+            case 5: len_icon.setImageResource(R.drawable.icon_drive_1);
+                double len = computeLength(Arrays.asList(trail.getPoints()));
+                double mi = round(len * .000621371,2);
+                String dist = Double.toString(mi)+" miles";
+                tv2.setText(dist);
+                break;
         }
     }
 

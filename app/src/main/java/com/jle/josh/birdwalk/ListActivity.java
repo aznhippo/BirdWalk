@@ -289,27 +289,58 @@ public class ListActivity extends AppCompatActivity {
             //set length icon for loop, area, site, one-way
             ImageView len_icon = (ImageView)row.findViewById(R.id.len_icon);
             len_icon.setVisibility(View.VISIBLE);
-            if (trail.isLoop()){
-                len_icon.setImageResource(R.drawable.icon_loop);
-                holder.lengthText.setText("   ".concat(trail.getLength()));
+
+            int typeCode = trail.getTypeCode();
+//            if (typeCode == 1){
+//                len_icon.setImageResource(R.drawable.icon_loop);
+//                holder.lengthText.setText("   ".concat(trail.getLength()));
+//            }
+//            else if (typeCode == 2){
+//                len_icon.setImageResource(R.drawable.icon_area3);
+//                holder.lengthText.setText("   ".concat(trail.getLength()));
+//            }
+//            else if (trail.singlePoint()){
+//                len_icon.setImageResource(R.drawable.icon_pin);
+//                holder.lengthText.setText("   Birding Viewpoint");
+//            }
+//            //special case
+//            else if (typeCode == 3) {
+//                len_icon.setImageResource(R.drawable.icon_pin);
+//                holder.lengthText.setText("   Birding Viewpoints");
+//            }
+//            else {
+//                len_icon.setImageResource(R.drawable.icon_oneway);
+//                holder.lengthText.setText("   ".concat(trail.getLength()));
+//            }
+
+            switch (typeCode) {
+                case 0: if (trail.singlePoint()){
+                            len_icon.setImageResource(R.drawable.icon_pin);
+                            holder.lengthText.setText("   Birding Viewpoint");
+                        }
+                        else {
+                            len_icon.setImageResource(R.drawable.icon_oneway);
+                            holder.lengthText.setText("   ".concat(trail.getLength()));
+                        }
+                        break;
+                case 1: len_icon.setImageResource(R.drawable.icon_loop);
+                        holder.lengthText.setText("   ".concat(trail.getLength()));
+                        break;
+                case 2: len_icon.setImageResource(R.drawable.icon_area3);
+                        holder.lengthText.setText("   ".concat(trail.getLength()));
+                        break;
+                case 3: len_icon.setImageResource(R.drawable.icon_pin);
+                        holder.lengthText.setText("   Birding Viewpoints");
+                        break;
+                case 4: len_icon.setImageResource(R.drawable.icon_trailhead);
+                        holder.lengthText.setText("   Trailhead");
+                        break;
+                case 5: len_icon.setImageResource(R.drawable.icon_drive);
+                        holder.lengthText.setText("   ".concat(trail.getLength()));
+                        break;
             }
-            else if (trail.isArea()){
-                len_icon.setImageResource(R.drawable.icon_area3);
-                holder.lengthText.setText("   ".concat(trail.getLength()));
-            }
-            else if (trail.singlePoint()){
-                len_icon.setImageResource(R.drawable.icon_pin);
-                holder.lengthText.setText("   Birding Viewpoint");
-            }
-            //special case
-            else if (trail.getTrailName().equals("Green Haven Lake")|| trail.getTrailName().equals("Rough Winged Swallows Sites")) {
-                len_icon.setImageResource(R.drawable.icon_pin);
-                holder.lengthText.setText("   Birding Viewpoints");
-            }
-            else {
-                len_icon.setImageResource(R.drawable.icon_oneway);
-                holder.lengthText.setText("   ".concat(trail.getLength()));
-            }
+
+
 
             //if a trailicon exists, set it as the item image
             try {

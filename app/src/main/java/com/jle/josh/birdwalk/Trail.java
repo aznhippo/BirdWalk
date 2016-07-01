@@ -12,12 +12,14 @@ class Trail {
     private LatLng lotPoint;
     private LatLng[] points;
     private String length, iconName, excName, bgName, address, birds, habitats;
-    private Boolean isArea, isLoop;
     private String birdText;
+
+    // 0=regular, 1=loop, 2=area, 3=viewpoints, 4=trailhead, 5=drive
+    private int typeCode;
 
     public Trail(String trailName, LatLng lotPoint, LatLng[] points, String length,
                  String iconName, String excName, String bgName, String address,
-                 String birds, String habitats, Boolean isArea, Boolean isLoop, String birdText){
+                 String birds, String habitats, int typeCode, String birdText){
         this.trailName = trailName;
         this.lotPoint = lotPoint;
         this.points = points;
@@ -28,8 +30,7 @@ class Trail {
         this.address = address;
         this.birds = birds;
         this.habitats = habitats;
-        this.isArea = isArea;
-        this.isLoop = isLoop;
+        this.typeCode = typeCode;
         this.birdText = birdText;
     }
 
@@ -47,8 +48,7 @@ class Trail {
     public String getAddress() {return address;}
     public String getBirds() {return birds;}
     public String getHabitats() {return habitats;}
-    public Boolean isArea() {return isArea;}
-    public Boolean isLoop() {return isLoop;}
+    public int getTypeCode() {return typeCode;}
     public String birdText() {return birdText;}
 
     /*Comparator for sorting the list by Trail Name*/

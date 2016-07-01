@@ -30,7 +30,7 @@ public class TrailData {
                         "1000 Garden Hwy, Sacramento, CA",
                         "Yellow-billed Magpie, Western Bluebirds, Nesting Hawks",
                         "Streamside, Dense Shrubs, Riverside Woodlands, Water Features",
-                        false, true, TrailBirds.disc));
+                        1, TrailBirds.disc));
 
         trailHashMap.put("Bushy Lake and the Cal Expo Floodplain",
                 new Trail("Bushy Lake and the Cal Expo Floodplain",
@@ -38,7 +38,7 @@ public class TrailData {
                         "Cal Expo Gate #13, Sacramento, CA",
                         "Nesting Great Horned Owls, Migrating Warblers, Wood Ducks",
                         "Riparian Vegetation, Water Features",
-                        false, true, TrailBirds.bushy));
+                        1, TrailBirds.bushy));
 
         trailHashMap.put("California State University, Sacramento",
                 new Trail("California State University, Sacramento",
@@ -46,7 +46,7 @@ public class TrailData {
                         "6000 J Street, Sacramento, CA",
                         "Seasonal Variety, Year-round White-tailed Kite",
                         "Streamside Woodlands, Hedges, Trees, Savannah",
-                        true, false, TrailBirds.csu));
+                        2, TrailBirds.csu));
 
         trailHashMap.put("Howe Ave River Access",
                 new Trail("Howe Ave River Access",
@@ -54,7 +54,7 @@ public class TrailData {
                         "The La Riviera Off-ramp to Entrance",
                         "Nesting Rough-Winged Swallows, Waterbirds",
                         "Riparian, Pond, Flooded Backwaters",
-                        false, true, TrailBirds.howe));
+                        1, TrailBirds.howe));
 
         trailHashMap.put("Watt Ave River Access",
                 new Trail("Watt Ave River Access",
@@ -62,7 +62,7 @@ public class TrailData {
                         "Riviera Drive Off Watt Ave, Sacramento, CA",
                         "Wood Ducks, Belted Kingfishers, Green Herons, Black Phoebes",
                         "Cottonwood Stands, Riparian",
-                        false, false, TrailBirds.watt));
+                        0, TrailBirds.watt));
 
         trailHashMap.put("Gristmill Recreation Area",
                 new Trail("Gristmill Recreation Area",
@@ -70,7 +70,7 @@ public class TrailData {
                         "Mira Del Rio Dr., Sacramento, CA",
                         "Rarities; Eastern Wood Pewee, Red-eyed vireo, Warblers",
                         "Riparian, Willows, Cottonwoods, Other Trees",
-                        false, false, TrailBirds.gristmill));
+                        0, TrailBirds.gristmill));
 
         trailHashMap.put("William B. Pond Recreation Area",
                 new Trail("William B. Pond Recreation Area",
@@ -78,7 +78,7 @@ public class TrailData {
                         "5700 Arden Way, Carmichael, CA",
                         "Great Blue Heron And Great Egret Nesting Rookery",
                         "Riparian, Riverine, Ponds, Grassland",
-                        false, true, TrailBirds.willpond));
+                        1, TrailBirds.willpond));
 
         trailHashMap.put("River Bend Park",
                 new Trail("River Bend Park",
@@ -86,7 +86,7 @@ public class TrailData {
                         "2300 Rod Beaudry Dr, Rancho Cordova, CA",
                         "Cliff Swallows Nests Under The Bike Bridge",
                         "Oak Woodlands, Riparian Woodlands, Riverine, Bridge",
-                        false, true, TrailBirds.riverbend));
+                        1, TrailBirds.riverbend));
 
         trailHashMap.put("Effie Yeaw Nature Center",
                 new Trail("Effie Yeaw Nature Center",
@@ -94,7 +94,7 @@ public class TrailData {
                         "6700 Tarshes Dr, Carmichael, CA",
                         "100+ Species Possible; Wild Turkeys",
                         "Riparian Woodlands, Riverine, Ponds, Grassland Open Areas",
-                        false, true, TrailBirds.effie));
+                        1, TrailBirds.effie));
 
         trailHashMap.put("Rossmoor Bar",
                 new Trail("Rossmoor Bar",
@@ -102,7 +102,7 @@ public class TrailData {
                         "1949 Rossmoor Dr, Rancho Cordova, CA",
                         "Active Bank Swallow Colony On North Bank Of The River",
                         "Low Bluffs, Riverine, Riparian Shrub, Oak Woodlands",
-                        false, true, TrailBirds.rossmoor));
+                        1, TrailBirds.rossmoor));
 
         trailHashMap.put("Sacramento Bar and Bannister Park",
                 new Trail("Sacramento Bar and Bannister Park",
@@ -110,7 +110,7 @@ public class TrailData {
                         "3820 Bannister Rd, Fair Oaks, CA",
                         "Breeding Yellow-breasted Chats",
                         "Riparian, Riverine, Gravel Tailings, Ponds",
-                        false, true, TrailBirds.bar));
+                        1, TrailBirds.bar));
 
         trailHashMap.put("Lower Sunrise Area",
                 new Trail("Lower Sunrise Area",
@@ -118,7 +118,7 @@ public class TrailData {
                         "At End Of Riverlite Ct., Rancho Cordova, CA",
                         "Acorn Woodpeckers, Tree Swallows, Hawks, Osprey",
                         "Low Bluffs, Riverine, Riparian Shrub, Oak Woodlands",
-                        false, true, TrailBirds.lowsunrise));
+                        1, TrailBirds.lowsunrise));
 
         trailHashMap.put("Sailor Bar",
                 new Trail("Sailor Bar",
@@ -126,7 +126,7 @@ public class TrailData {
                         "At End Of Illinois Ave., Sacramento, CA",
                         "Red-winged Blackbirds, Acorn Woodpeckers",
                         "Riparian, Woodland, Open Area, Gravel Tailings",
-                        false, true, TrailBirds.sailor));
+                        1, TrailBirds.sailor));
 
         trailHashMap.put("Upper Sunrise",
                 new Trail("Upper Sunrise",
@@ -134,7 +134,7 @@ public class TrailData {
                         "2001 Nimbus Rd, Gold River, CA",
                         "Barrow’s Goldeneye, Gulls",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
-                        false, false, TrailBirds.upper_nimbus));
+                        0, TrailBirds.upper_nimbus));
 
         trailHashMap.put("Nimbus Hatchery",
                 new Trail("Nimbus Hatchery",
@@ -142,7 +142,7 @@ public class TrailData {
                         "2001 Nimbus Rd, Gold River, CA",
                         "Bald Eagle During Salmon Run",
                         "Rising Bluffs, Riverine, Riparian, Oaks, Toyon, Gray Pine",
-                        false, false, TrailBirds.upper_nimbus));
+                        0, TrailBirds.upper_nimbus));
 
         trailHashMap.put("Purple Martins Site #1",
                 new Trail("Purple Martins Site #1",
@@ -150,7 +150,7 @@ public class TrailData {
                         "20th Street Between X And W Streets, Sacramento, CA",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
-                        false, false, TrailBirds.purp));
+                        0, TrailBirds.purp));
 
         trailHashMap.put("Purple Martins Site #2",
                 new Trail("Purple Martins Site #2",
@@ -158,7 +158,7 @@ public class TrailData {
                         "Old Town Sacramento, 125 I Street",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
-                        false, false, TrailBirds.purp));
+                        0, TrailBirds.purp));
 
         trailHashMap.put("Purple Martins Site #3",
                 new Trail("Purple Martins Site #3",
@@ -166,7 +166,7 @@ public class TrailData {
                         "29th and 30th Streets Between R and S Sts",
                         "Purple Martins Nesting",
                         "Weep Holes Under Freeway Overpasses",
-                        false, false, TrailBirds.purp));
+                        0, TrailBirds.purp));
 
         trailHashMap.put("East Lawn Cemetery",
                 new Trail("East Lawn Cemetery",
@@ -174,7 +174,7 @@ public class TrailData {
                         "4300 Folsom Boulevard, Sacramento, CA",
                         "Bushtits, Warblers, Robins, Flickers, Red-Tailed Hawk",
                         "Lawns, Tall Evergreens, Deciduous Trees, Shrubbery",
-                        false, false, TrailBirds.eastlawn));
+                        0, TrailBirds.eastlawn));
 
         trailHashMap.put("Arcade Creek at American River College",
                 new Trail("Arcade Creek at American River College",
@@ -182,7 +182,7 @@ public class TrailData {
                         "4700 College Oak Dr, Sacramento, CA ",
                         "Creek, Mountain Migrants, Nesting Birds",
                         "Riparian Trees",
-                        false, false, TrailBirds.arcade));
+                        0, TrailBirds.arcade));
 
         trailHashMap.put("Arcade Creek from Arden Creek Park",
                 new Trail("Arcade Creek from Arden Creek Park",
@@ -190,7 +190,7 @@ public class TrailData {
                         "5613 Omni Drive, Sacramento",
                         "Mountain Migrants Nesting",
                         "Riparian Trees",
-                        false, false, TrailBirds.arcade));
+                        0, TrailBirds.arcade));
 
         trailHashMap.put("Rough Winged Swallows Sites",
                 new Trail("Rough Winged Swallows Sites",
@@ -198,7 +198,7 @@ public class TrailData {
                         "Interstate 5 and Seamas Blvd. Overpass",
                         "Rough-winged Swallows Nesting",
                         "Weep Holes On Overpass",
-                        false, false, TrailBirds.swallows));
+                        3, TrailBirds.swallows));
 
 //        trailHashMap.put("Rough Winged Swallows Site #2",
 //                new Trail("Rough Winged Swallows Site #2",
@@ -222,7 +222,7 @@ public class TrailData {
                         "3800 W Land Park Dr, Sacramento, CA",
                         "Bird “Panhandle”",
                         "Large Conifers, Shrubs, Mature Trees",
-                        true, false, TrailBirds.willpark));
+                        2, TrailBirds.willpark));
 
         trailHashMap.put("Reichmuth Park",
                 new Trail("Reichmuth Park",
@@ -230,7 +230,7 @@ public class TrailData {
                         "6135 Gloria Dr. Sacramento, CA",
                         "Migrating Land Birds, Hooded Orioles",
                         "Formerly An Oxbow, Swampy Wooded Area",
-                        true, false, TrailBirds.reichmuth));
+                        2, TrailBirds.reichmuth));
 
         trailHashMap.put("Green Haven Lake",
                 new Trail("Green Haven Lake",
@@ -238,7 +238,7 @@ public class TrailData {
                         "Havenside Dr., Sacramento, CA",
                         "Mergansers, Cormorants, Gulls, Ducks",
                         "Views of Shoreline, Lake",
-                        false, false, TrailBirds.greenhaven));
+                        3, TrailBirds.greenhaven));
 
         trailHashMap.put("Garcia Bend",
                 new Trail("Garcia Bend",
@@ -246,7 +246,7 @@ public class TrailData {
                         "7654 Pocket Rd. Sacramento, CA",
                         "Migrating Landbirds, Caspian And Forster’s Terns",
                         "Riparian, Riverine",
-                        true, false, TrailBirds.garcia));
+                        2, TrailBirds.garcia));
 
         trailHashMap.put("Marriott Park",
                 new Trail("Marriott Park",
@@ -254,7 +254,7 @@ public class TrailData {
                         "7658 El Douro Dr, Sacramento, CA",
                         "Migrating Warblers, Vireos, Tanagers",
                         "Large Valley Oaks",
-                        true, false, TrailBirds.marriott));
+                        2, TrailBirds.marriott));
 
         trailHashMap.put("Chorley Park",
                 new Trail("Chorley Park",
@@ -262,7 +262,7 @@ public class TrailData {
                         "7000 20th Street, Sacramento, CA",
                         "Nature Area",
                         "Mowed Lawns, Willows and Cottonwoods",
-                        true, false, TrailBirds.chorley));
+                        2, TrailBirds.chorley));
 
         trailHashMap.put("Riverside Trails",
                 new Trail("Riverside Trails",
@@ -270,52 +270,52 @@ public class TrailData {
                         "Park 0/1 mis. South 35th",
                         "Mew Gull in Winter",
                         "Riparian Habitat",
-                        false, false, TrailBirds.riverside));
+                        0, TrailBirds.riverside));
 
 
         ////////////
         trailHashMap.put("North Natomas",
                 new Trail("North Natomas",
-                        TrailCoords2.natomasLot, TrailCoords2.natomasPts, "TBA", "icon_natomas", "natomas", "natomas",
+                        TrailCoords2.natomasLot, TrailCoords2.natomasPts, "17.01 miles", "icon_natomas", "natomas", "natomas",
                         "Discovery Park to the Sutter County Line",
                         "Swainson’s Hawks, Tricolored Blackbirds, White-faced Ibis, Long-billed Curlew",
                         "Grassy Areas, Rice Fields, Canals, Riparian, Fields, Irrigation Ditches",
-                        false, false, TrailBirds.natomas));
+                        5, TrailBirds.natomas));
         trailHashMap.put("Wolf Ranch Wildlife Sanctuary",
                 new Trail("Wolf Ranch Wildlife Sanctuary",
-                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "TBA", "icon_wolf", "wolf", "wolf",
+                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "2.34 miles\u00b2", "icon_wolf", "wolf", "wolf",
                         "South of Elkhorn Boulevard and Sorento Road",
-                        "Greater Yellowlegs, Common Snipe,  Great-tailed Grackles",
+                        "Greater Yellowlegs, Common Snipe, Great-tailed Grackles",
                         "Creeks, Wetlands, Drainage Ditch, Upland Forests",
-                        false, false, TrailBirds.wolf));
+                        1, TrailBirds.wolf));
         trailHashMap.put("Bufferlands",
                 new Trail("Bufferlands",
-                        TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "TBA", "icon_bufferlands", "bufferlands", "bufferlands",
+                        TrailCoords2.bufferlandsLot, TrailCoords2.bufferlandsPts, "", "icon_bufferlands", "bufferlands", "bufferlands",
                         "8521 Laguna Station Rd, Elk Grove, CA",
                         "Canvasback, Nesting Swainson’s Hawks, Blue Grosbeak",
                         "Riparian Forest, Woodlands, Grasslands, Wetlands",
-                        false, false, TrailBirds.bufferlands));
+                        0, TrailBirds.bufferlands));
         trailHashMap.put("Cosumnes River Preserve",
                 new Trail("Cosumnes River Preserve",
-                        TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "TBA", "icon_cosumnes", "cosumnes", "cosumnes",
+                        TrailCoords2.cosumnesLot, TrailCoords2.cosumnesPts, "1.29 miles", "icon_cosumnes", "cosumnes", "cosumnes",
                         "13501 Franklin Blvd, Galt, CA ",
                         "Globally Important Bird Area",
                         "Wetlands, Grasslands, Agriculture, Valley Oak Riparian Forest",
-                        false, false, TrailBirds.cosumnes));
+                        1, TrailBirds.cosumnes));
         trailHashMap.put("Rancho Seco RA",
                 new Trail("Rancho Seco RA",
-                        TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "TBA", "icon_rancho", "rancho", "rancho",
+                        TrailCoords2.ranchoLot, TrailCoords2.ranchoPts, "", "icon_rancho", "rancho", "rancho",
                         "14440 Twin Cities Road Herald, CA",
                         "Ferruginous Hawks, Burrowing Owls, Horned Larks, Lesser Nighthawks",
                         "Grasslands, Vernal Pools, Oak Woodlands",
-                        false, false, TrailBirds.rancho));
-        trailHashMap.put("The Howard Ranch Trail",
-                new Trail("The Howard Ranch Trail",
-                        TrailCoords2.howardLot, TrailCoords2.howardPts, "TBA", "icon_howard", "howard", "howard",
+                        0, TrailBirds.rancho));
+        trailHashMap.put("Howard Ranch Trail",
+                new Trail("Howard Ranch Trail",
+                        TrailCoords2.howardLot, TrailCoords2.howardPts, "", "icon_howard", "howard", "howard",
                         "14440 Twin Cities Road, Herald, CA ",
                         "Ferruginous Hawks, Burrowing Owls, Horned Larks, Lesser Nighthawks",
                         "Grasslands, Vernal Pools, Oak Woodlands",
-                        false, false, TrailBirds.howard));
+                        4, TrailBirds.howard));
 //        trailHashMap.put("Delta Loop",
 //                new Trail("Delta Loop",
 //                        TrailCoords2.deltaLot, TrailCoords2.deltaPts, "TBA", "icon_delta", "korths", "delta",
@@ -325,175 +325,175 @@ public class TrailData {
 //                        false, false, TrailBirds.brannan));
         trailHashMap.put("Korth’s Marina",
                 new Trail("Korth’s Marina",
-                        TrailCoords2.korthsLot, TrailCoords2.korthsPts, "TBA", "icon_korths", "korths", "korths",
+                        TrailCoords2.korthsLot, TrailCoords2.korthsPts, "", "icon_korths", "korths", "korths",
                         "169 W Brannan Island Rd, Isleton, CA",
                         "Migrant Trap",
                         "Marina, Trees",
-                        false, false, TrailBirds.brannan));
+                        0, TrailBirds.brannan));
         trailHashMap.put("Sherman Island",
                 new Trail("Sherman Island",
-                        TrailCoords2.shermanLot, TrailCoords2.shermanPts, "TBA", "icon_sherman", "korths", "sherman",
+                        TrailCoords2.shermanLot, TrailCoords2.shermanPts, "", "icon_sherman", "korths", "sherman",
                         "3729 W Sherman Island Rd, Rio Vista, CA",
                         "Waterfowl, Raptors, Shorebirds",
                         "Fields, Fences, Trees, Rivers",
-                        false, false, TrailBirds.brannan));
+                        0, TrailBirds.brannan));
         trailHashMap.put("Brannan Island",
                 new Trail("Brannan Island",
-                        TrailCoords2.brannanLot, TrailCoords2.brannanPts, "TBA", "icon_brannan", "korths", "brannan",
+                        TrailCoords2.brannanLot, TrailCoords2.brannanPts, "", "icon_brannan", "korths", "brannan",
                         "17645 CA-160, Rio Vista, CA",
                         "Waterfowl, Raptors, Shorebirds, Yellow-breasted Chats",
                         "Trees, Water, Open Areas",
-                        false, false, TrailBirds.brannan));
+                        0, TrailBirds.brannan));
         trailHashMap.put("Eddo’s RV Park",
                 new Trail("Eddo’s RV Park",
-                        TrailCoords2.eddosLot, TrailCoords2.eddosPts, "TBA", "icon_eddos", "korths", "eddos",
+                        TrailCoords2.eddosLot, TrailCoords2.eddosPts, "", "icon_eddos", "korths", "eddos",
                         "19530 Sherman Island East Levee Rd, Rio Vista, CA",
                         "Waterfowl, Raptors, Shorebirds",
                         "Trees, Water, Open Areas",
-                        false, false, TrailBirds.brannan));
+                        0, TrailBirds.brannan));
         trailHashMap.put("Mather Lake",
                 new Trail("Mather Lake",
-                        TrailCoords2.matherLot, TrailCoords2.matherPts, "TBA", "icon_mather", "mather", "mather",
+                        TrailCoords2.matherLot, TrailCoords2.matherPts, "", "icon_mather", "mather", "mather",
                         "4101 Eagle's Nest Rd, Mather, CA",
                         "Nesting Yellow-headed Blackbird,Western Kingbird, Bullock’s Oriole, Ash-throated Flycatcher",
                         "Lake, Riparian, Upland Scrub, Wetland, Grassland",
-                        false, false, TrailBirds.mather));
+                        0, TrailBirds.mather));
         trailHashMap.put("White Rock and Payen Roads",
                 new Trail("White Rock and Payen Roads",
-                        TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "TBA", "icon_white_rock", "white_rock", "white_rock",
+                        TrailCoords2.whiteRockLot, TrailCoords2.whiteRockPts, "6.02 miles", "icon_white_rock", "white_rock", "white_rock",
                         "Junction of White Rock and Payen Roads",
                         "Multi-species Black Bird Flocks, Prairie Falcon, Winter Raptors",
                         "Grasslands",
-                        false, false, TrailBirds.whiteRock));
+                        5, TrailBirds.whiteRock));
         trailHashMap.put("Scott Road",
                 new Trail("Scott Road",
-                        TrailCoords2.scottLot, TrailCoords2.scottPts, "TBA", "icon_scott", "scott", "scott",
+                        TrailCoords2.scottLot, TrailCoords2.scottPts, "7.93 miles", "icon_scott", "scott", "scott",
                         "Scott Rd, Folsom, Ca",
                         "Multi-species of Sparrows, American Pipits, Eagles, Hawks",
                         "Grasslands, Oaks",
-                        false, false, TrailBirds.scott));
+                        5, TrailBirds.scott));
         trailHashMap.put("Latrobe Road (Deer Creek Hills)",
                 new Trail("Latrobe Road (Deer Creek Hills)",
-                        TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "TBA", "icon_latrobe", "latrobe", "latrobe",
+                        TrailCoords2.latrobeLot, TrailCoords2.latrobePts, "2.95 miles", "icon_latrobe", "latrobe", "latrobe",
                         "Junction of Latrobe Road and Stone House Road",
                         "Foothill Species, Owls",
                         "Blue Oak Woodland, Savanna, Grasslands",
-                        false, false, TrailBirds.latrobe));
+                        5, TrailBirds.latrobe));
         trailHashMap.put("Michigan Bar",
                 new Trail("Michigan Bar",
-                        TrailCoords2.michiganLot, TrailCoords2.michiganPts, "TBA", "icon_michigan", "michigan", "michigan",
+                        TrailCoords2.michiganLot, TrailCoords2.michiganPts, "1.24 miles", "icon_michigan", "michigan", "michigan",
                         "Michigan Bar, California",
                         "Hairy Woodpeckers, Common Poorwills, Burrowing Owls",
                         "Blue Oak Woodland, Savanna, Grasslands, River",
-                        false, false, TrailBirds.michigan));
+                        0, TrailBirds.michigan));
         trailHashMap.put("Meiss Road",
                 new Trail("Meiss Road",
-                        TrailCoords2.meissLot, TrailCoords2.meissPts, "TBA", "icon_meiss", "meiss", "meiss",
+                        TrailCoords2.meissLot, TrailCoords2.meissPts, "7.58 miles", "icon_meiss", "meiss", "meiss",
                         "From Dillard Road to Ione Road",
                         "Raptors, Lesser Nighthawks Horned Lark, Grasshopper Sparrows",
                         "Grasslands",
-                        false, false, TrailBirds.meiss));
+                        5, TrailBirds.meiss));
         trailHashMap.put("Stone Lake",
                 new Trail("Stone Lake",
-                        TrailCoords2.stoneLot, TrailCoords2.stonePts, "TBA", "icon_stone", "stone", "stone",
+                        TrailCoords2.stoneLot, TrailCoords2.stonePts, "", "icon_stone", "stone", "stone",
                         "1624 Hood Franklin Rd, Elk Grove, CA",
                         "Nesting Swainson’s Hawks, Rookery of Great Blue Herons, Great Egrets, Cormorants",
                         "Permanent and Seasonal Wetlands, Vernal Pools, Lakes, Riparian Corridors",
-                        false, false, TrailBirds.stone));
+                        0, TrailBirds.stone));
 
 
         ////////////
         trailHashMap.put("Nimbus Flat",
                     new Trail("Nimbus Flat",
-                            TrailCoords2.nimbusFlatLot, TrailCoords2.nimbusFlatPts, "TBA", "icon_nimbusFlat", "nimbusFlat", "nimbusFlat",
+                            TrailCoords2.nimbusFlatLot, TrailCoords2.nimbusFlatPts, "", "icon_nimbusFlat", "nimbusFlat", "nimbusFlat",
                             "1901 Hazel Ave, Gold River, CA ",
                             "Gulls, Water Birds",
                             "Lake",
-                            false, false, TrailBirds.nimbusFlat));
+                            0, TrailBirds.nimbusFlat));
         trailHashMap.put("Lake Overlook Access",
                 new Trail("Lake Overlook Access",
-                        TrailCoords2.overlookLot, TrailCoords2.overlookPts, "TBA", "icon_overlook", "overlook", "overlook",
+                        TrailCoords2.overlookLot, TrailCoords2.overlookPts, "", "icon_overlook", "overlook", "overlook",
                         "7755 Folsom-Auburn Rd",
                         "Commons Loon, Grebes, Rufous-crowned Sparrows, Phainopeplas",
                         "Lake, Bluffs, Oak Woodlands",
-                        false, false, TrailBirds.overlook));
+                        0, TrailBirds.overlook));
         trailHashMap.put("Willow Creek Access",
                 new Trail("Willow Creek Access",
-                        TrailCoords2.willowLot, TrailCoords2.willowPts, "TBA", "icon_willow", "willow", "willow",
+                        TrailCoords2.willowLot, TrailCoords2.willowPts, "", "icon_willow", "willow", "willow",
                         "13303 Folsom Blvd, Folsom, CA",
                         "Great Blue Heron, Great Egret, Double-Crested Cormorant Rookery",
                         "Lake, Creek, Woods",
-                        false, false, TrailBirds.willow));
+                        0, TrailBirds.willow));
         trailHashMap.put("Negro Bar",
                 new Trail("Negro Bar",
-                        TrailCoords2.negroLot, TrailCoords2.negroPts, "TBA", "icon_negro", "negro", "negro",
+                        TrailCoords2.negroLot, TrailCoords2.negroPts, "", "icon_negro", "negro", "negro",
                         "American River Bike Trail, Orangevale, CA ",
                         "Waterbirds, Rufous-Crowned Sparrows",
                         "Lake, Oak Woodland, Gray Pine, Chaparral, Bluffs",
-                        false, false, TrailBirds.negro));
+                        0, TrailBirds.negro));
         trailHashMap.put("Folsom Rodeo Grounds",
                 new Trail("Folsom Rodeo Grounds",
-                        TrailCoords2.rodeoLot, TrailCoords2.rodeoPts, "TBA", "icon_rodeo", "rodeo", "rodeo",
+                        TrailCoords2.rodeoLot, TrailCoords2.rodeoPts, "0.68 miles", "icon_rodeo", "rodeo", "rodeo",
                         "403 Stafford St, Folsom, CA",
                         "Waterbirds, Gulls, Cedar Waxwing",
                         "Lake, River, Creek, Riparian",
-                        false, false, TrailBirds.rodeo));
+                        0, TrailBirds.rodeo));
         trailHashMap.put("Folsom Point",
                 new Trail("Folsom Point",
-                        TrailCoords2.folsomPointLot, TrailCoords2.folsomPointPts, "TBA", "icon_folsomPoint", "folsomPoint", "folsomPoint",
+                        TrailCoords2.folsomPointLot, TrailCoords2.folsomPointPts, "", "icon_folsomPoint", "folsomPoint", "folsomPoint",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Mormon Island Preserve",
                 new Trail("Mormon Island Preserve",
-                        TrailCoords2.mormonPreserveLot, TrailCoords2.mormonPreservePts, "TBA", "icon_mormonPreserve", "mormonPreserve", "mormonPreserve",
+                        TrailCoords2.mormonPreserveLot, TrailCoords2.mormonPreservePts, "1.15 miles", "icon_mormonPreserve", "mormonPreserve", "mormonPreserve",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Mormon Island Lake Access",
                 new Trail("Mormon Island Lake Access",
-                        TrailCoords2.mormonLakeLot, TrailCoords2.mormonLakePts, "TBA", "icon_mormonLake", "mormonLake", "mormonLake",
+                        TrailCoords2.mormonLakeLot, TrailCoords2.mormonLakePts, "0.8 miles", "icon_mormonLake", "mormonLake", "mormonLake",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Brown’s Ravine",
                 new Trail("Brown’s Ravine",
-                        TrailCoords2.brownsLot, TrailCoords2.brownsPts, "TBA", "icon_browns", "browns", "browns",
+                        TrailCoords2.brownsLot, TrailCoords2.brownsPts, "", "icon_browns", "browns", "browns",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Falcon Crest Lane",
                 new Trail("Falcon Crest Lane",
-                        TrailCoords2.falconLot, TrailCoords2.falconPts, "TBA", "icon_falcon", "falcon", "falcon",
+                        TrailCoords2.falconLot, TrailCoords2.falconPts, "", "icon_falcon", "falcon", "falcon",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Sweetwater Creek",
                 new Trail("Sweetwater Creek",
-                        TrailCoords2.sweetwaterCreekLot, TrailCoords2.sweetwaterCreekPts, "TBA", "icon_sweetwaterCreek", "sweetwaterCreek", "sweetwaterCreek",
+                        TrailCoords2.sweetwaterCreekLot, TrailCoords2.sweetwaterCreekPts, "", "icon_sweetwaterCreek", "sweetwaterCreek", "sweetwaterCreek",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.sweetwater));
+                        4, TrailBirds.sweetwater));
         trailHashMap.put("Sweetwater Trail",
                 new Trail("Sweetwater Trail",
-                        TrailCoords2.sweetwaterTrailLot, TrailCoords2.sweetwaterTrailPts, "TBA", "icon_sweetwaterTrail", "sweetwaterTrail", "sweetwaterTrail",
+                        TrailCoords2.sweetwaterTrailLot, TrailCoords2.sweetwaterTrailPts, "", "icon_sweetwaterTrail", "sweetwaterTrail", "sweetwaterTrail",
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        false, false, TrailBirds.folsomPoint));
+                        0, TrailBirds.folsomPoint));
         trailHashMap.put("Beal’s Point",
                 new Trail("Beal’s Point",
-                        TrailCoords2.bealsLot, TrailCoords2.bealsPts, "TBA", "icon_beals", "beals", "beals",
+                        TrailCoords2.bealsLot, TrailCoords2.bealsPts, "", "icon_beals", "beals", "beals",
                         "7806 Folsom Auburn Road, Folsom, CA ",
                         "Gulls, Rock Wrens, Rufous-crowned Sparrows",
                         "Lake",
-                        false, false, TrailBirds.beals));
+                        0, TrailBirds.beals));
 //        trailHashMap.put("Granite Bay Entrance",
 //                new Trail("Granite Bay Entrance",
 //                        TrailCoords2.graniteLot, TrailCoords2.granitePts, "TBA", "icon_granite", "granite", "granite",
@@ -503,325 +503,325 @@ public class TrailData {
 //                        false, false, TrailBirds.granite));
         trailHashMap.put("Beek’s Bight",
                 new Trail("Beek’s Bight",
-                        TrailCoords2.beeksLot, TrailCoords2.beeksPts, "TBA", "icon_beeks", "beeks", "beeks",
+                        TrailCoords2.beeksLot, TrailCoords2.beeksPts, "", "icon_beeks", "beeks", "beeks",
                         "Park Rd, Granite Bay, CA 95746",
                         "Hummingbirds, Rock Wrens, Chats, Common Poorwills",
                         "Live Oak, Gray Pine, Blue Oak, Rock Outcroppings",
-                        false, false, TrailBirds.beeks));
+                        0, TrailBirds.beeks));
         trailHashMap.put("Pioneer Express Trail",
                 new Trail("Pioneer Express Trail",
-                        TrailCoords2.pioneerLot, TrailCoords2.pioneerPts, "TBA", "icon_pioneer", "pioneer", "pioneer",
+                        TrailCoords2.pioneerLot, TrailCoords2.pioneerPts, "", "icon_pioneer", "pioneer", "pioneer",
                         "7806 Auburn-Folsom Road, Folsom, CA ",
                         "Bald Eagles, Osprey, California Quail, Anna’s Hummingbird",
                         "Water Features, Oak Woodlands, Chaparral",
-                        false, false, TrailBirds.pioneer));
+                        4, TrailBirds.pioneer));
         trailHashMap.put("Folsom Lake Peninsula",
                 new Trail("Folsom Lake Peninsula",
-                        TrailCoords2.folsomPeninsulaLot, TrailCoords2.folsomPeninsulaPts, "TBA", "icon_folsomPeninsula", "folsomPeninsula", "folsomPeninsula",
+                        TrailCoords2.folsomPeninsulaLot, TrailCoords2.folsomPeninsulaPts, "0.67 miles", "icon_folsomPeninsula", "folsomPeninsula", "folsomPeninsula",
                         "From Pilot Hill on Highway 49",
                         "Phainopeplas, Rock Wrens, Bald Eagles, Burrowing Owls",
                         "Lake, Chaparral, Oak Woodland",
-                        false, false, TrailBirds.folsomPeninsula));
+                        0, TrailBirds.folsomPeninsula));
 
         ///////////////////////////////////////
 
         trailHashMap.put("Brewer Road",
                 new Trail("Brewer Road",
-                        TrailCoords2.brewerLot, TrailCoords2.brewerPts, "TBA", "icon_brewer", "brewer", "brewer",
+                        TrailCoords2.brewerLot, TrailCoords2.brewerPts, "12.04 miles", "icon_brewer", "brewer", "brewer",
                         "Near Lincoln Wastewater Plant",
                         "Raptors, Snow Geese, Tundra Swans, Lark,  Longspurs, Ibis",
                         "Fields, Riparian, Water Features",
-                        false, false, TrailBirds.brewer));
+                        0, TrailBirds.brewer));
         trailHashMap.put("Bobelaine Audobon Sanctuary",
                 new Trail("Bobelaine Audobon Sanctuary",
-                        TrailCoords2.bobelaineLot, TrailCoords2.bobelainePts, "TBA", "icon_", "bobelaine", "bobelaine",
+                        TrailCoords2.bobelaineLot, TrailCoords2.bobelainePts, "0.53 miles\u00b2", "icon_", "bobelaine", "bobelaine",
                         "Nicolaus, California",
                         "Swainson’s Hawks, Great Horned Owls, Herons, Egrets",
                         "Riparian Forest Habitat, Oak Woodland, Sycamores",
-                        false, false, TrailBirds.bobelaine));
+                        2, TrailBirds.bobelaine));
         trailHashMap.put("Sand Creek Road",
                 new Trail("Sand Creek Road",
-                        TrailCoords2.sandCreekLot, TrailCoords2.sandCreekPts, "TBA", "icon_sandCreek", "sandCreek", "sandCreek",
+                        TrailCoords3.sandCreekLot, TrailCoords3.sandCreekPts, "14.81 miles", "icon_sandCreek", "sandCreek", "sandCreek",
                         "Sand Creek Road, Colusa County",
                         "Yellow-billed Magpies, Greater Roadrunner, Golden Eagles",
                         "Valley Oak Woodlands, Chaparral",
-                        false, false, TrailBirds.sandCreek));
+                        5, TrailBirds.sandCreek));
         trailHashMap.put("Bear Valley",
                 new Trail("Bear Valley",
-                        TrailCoords2.bearValleyLot, TrailCoords2.bearValleyPts, "TBA", "icon_bearValley", "bearValley", "bearValley",
+                        TrailCoords3.bearValleyLot, TrailCoords3.bearValleyPts, "21.99 miles", "icon_bearValley", "bearValley", "bearValley",
                         "Bear Valley Road Right Off Highway 16",
                         "Greater Roadrunner, Yellow-billed Magpies, Golden Eagles",
                         "Grasslands, Perennial Creek, Riparian, Chaparral",
-                        false, false, TrailBirds.bearValley));
+                        5, TrailBirds.bearValley));
         trailHashMap.put("Gray Lodge Wildlife Area",
                 new Trail("Gray Lodge Wildlife Area",
-                        TrailCoords2.grayLodgeLot, TrailCoords2.grayLodgePts, "TBA", "icon_grayLodge", "grayLodge", "grayLodge",
+                        TrailCoords2.grayLodgeLot, TrailCoords2.grayLodgePts, "", "icon_grayLodge", "grayLodge", "grayLodge",
                         "3207 Rutherford Road, Gridley",
                         "Snow Geese, Ross's Geese Virginia Rail, Sora Rails, Ducks, Hawks",
                         "Marshlands",
-                        false, false, TrailBirds.grayLodge));
+                        0, TrailBirds.grayLodge));
         trailHashMap.put("Woodbridge Ecological Reserve",
                 new Trail("Woodbridge Ecological Reserve",
-                        TrailCoords2.woodbridgeEcoLot, TrailCoords2.woodbridgeEcoPts, "TBA", "icon_woodbridgeEco", "woodbridgeEco", "woodbridgeEco",
+                        TrailCoords2.woodbridgeEcoLot, TrailCoords2.woodbridgeEcoPts, "", "icon_woodbridgeEco", "woodbridgeEco", "woodbridgeEco",
                         "W Woodbridge Rd, Lodi, CA",
                         "Sandhill Cranes",
                         "Flooded Fields",
-                        false, false, TrailBirds.woodbridgeEco));
+                        0, TrailBirds.woodbridgeEco));
         trailHashMap.put("Staten Island",
                 new Trail("Staten Island",
-                        TrailCoords2.statenLot, TrailCoords2.statenPts, "TBA", "icon_staten", "staten", "staten",
+                        TrailCoords2.statenLot, TrailCoords2.statenPts, "1.4 miles", "icon_staten", "staten", "staten",
                         "Island in the Sacramento-San Joaquin River Delta",
                         "Sandhill Cranes, Waterfowl",
                         "Flooded Fields",
-                        false, false, TrailBirds.staten));
+                        5, TrailBirds.staten));
         trailHashMap.put("Woodbridge Regional Park",
                 new Trail("Woodbridge Regional Park",
-                        TrailCoords2.woodbridgeParkLot, TrailCoords2.woodbridgeParkPts, "TBA", "icon_woodbridgePark", "woodbridgePark", "woodbridgePark",
+                        TrailCoords2.woodbridgeParkLot, TrailCoords2.woodbridgeParkPts, "", "icon_woodbridgePark", "woodbridgePark", "woodbridgePark",
                         "301 River Meadows Drive in Woodbridge",
                         "Wood Duck, Common Merganser, Hawks, Owl, Woodpeckers, Lazuli Bunting",
                         "Riparian Woodlands, River, Riparian Bush",
-                        false, false, TrailBirds.woodbridgePark));
+                        0, TrailBirds.woodbridgePark));
         trailHashMap.put("Lodi Lake",
                 new Trail("Lodi Lake",
-                        TrailCoords2.lodiLot, TrailCoords2.lodiPts, "TBA", "icon_lodi", "lodi", "lodi",
+                        TrailCoords2.lodiLot, TrailCoords2.lodiPts, "0.52 miles", "icon_lodi", "lodi", "lodi",
                         "1101 W Turner Rd, Lodi",
                         "Shore Birds, Gulls, Ducks, Swift’s, Orioles, Raptors, Kingbird",
                         "Lake, Riparian, Open Woodlands, Grasslands",
-                        false, false, TrailBirds.lodi));
+                        0, TrailBirds.lodi));
         trailHashMap.put("Lake Solano Park",
                 new Trail("Lake Solano Park",
-                        TrailCoords2.solanoLot, TrailCoords2.solanoPts, "TBA", "icon_solano", "solano", "solano",
+                        TrailCoords2.solanoLot, TrailCoords2.solanoPts, "0.36 miles", "icon_solano", "solano", "solano",
                         "8685 Pleasants Valley Rd, Winters",
                         "Swainson's Hawks, Osprey, Great Horned Owls, Sapsucker",
                         "Riparian Habitat, Farmland, Fields, Lake, Creek",
-                        false, false, TrailBirds.solano));
+                        0, TrailBirds.solano));
         trailHashMap.put("Stebbins Cold Canyon Reserve",
                 new Trail("Stebbins Cold Canyon Reserve",
-                        TrailCoords2.stebbinsLot, TrailCoords2.stebbinsPts, "TBA", "icon_stebbins", "stebbins", "stebbins",
+                        TrailCoords2.stebbinsLot, TrailCoords2.stebbinsPts, "0.23 miles", "icon_stebbins", "stebbins", "stebbins",
                         "CA-128, Winters, CA",
                         "Eagles, Western Bluebirds, Hawks, Owls, Swifts, Hummingbirds, Grosbeaks, Buntings, Poorwills",
                         "Riparian Oak, Scrub Woodland",
-                        false, false, TrailBirds.stebbins));
+                        0, TrailBirds.stebbins));
         trailHashMap.put("Robinson Road",
                 new Trail("Robinson Road",
-                        TrailCoords2.robinsonLot, TrailCoords2.robinsonPts, "TBA", "icon_robinson", "robinson", "robinson",
+                        TrailCoords3.robinsonLot, TrailCoords3.robinsonPts, "17.19 miles", "icon_robinson", "robinson", "robinson",
                         "South through Dixon",
                         "Hawks, Eagles, Falcons, Merlins, Mountain Plovers, Larks, Curlew, Shrikes, Pipits",
                         "Eucalyptus, Trees, Grasslands",
-                        false, false, TrailBirds.robinson));
+                        5, TrailBirds.robinson));
         trailHashMap.put("Lagoon Valley Regional Park",
                 new Trail("Lagoon Valley Regional Park",
-                        TrailCoords2.lagoonLot, TrailCoords2.lagoonPts, "TBA", "icon_lagoon", "lagoon", "lagoon",
+                        TrailCoords3.lagoonLot, TrailCoords3.lagoonPts, "1.34 miles", "icon_lagoon", "lagoon", "lagoon",
                         "Off Interstate 80 in Vacaville",
                         "Migrants, Songbirds, Pileated Woodpecker",
                         "Reservoir, Trees, Creek, Riparian",
-                        false, false, TrailBirds.lagoon));
+                        0, TrailBirds.lagoon));
         trailHashMap.put("New York Creek, El Dorado Hills",
                 new Trail("New York Creek, El Dorado Hills",
-                        TrailCoords2.newYorkLot, TrailCoords2.newYorkPts, "TBA", "icon_newYork", "newYork", "newYork",
+                        TrailCoords3.newYorkLot, TrailCoords3.newYorkPts, "1.14 miles", "icon_newYork", "newYork", "newYork",
                         "Francisco Drive in El Dorado Hills",
                         "Thrush, Hutton’s Vireo, Yellow-rumped Warbler, Sparrows, Acorn Woodpecker",
                         "Steam, Riparian, Poison Oak, Grassland",
-                        false, false, TrailBirds.newYork));
+                        0, TrailBirds.newYork));
         trailHashMap.put("Cronan Ranch Regional Trails Park",
                 new Trail("Cronan Ranch Regional Trails Park",
-                        TrailCoords2.cronanLot, TrailCoords2.cronanPts, "TBA", "icon_cronan", "cronan", "cronan",
+                        TrailCoords3.cronanLot, TrailCoords3.cronanPts, "", "icon_cronan", "cronan", "cronan",
                         "State Highway 49 and the South Fork American River",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        false, false, TrailBirds.cronan));
+                        0, TrailBirds.cronan));
         trailHashMap.put("Greenwood Unit",
                 new Trail("Greenwood Unit",
-                        TrailCoords2.greenwoodLot, TrailCoords2.greenwoodPts, "TBA", "icon_greenwood", "greenwood", "greenwood",
+                        TrailCoords3.greenwoodLot, TrailCoords3.greenwoodPts, "", "icon_greenwood", "greenwood", "greenwood",
                         "State Highway 49 and the South Fork American River",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker,",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        false, false, TrailBirds.greenwood));
+                        0, TrailBirds.greenwood));
         trailHashMap.put("Marshall Gold Discovery State Historic Park",
                 new Trail("Marshall Gold Discovery State Historic Park",
-                        TrailCoords2.marshallLot, TrailCoords2.marshallPts, "TBA", "icon_marshall", "marshall", "marshall",
+                        TrailCoords3.marshallLot, TrailCoords3.marshallPts, "", "icon_marshall", "marshall", "marshall",
                         "310 Back St, Coloma",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        false, false, TrailBirds.marshall));
+                        0, TrailBirds.marshall));
         trailHashMap.put("Dave Moore Nature Area",
                 new Trail("Dave Moore Nature Area",
-                        TrailCoords2.daveLot, TrailCoords2.davePts, "TBA", "icon_dave", "dave", "dave",
+                        TrailCoords3.daveLot, TrailCoords3.davePts, "", "icon_dave", "dave", "dave",
                         "CA-49, Lotus, CA",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        false, false, TrailBirds.dave));
+                        0, TrailBirds.dave));
         trailHashMap.put("Old Stage Road Trailhead",
                 new Trail("Old Stage Road Trailhead",
-                        TrailCoords2.oldStageLot, TrailCoords2.oldStagePts, "TBA", "icon_oldStage", "oldStage", "oldStage",
+                        TrailCoords3.oldStageLot, TrailCoords3.oldStagePts, "", "icon_oldStage", "oldStage", "oldStage",
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "Oak Woodland, Riverine",
-                        false, false, TrailBirds.oldStage));
+                        4, TrailBirds.oldStage));
         trailHashMap.put("Old Foresthill Road",
                 new Trail("Old Foresthill Road",
-                        TrailCoords2.oldForesthillLot, TrailCoords2.oldForesthillPts, "TBA", "icon_oldForesthill", "oldForesthill", "oldForesthill",
+                        TrailCoords3.oldForesthillLot, TrailCoords3.oldForesthillPts, "", "icon_oldForesthill", "oldForesthill", "oldForesthill",
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "River, Creek, Douglas Firs",
-                        false, false, TrailBirds.noBirds));
+                        4, TrailBirds.noBirds));
         trailHashMap.put("Old Quarry Road",
                 new Trail("Old Quarry Road",
-                        TrailCoords2.oldQuarryLot, TrailCoords2.oldQuarryPts, "TBA", "icon_oldQuarry", "oldQuarry", "oldQuarry",
+                        TrailCoords3.oldQuarryLot, TrailCoords3.oldQuarryPts, "", "icon_oldQuarry", "oldQuarry", "oldQuarry",
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "Oak Woodland, Riverine",
-                        false, false, TrailBirds.noBirds));
+                        4, TrailBirds.noBirds));
         trailHashMap.put("No Hands Bridge",
                 new Trail("No Hands Bridge",
-                        TrailCoords2.noHandsLot, TrailCoords2.noHandsPts, "TBA", "icon_noHands", "oldForesthill", "noHands",
+                        TrailCoords3.noHandsLot, TrailCoords3.noHandsPts, "", "icon_noHands", "oldForesthill", "noHands",
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "Oak Woodland, Riverine",
-                        false, false, TrailBirds.noHands));
+                        0, TrailBirds.noHands));
         trailHashMap.put("Lake Clementine",
                 new Trail("Lake Clementine",
-                        TrailCoords2.clementineLot, TrailCoords2.clementinePts, "TBA", "icon_clementine", "clementine", "clementine",
+                        TrailCoords3.clementineLot, TrailCoords3.clementinePts, "", "icon_clementine", "clementine", "clementine",
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "Riverine, Chaparral",
-                        false, false, TrailBirds.clementine));
+                        0, TrailBirds.clementine));
         trailHashMap.put("Driver’s Flat",
                 new Trail("Driver’s Flat",
-                        TrailCoords2.driversLot, TrailCoords2.driversPts, "TBA", "icon_drivers", "drivers", "drivers",
+                        TrailCoords3.driversLot, TrailCoords3.driversPts, "", "icon_drivers", "drivers", "drivers",
                         "Auburn State Recreation Area",
                         "Yellow-breasted Chats, Band-tailed Pigeons",
                         "Riverine, Woodlands",
-                        false, false, TrailBirds.drivers));
+                        0, TrailBirds.drivers));
         trailHashMap.put("Mosquito Ridge Road",
                 new Trail("Mosquito Ridge Road",
-                        TrailCoords2.mosquitoLot, TrailCoords2.mosquitoPts, "TBA", "icon_mosquito", "mosquito", "mosquito",
+                        TrailCoords3.mosquitoLot, TrailCoords3.mosquitoPts, "6.27 miles", "icon_mosquito", "mosquito", "mosquito",
                         "Town of Foresthill",
                         "Flammulated Owls, Spotted Owls, Black Swifts",
                         "Sierran Habitat",
-                        false, false, TrailBirds.mosquito));
+                        5, TrailBirds.mosquito));
         trailHashMap.put("Riverton-Crystal Basin Area",
                 new Trail("Riverton-Crystal Basin Area",
-                        TrailCoords2.rivertonLot, TrailCoords2.rivertonPts, "TBA", "icon_riverton", "riverton", "riverton",
+                        TrailCoords3.rivertonLot, TrailCoords3.rivertonPts, "TBD", "icon_riverton", "riverton", "riverton",
                         "Ice House Road east of Pollock Pines",
                         "Montane Habitats",
                         "Rufous Hummingbird, Western Kingbird, Vaux’s Swift",
-                        false, false, TrailBirds.riverton));
+                        5, TrailBirds.riverton));
 
 
         /////////////////////
         trailHashMap.put("Yolo Wildlife Area",
                 new Trail("Yolo Wildlife Area",
-                        TrailCoords2.yoloLot, TrailCoords2.yoloPts, "TBA", "icon_yolo", "yolo", "yolo",
+                        TrailCoords3.yoloLot, TrailCoords3.yoloPts, "", "icon_yolo", "yolo", "yolo",
                         "45211 County Road 32B (Chiles Road)",
                         "American White Pelicans, Peregrine Falcon, Merlin, Swallows",
                         "Wetlands, Riparian Woodland, Grassland",
-                        false, false, TrailBirds.yolo));
+                        0, TrailBirds.yolo));
         trailHashMap.put("Wood Ducks Pond",
                 new Trail("Wood Ducks Pond",
-                        TrailCoords2.woodDucksLot, TrailCoords2.woodDucksPts, "TBA", "icon_woodDucks", "woodDucks", "woodDucks",
+                        TrailCoords3.woodDucksLot, TrailCoords3.woodDucksPts, "0.03 miles\u00b2", "icon_woodDucks", "woodDucks", "woodDucks",
                         "South River Road West of the Sacramento River",
                         "Wood Ducks, Migrants, Warblers, Songbirds",
                         "Riparian, Ponds",
-                        false, false, TrailBirds.woodDucks));
+                        2, TrailBirds.woodDucks));
         trailHashMap.put("Babel Slough Road",
                 new Trail("Babel Slough Road",
-                        TrailCoords2.babelLot, TrailCoords2.babelPts, "TBA", "icon_babel", "babel", "babel",
+                        TrailCoords3.babelLot, TrailCoords3.babelPts, "0.49 miles", "icon_babel", "babel", "babel",
                         "Babel Slough Road 0.2 miles West of South River Road",
                         "Empidonax Flycatchers, Chestnut-Sided Warbler, Ovenbird, Rose-Breasted Grosbeak",
                         "Water Feature, Trees",
-                        false, false, TrailBirds.babel));
+                        0, TrailBirds.babel));
         trailHashMap.put("UCD, Davis Arboretum",
                 new Trail("UCD, Davis Arboretum",
-                        TrailCoords2.arboretumLot, TrailCoords2.arboretumPts, "TBA", "icon_arboretum", "arboretum", "arboretum",
+                        TrailCoords3.arboretumLot, TrailCoords3.arboretumPts, "0.03 miles\u00b2", "icon_arboretum", "arboretum", "arboretum",
                         "448 La Rue Rd, Davis, CA 95616",
                         "Red-Breasted Nuthatches, Scissor-Tailed Flycatcher, Red Crossbills",
                         "Trees, Regional Plantings, Creek",
-                        false, false, TrailBirds.arboretum));
+                        2, TrailBirds.arboretum));
         trailHashMap.put("Putah Creek Riparian Preserve",
                 new Trail("Putah Creek Riparian Preserve",
-                        TrailCoords2.putahLot, TrailCoords2.putahPts, "TBA", "icon_putah", "putah", "putah",
+                        TrailCoords3.putahLot, TrailCoords3.putahPts, "", "icon_putah", "putah", "putah",
                         "436 Mrak Hall One Shields Avenue",
                         "Chestnut-Backed Chickadees, Black-Crowned Night-Herons, Snowy Egrets",
                         "Stream, Riparian and Grassland",
-                        false, false, TrailBirds.noBirds));
+                        0, TrailBirds.noBirds));
         trailHashMap.put("Slide Hill Park",
                 new Trail("Slide Hill Park",
-                        TrailCoords2.slideLot, TrailCoords2.slidePts, "TBA", "icon_slide", "slide", "slide",
+                        TrailCoords3.slideLot, TrailCoords3.slidePts, "", "icon_slide", "slide", "slide",
                         "2850 Temple Dr, Davis, CA",
                         "Mountain Chickadee, Cassin’s Finch, Red Crossbill, Evening Grosbeak",
                         "Trees",
-                        false, false, TrailBirds.slide));
+                        0, TrailBirds.slide));
         trailHashMap.put("North Pond",
                 new Trail("North Pond",
-                        TrailCoords2.northPondLot, TrailCoords2.northPondPts, "TBA", "icon_northPond", "northPond", "northPond",
+                        TrailCoords3.northPondLot, TrailCoords3.northPondPts, "", "icon_northPond", "northPond", "northPond",
                         "3434 Anderson Road Davis",
                         "Dowitchers, Yellowlegs, Ruff",
                         "Wetlands, Trees",
-                        false, false, TrailBirds.northPond));
+                        0, TrailBirds.northPond));
         trailHashMap.put("North Davis Farms",
                 new Trail("North Davis Farms",
-                        TrailCoords2.northDavisLot, TrailCoords2.northDavisPts, "TBA", "icon_northDavis", "northDavis", "northDavis",
+                        TrailCoords3.northDavisLot, TrailCoords3.northDavisPts, "0.46 miles", "icon_northDavis", "northDavis", "northDavis",
                         "North Davis Farms Rd., Davis",
                         "Migratory Birds",
                         "Trees, Ponds",
-                        false, false, TrailBirds.noBirds));
+                        1, TrailBirds.noBirds));
         trailHashMap.put("Wildhorse Golf Course",
                 new Trail("Wildhorse Golf Course",
-                        TrailCoords2.wildhorseLot, TrailCoords2.wildhorsePts, "TBA", "icon_wildhorse", "wildhorse", "wildhorse",
+                        TrailCoords3.wildhorseLot, TrailCoords3.wildhorsePts, "0.31 miles", "icon_wildhorse", "wildhorse", "wildhorse",
                         "Northeast of the Wildhorse Golf Course, Davis",
                         "Burrowing Owls",
                         "Burrows, Fields, Stream",
-                        false, false, TrailBirds.wildhorse));
+                        0, TrailBirds.wildhorse));
         trailHashMap.put("Willow Bank Ditch",
                 new Trail("Willow Bank Ditch",
-                        TrailCoords2.willowBankLot, TrailCoords2.willowBankPts, "TBA", "icon_willowBank", "willowBank", "willowBank",
+                        TrailCoords3.willowBankLot, TrailCoords3.willowBankPts, "0.18 miles", "icon_willowBank", "willowBank", "willowBank",
                         "Lillard Ave at El Campo Ave or Ohlone Street",
                         "Winter Wrens",
                         "Trees",
-                        false, false, TrailBirds.willowBank));
+                        0, TrailBirds.willowBank));
         trailHashMap.put("Davis Wastewater Treatment Plant",
                 new Trail("Davis Wastewater Treatment Plant",
-                        TrailCoords2.wastewaterLot, TrailCoords2.wastewaterPts, "TBA", "icon_wastewater", "wastewater", "wastewater",
+                        TrailCoords3.wastewaterLot, TrailCoords3.wastewaterPts, "0.9 miles", "icon_wastewater", "wastewater", "wastewater",
                         "2727 2nd St, Davis",
                         "Pintails, American Widgeons, Shovelers,Phalaropes, Plovers, Gulls",
                         "Sewage Ponds, Settling Ponds, Levees",
-                        false, false, TrailBirds.wastewater));
+                        1, TrailBirds.wastewater));
         trailHashMap.put("City of Davis Wetlands",
                 new Trail("City of Davis Wetlands",
-                        TrailCoords2.wetlandsLot, TrailCoords2.wetlandsPts, "TBA", "icon_wetlands", "wetlands", "wetlands",
+                        TrailCoords3.wetlandsLot, TrailCoords3.wetlandsPts, "2.38 miles", "icon_wetlands", "wetlands", "wetlands",
                         "2727 2nd St, Davis",
                         "Shorebirds, Waterfowl, Northern Harriers, Marsh Wrens, Yellow-headed Blackbirds",
                         "Wetlands, Upland",
-                        false, false, TrailBirds.wetlands));
+                        0, TrailBirds.wetlands));
         trailHashMap.put("Yolo Egret and Heron Rookery",
                 new Trail("Yolo Egret and Heron Rookery",
-                        TrailCoords2.rookeryLot, TrailCoords2.rookeryPts, "TBA", "icon_rookery", "rookery", "rookery",
+                        TrailCoords3.rookeryLot, TrailCoords3.rookeryPts, "", "icon_rookery", "rookery", "rookery",
                         "Near Yolo County Landfill",
                         "Nesting Egrets, Herons",
                         "Eucalyptus Trees",
-                        false, false, TrailBirds.rookery));
+                        0, TrailBirds.rookery));
         trailHashMap.put("Woodland Waste Water Treatment Plant",
                 new Trail("Woodland Waste Water Treatment Plant",
-                        TrailCoords2.woodlandLot, TrailCoords2.woodlandPts, "TBA", "icon_woodland", "woodland", "woodland",
+                        TrailCoords3.woodlandLot, TrailCoords3.woodlandPts, "", "icon_woodland", "woodland", "woodland",
                         "Road 24 opposite Gibson Road",
                         "Shorebirds, Gulls, Pacific Golden-Plovers,  Semipalmated Sandpipers, Baird’s Sandpipers",
                         "Ponds",
-                        false, false, TrailBirds.woodland));
+                        0, TrailBirds.woodland));
         trailHashMap.put("Dunnigan Hills, Longspur Corner",
                 new Trail("Dunnigan Hills, Longspur Corner",
-                        TrailCoords2.dunniganLot, TrailCoords2.dunniganPts, "TBA", "icon_dunnigan", "dunnigan", "dunnigan",
+                        TrailCoords3.dunniganLot, TrailCoords3.dunniganPts, "7.0 miles", "icon_dunnigan", "dunnigan", "dunnigan",
                         "Rds 16 and 90B are \"Longspur Corner\"",
                         "Golden Eagle, Northern Harrier, Hawks, Merlin,  Prairie Falcon, Burrowing Owls",
                         "Rolling Hills",
-                        false, false, TrailBirds.dunnigan));
+                        5, TrailBirds.dunnigan));
         trailHashMap.put("Rayhouse Road",
                 new Trail("Rayhouse Road",
-                        TrailCoords2.rayhouseLot, TrailCoords2.rayhousePts, "TBA", "icon_rayhouse", "rayhouse", "rayhouse",
+                        TrailCoords3.rayhouseLot, TrailCoords3.rayhousePts, "0.35 miles", "icon_rayhouse", "rayhouse", "rayhouse",
                         "5 Miles past Capay Valley",
                         "Common Poorwill, Mountain Quail, Sage Sparrow, Lawrence’s Goldfinch,  Pileated Woodpeckers",
                         "Steep Mountains, Oak Woodlands, Riparian, Chaparral",
-                        false, false, TrailBirds.rayhouse));
+                        5, TrailBirds.rayhouse));
 
 
 

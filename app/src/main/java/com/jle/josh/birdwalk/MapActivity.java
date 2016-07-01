@@ -190,28 +190,57 @@ public class MapActivity extends AppCompatActivity {
                 title.setText(marker.getTitle());
 
                 Trail t = TrailData.getValue(marker.getTitle());
+                int typeCode = t.getTypeCode();
                 //set length icon for loop, area, site, one-way
-                if (t.isLoop()){
-                    len_icon.setImageResource(R.drawable.icon_loop_1);
-                    lengthText.setText("   ".concat(t.getLength()));
+//                if (t.isLoop()){
+//                    len_icon.setImageResource(R.drawable.icon_loop_1);
+//                    lengthText.setText("   ".concat(t.getLength()));
+//                }
+//                else if (t.isArea()){
+//                    len_icon.setImageResource(R.drawable.icon_area3_1);
+//                    lengthText.setText("   ".concat(t.getLength()));
+//                }
+//                else if (t.singlePoint()){
+//                    len_icon.setImageResource(R.drawable.icon_pin);
+//                    lengthText.setText("   Birding Viewpoint");
+//                }
+//                //special case
+//                else if (t.getTrailName().equals("Green Haven Lake")) {
+//                    len_icon.setImageResource(R.drawable.icon_pin);
+//                    lengthText.setText("   Birding Viewpoints");
+//                }
+//                else {
+//                    len_icon.setImageResource(R.drawable.icon_oneway_1);
+//                    lengthText.setText("   ".concat(t.getLength()));
+//                }
+
+                switch (typeCode) {
+                    case 0: if (t.singlePoint()){
+                        len_icon.setImageResource(R.drawable.icon_pin);
+                        lengthText.setText("   Birding Viewpoint");
+                    }
+                    else {
+                        len_icon.setImageResource(R.drawable.icon_oneway_1);
+                        lengthText.setText("   ".concat(t.getLength()));
+                    }
+                        break;
+                    case 1: len_icon.setImageResource(R.drawable.icon_loop_1);
+                            lengthText.setText("   ".concat(t.getLength()));
+                            break;
+                    case 2: len_icon.setImageResource(R.drawable.icon_area3_1);
+                            lengthText.setText("   ".concat(t.getLength()));
+                            break;
+                    case 3: len_icon.setImageResource(R.drawable.icon_pin);
+                            lengthText.setText("   Birding Viewpoints");
+                            break;
+                    case 4: len_icon.setImageResource(R.drawable.icon_trailhead_1);
+                            lengthText.setText("   Trailhead");
+                            break;
+                    case 5: len_icon.setImageResource(R.drawable.icon_drive_1);
+                            lengthText.setText("   ".concat(t.getLength()));
+                            break;
                 }
-                else if (t.isArea()){
-                    len_icon.setImageResource(R.drawable.icon_area3_1);
-                    lengthText.setText("   ".concat(t.getLength()));
-                }
-                else if (t.singlePoint()){
-                    len_icon.setImageResource(R.drawable.icon_pin);
-                    lengthText.setText("   Birding Viewpoint");
-                }
-                //special case
-                else if (t.getTrailName().equals("Green Haven Lake")) {
-                    len_icon.setImageResource(R.drawable.icon_pin);
-                    lengthText.setText("   Birding Viewpoints");
-                }
-                else {
-                    len_icon.setImageResource(R.drawable.icon_oneway_1);
-                    lengthText.setText("   ".concat(t.getLength()));
-                }
+
                 return v;
             }
         });
@@ -295,7 +324,7 @@ public class MapActivity extends AppCompatActivity {
         else {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             //polygon or polyline
-            if (trail.isArea()){
+            if (trail.getTypeCode() == 2){
                 PolygonOptions trailPolygon = new PolygonOptions().fillColor(0x7F00FF00)
                         .strokeColor(Color.GREEN).strokeWidth(0);
                 for (LatLng l : trail.getPoints()) {
