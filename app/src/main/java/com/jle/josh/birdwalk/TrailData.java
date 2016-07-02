@@ -318,7 +318,7 @@ public class TrailData {
                         4, TrailBirds.howard));
 //        trailHashMap.put("Delta Loop",
 //                new Trail("Delta Loop",
-//                        TrailCoords2.deltaLot, TrailCoords2.deltaPts, "TBA", "icon_delta", "korths", "delta",
+//                        TrailCoords2.deltaLot, TrailCoords2.deltaPts, "", "icon_delta", "korths", "delta",
 //                        "TBA",
 //                        "TBA",
 //                        "TBA",
@@ -472,7 +472,7 @@ public class TrailData {
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        0, TrailBirds.folsomPoint));
+                        4, TrailBirds.folsomPoint));
         trailHashMap.put("Sweetwater Creek",
                 new Trail("Sweetwater Creek",
                         TrailCoords2.sweetwaterCreekLot, TrailCoords2.sweetwaterCreekPts, "", "icon_sweetwaterCreek", "sweetwaterCreek", "sweetwaterCreek",
@@ -486,7 +486,7 @@ public class TrailData {
                         "Folsom Lake State Recreation Area",
                         "Waterbirds, Bluebirds, California Thrashers, Yellow-breasted Chats",
                         "Lake, Oak Woodland, Chaparral",
-                        0, TrailBirds.folsomPoint));
+                        4, TrailBirds.folsomPoint));
         trailHashMap.put("Beal’s Point",
                 new Trail("Beal’s Point",
                         TrailCoords2.bealsLot, TrailCoords2.bealsPts, "", "icon_beals", "beals", "beals",
@@ -496,7 +496,7 @@ public class TrailData {
                         0, TrailBirds.beals));
 //        trailHashMap.put("Granite Bay Entrance",
 //                new Trail("Granite Bay Entrance",
-//                        TrailCoords2.graniteLot, TrailCoords2.granitePts, "TBA", "icon_granite", "granite", "granite",
+//                        TrailCoords2.graniteLot, TrailCoords2.granitePts, "", "icon_granite", "granite", "granite",
 //                        "TBA",
 //                        "TBA",
 //                        "TBA",
@@ -531,7 +531,7 @@ public class TrailData {
                         "Near Lincoln Wastewater Plant",
                         "Raptors, Snow Geese, Tundra Swans, Lark,  Longspurs, Ibis",
                         "Fields, Riparian, Water Features",
-                        0, TrailBirds.brewer));
+                        5, TrailBirds.brewer));
         trailHashMap.put("Bobelaine Audobon Sanctuary",
                 new Trail("Bobelaine Audobon Sanctuary",
                         TrailCoords2.bobelaineLot, TrailCoords2.bobelainePts, "0.53 miles\u00b2", "icon_", "bobelaine", "bobelaine",
@@ -559,7 +559,7 @@ public class TrailData {
                         "3207 Rutherford Road, Gridley",
                         "Snow Geese, Ross's Geese Virginia Rail, Sora Rails, Ducks, Hawks",
                         "Marshlands",
-                        0, TrailBirds.grayLodge));
+                        4, TrailBirds.grayLodge));
         trailHashMap.put("Woodbridge Ecological Reserve",
                 new Trail("Woodbridge Ecological Reserve",
                         TrailCoords2.woodbridgeEcoLot, TrailCoords2.woodbridgeEcoPts, "", "icon_woodbridgeEco", "woodbridgeEco", "woodbridgeEco",
@@ -580,7 +580,7 @@ public class TrailData {
                         "301 River Meadows Drive in Woodbridge",
                         "Wood Duck, Common Merganser, Hawks, Owl, Woodpeckers, Lazuli Bunting",
                         "Riparian Woodlands, River, Riparian Bush",
-                        0, TrailBirds.woodbridgePark));
+                        4, TrailBirds.woodbridgePark));
         trailHashMap.put("Lodi Lake",
                 new Trail("Lodi Lake",
                         TrailCoords2.lodiLot, TrailCoords2.lodiPts, "0.52 miles", "icon_lodi", "lodi", "lodi",
@@ -629,28 +629,28 @@ public class TrailData {
                         "State Highway 49 and the South Fork American River",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        0, TrailBirds.cronan));
+                        4, TrailBirds.cronan));
         trailHashMap.put("Greenwood Unit",
                 new Trail("Greenwood Unit",
                         TrailCoords3.greenwoodLot, TrailCoords3.greenwoodPts, "", "icon_greenwood", "greenwood", "greenwood",
                         "State Highway 49 and the South Fork American River",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker,",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        0, TrailBirds.greenwood));
+                        4, TrailBirds.greenwood));
         trailHashMap.put("Marshall Gold Discovery State Historic Park",
                 new Trail("Marshall Gold Discovery State Historic Park",
                         TrailCoords3.marshallLot, TrailCoords3.marshallPts, "", "icon_marshall", "marshall", "marshall",
                         "310 Back St, Coloma",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        0, TrailBirds.marshall));
+                        4, TrailBirds.marshall));
         trailHashMap.put("Dave Moore Nature Area",
                 new Trail("Dave Moore Nature Area",
                         TrailCoords3.daveLot, TrailCoords3.davePts, "", "icon_dave", "dave", "dave",
                         "CA-49, Lotus, CA",
                         "Cooper’s Hawk, Band-tailed Pigeon, Acorn Woodpecker, Nuttall’s Woodpecker",
                         "Oak Woodland, Rolling Grasslands, Chaparral, Coniferous Forest",
-                        0, TrailBirds.dave));
+                        4, TrailBirds.dave));
         trailHashMap.put("Old Stage Road Trailhead",
                 new Trail("Old Stage Road Trailhead",
                         TrailCoords3.oldStageLot, TrailCoords3.oldStagePts, "", "icon_oldStage", "oldStage", "oldStage",
@@ -685,7 +685,7 @@ public class TrailData {
                         "Auburn State Recreation Area",
                         "Hawks, Common Mergansers",
                         "Riverine, Chaparral",
-                        0, TrailBirds.clementine));
+                        4, TrailBirds.clementine));
         trailHashMap.put("Driver’s Flat",
                 new Trail("Driver’s Flat",
                         TrailCoords3.driversLot, TrailCoords3.driversPts, "", "icon_drivers", "drivers", "drivers",
@@ -702,7 +702,7 @@ public class TrailData {
                         5, TrailBirds.mosquito));
         trailHashMap.put("Riverton-Crystal Basin Area",
                 new Trail("Riverton-Crystal Basin Area",
-                        TrailCoords3.rivertonLot, TrailCoords3.rivertonPts, "TBD", "icon_riverton", "riverton", "riverton",
+                        TrailCoords3.rivertonLot, TrailCoords3.rivertonPts, "", "icon_riverton", "riverton", "riverton",
                         "Ice House Road east of Pollock Pines",
                         "Montane Habitats",
                         "Rufous Hummingbird, Western Kingbird, Vaux’s Swift",
@@ -716,7 +716,7 @@ public class TrailData {
                         "45211 County Road 32B (Chiles Road)",
                         "American White Pelicans, Peregrine Falcon, Merlin, Swallows",
                         "Wetlands, Riparian Woodland, Grassland",
-                        0, TrailBirds.yolo));
+                        4, TrailBirds.yolo));
         trailHashMap.put("Wood Ducks Pond",
                 new Trail("Wood Ducks Pond",
                         TrailCoords3.woodDucksLot, TrailCoords3.woodDucksPts, "0.03 miles\u00b2", "icon_woodDucks", "woodDucks", "woodDucks",
@@ -754,7 +754,7 @@ public class TrailData {
                         0, TrailBirds.slide));
         trailHashMap.put("North Pond",
                 new Trail("North Pond",
-                        TrailCoords3.northPondLot, TrailCoords3.northPondPts, "", "icon_northPond", "northPond", "northPond",
+                        TrailCoords3.northPondLot, TrailCoords3.northPondPts, "0.19 miles", "icon_northPond", "northPond", "northPond",
                         "3434 Anderson Road Davis",
                         "Dowitchers, Yellowlegs, Ruff",
                         "Wetlands, Trees",

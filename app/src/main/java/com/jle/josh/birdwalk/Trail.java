@@ -67,23 +67,29 @@ class Trail {
     /*Comparator for sorting the list by Trail Length*/
     public static Comparator<Trail> TrailComparatorLength = new Comparator<Trail>() {
 
-        public int compare(Trail s1, Trail s2) {
-            String TrailLen1, TrailLen2;
-            if (s1.getLength().equals(""))
-                TrailLen1 = "0.00";
-            else
-                TrailLen1 = s1.getLength();
+        public int compare(Trail t1, Trail t2) {
+            Double trailLen1, trailLen2;
 
-            if (s2.getLength().equals(""))
-                TrailLen2 = "0.00";
-            else
-                TrailLen2 = s2.getLength();
+
+            if (t1.getLength().equals(""))
+                trailLen1 = 0.0;
+            else {
+                String[] parts = t1.getLength().split(" ");
+                trailLen1 = Double.parseDouble(parts[0]);
+            }
+
+            if (t2.getLength().equals(""))
+                trailLen2 = 0.0;
+            else {
+                String[] parts = t2.getLength().split(" ");
+                trailLen2 = Double.parseDouble(parts[0]);
+            }
 
 
             //ascending order
             //return TrailLen1.compareTo(TrailLen2);
             //descending order
-            return TrailLen2.compareTo(TrailLen1);
+            return trailLen2.compareTo(trailLen1);
         }};
 
 

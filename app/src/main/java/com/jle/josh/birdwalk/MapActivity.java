@@ -12,10 +12,20 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +42,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MapActivity extends AppCompatActivity {
     private GoogleMap mMap;
@@ -40,6 +56,9 @@ public class MapActivity extends AppCompatActivity {
     String trailName;
     Toolbar toolbar;
     String intentString;
+
+    Map<String, Trail> trailMap;
+    ArrayList<Trail> trailList;
 
 
      /* Request code for location permission request.
@@ -50,6 +69,10 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search_text);
+        Button clearBtn = (Button) findViewById(R.id.clear_search);
+
+        trailMap = TrailData.trailHashMap;
 
         setUpMapIfNeeded();
         Intent intent = this.getIntent();
@@ -59,9 +82,18 @@ public class MapActivity extends AppCompatActivity {
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle("Map Overview");
                 setSupportActionBar(toolbar);
-                showAllTrails();
+                ImageButton legend = (ImageButton) findViewById(R.id.legend);
+                legend.setVisibility(View.VISIBLE);
+                mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+                trailList = new ArrayList<Trail>(TrailData.trailHashMap.values());
+
+                setUpSearchField();
+                showTrails(false);
             }
-            if (intentString.equals("TrailActivity")) {
+            else if (intentString.equals("TrailActivity")) {
+                actv.setVisibility(View.GONE);
+                clearBtn.setVisibility(View.GONE);
                 trailName = intent.getExtras().getString("trailKey");
                 trail = TrailData.getValue(trailName);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -170,9 +202,7 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
-    public void showAllTrails(){
-        ImageButton legend = (ImageButton) findViewById(R.id.legend);
-        legend.setVisibility(View.VISIBLE);
+    public void showTrails(boolean searched){
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -191,28 +221,6 @@ public class MapActivity extends AppCompatActivity {
 
                 Trail t = TrailData.getValue(marker.getTitle());
                 int typeCode = t.getTypeCode();
-                //set length icon for loop, area, site, one-way
-//                if (t.isLoop()){
-//                    len_icon.setImageResource(R.drawable.icon_loop_1);
-//                    lengthText.setText("   ".concat(t.getLength()));
-//                }
-//                else if (t.isArea()){
-//                    len_icon.setImageResource(R.drawable.icon_area3_1);
-//                    lengthText.setText("   ".concat(t.getLength()));
-//                }
-//                else if (t.singlePoint()){
-//                    len_icon.setImageResource(R.drawable.icon_pin);
-//                    lengthText.setText("   Birding Viewpoint");
-//                }
-//                //special case
-//                else if (t.getTrailName().equals("Green Haven Lake")) {
-//                    len_icon.setImageResource(R.drawable.icon_pin);
-//                    lengthText.setText("   Birding Viewpoints");
-//                }
-//                else {
-//                    len_icon.setImageResource(R.drawable.icon_oneway_1);
-//                    lengthText.setText("   ".concat(t.getLength()));
-//                }
 
                 switch (typeCode) {
                     case 0: if (t.singlePoint()){
@@ -245,15 +253,13 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        Map<String, Trail> map = TrailData.trailHashMap;
+
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         //add each trail marker to map
-        for (Map.Entry<String, Trail> entry : map.entrySet()) {
-            String title = entry.getKey();
-            Trail trail = entry.getValue();
-            LatLng start = trail.getStart();
+        for (Trail entry : trailList) {
+            LatLng start = entry.getStart();
 
-            mMap.addMarker(new MarkerOptions().position(start).title(title));
+            mMap.addMarker(new MarkerOptions().position(start).title(entry.getTrailName()));
             builder.include(start);
         }
 
@@ -269,32 +275,36 @@ public class MapActivity extends AppCompatActivity {
                 }
         );
 
-        //center to bounds, zoom when map loaded
-        LatLngBounds bounds = builder.build();
-        int padding = 100; // offset from edges of the map in pixels
-        final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 10));
-        mMap.getUiSettings().setAllGesturesEnabled(false);
-        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                mMap.animateCamera(cu, new GoogleMap.CancelableCallback() {
-                    @Override
-                    public void onFinish() {
-                        mMap.getUiSettings().setAllGesturesEnabled(true);
-                    }
+        //only change camera zoom for initialization
+        if (!searched){
+            //center to bounds, zoom when map loaded
+            LatLngBounds bounds = builder.build();
+            int padding = 100; // offset from edges of the map in pixels
+            final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 10));
+            mMap.getUiSettings().setAllGesturesEnabled(false);
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    mMap.animateCamera(cu, new GoogleMap.CancelableCallback() {
+                        @Override
+                        public void onFinish() {
+                            mMap.getUiSettings().setAllGesturesEnabled(true);
+                        }
 
-                    @Override
-                    public void onCancel() {
-                        mMap.getUiSettings().setAllGesturesEnabled(true);
-                    }
-                });
-            }
-        });
-
+                        @Override
+                        public void onCancel() {
+                            mMap.getUiSettings().setAllGesturesEnabled(true);
+                        }
+                    });
+                }
+            });
+        }
 
 
     }
+
+
 
     public void showSelectedTrail(){
         ImageButton legend = (ImageButton) findViewById(R.id.legend);
@@ -306,11 +316,11 @@ public class MapActivity extends AppCompatActivity {
             mMap.addMarker(new MarkerOptions().position(trail.getLotPoint()).title("Parking"));
 
         //trail only has 1 point
-        if (trail.numPoints() == 1){
+        if (trail.singlePoint()){
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trail.getStart(), 15));
         }
         //special case, disjointed points
-        else if (trail.getTrailName().equals("Green Haven Lake")){
+        else if (trail.getTypeCode() == 3){
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (int i = 0; i < trail.numPoints(); i++) {
                 mMap.addMarker(new MarkerOptions().position(trail.getPoints()[i])
@@ -355,6 +365,105 @@ public class MapActivity extends AppCompatActivity {
 //            });
         }
     }
+
+
+    public void setUpSearchField(){
+        //set up search field listeners
+        final Button clearButton = (Button) findViewById(R.id.clear_search);
+        clearButton.setVisibility(View.GONE);
+
+
+        Set<String> keys = trailMap.keySet();
+        String[] trails = keys.toArray(new String[keys.size()]);
+        String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
+        for (int i=0; i<trails.length;i++){
+            birdsAndTrails[i] = trails[i];
+        }
+        int k = trails.length;
+        for (int j=0; j<TrailBirds.allBirds.length; j++){
+            birdsAndTrails[k] = TrailBirds.allBirds[j];
+            k++;
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, birdsAndTrails);
+        final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_text);
+        input.setAdapter(adapter);
+        input.setThreshold(1);
+        input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
+
+        //hide button, when field is empty
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (input.getText().toString().equals(""))
+                    clearButton.setVisibility(View.GONE);
+                else
+                    clearButton.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //perform search for selected suggestion
+        input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                performSearch(input.getText().toString());
+                if (getCurrentFocus() != null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+            }
+        });
+        //perform search, hide keyboard when 'search' is clicked
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            //perform search, and hide keyboard
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                performSearch(input.getText().toString());
+                if (getCurrentFocus() != null) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+    }
+
+    //search trails for the query string
+    public void performSearch(String query){
+        trailList.clear();
+        mMap.clear();
+
+        //check each trail's title, birds
+        for (Map.Entry<String, Trail> entry : trailMap.entrySet()) {
+            String title = entry.getKey();
+            String birds = entry.getValue().birdText();
+            Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
+            Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
+            if (inBirds || inTitle) {
+                trailList.add(entry.getValue());
+            }
+        }
+
+        showTrails(true);
+    }
+
+    //delete the editText field, and show all trails
+    public void clearText(View v){
+        EditText input = (EditText) findViewById(R.id.search_text);
+        input.setText("");
+        performSearch("");
+    }
+
 
     public void showLegend(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
