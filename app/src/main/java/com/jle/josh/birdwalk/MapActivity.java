@@ -305,7 +305,6 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
-
     public void showSelectedTrail(){
         ImageButton legend = (ImageButton) findViewById(R.id.legend);
         legend.setVisibility(View.GONE);
@@ -354,15 +353,15 @@ public class MapActivity extends AppCompatActivity {
 
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
-            //int padding = 200; // offset from edges of the map in pixels
-            //final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            int padding = 100; // offset from edges of the map in pixels
+            final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
-//            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-//                @Override
-//                public void onMapLoaded() {
-//                    mMap.animateCamera(cu);
-//                }
-//            });
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    mMap.animateCamera(cu);
+                }
+            });
         }
     }
 

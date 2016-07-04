@@ -283,7 +283,7 @@ public class TrailData {
                         5, TrailBirds.natomas));
         trailHashMap.put("Wolf Ranch Wildlife Sanctuary",
                 new Trail("Wolf Ranch Wildlife Sanctuary",
-                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "2.34 miles\u00b2", "icon_wolf", "wolf", "wolf",
+                        TrailCoords2.wolfLot, TrailCoords2.wolfPts, "2.34 miles", "icon_wolf", "wolf", "wolf",
                         "South of Elkhorn Boulevard and Sorento Road",
                         "Greater Yellowlegs, Common Snipe, Great-tailed Grackles",
                         "Creeks, Wetlands, Drainage Ditch, Upland Forests",
@@ -702,7 +702,7 @@ public class TrailData {
                         5, TrailBirds.mosquito));
         trailHashMap.put("Riverton-Crystal Basin Area",
                 new Trail("Riverton-Crystal Basin Area",
-                        TrailCoords3.rivertonLot, TrailCoords3.rivertonPts, "", "icon_riverton", "riverton", "riverton",
+                        TrailCoords3.rivertonLot, TrailCoords3.rivertonPts, "10.24 miles", "icon_riverton", "riverton", "riverton",
                         "Ice House Road east of Pollock Pines",
                         "Montane Habitats",
                         "Rufous Hummingbird, Western Kingbird, Vaux’s Swift",
@@ -817,7 +817,7 @@ public class TrailData {
                         5, TrailBirds.dunnigan));
         trailHashMap.put("Rayhouse Road",
                 new Trail("Rayhouse Road",
-                        TrailCoords3.rayhouseLot, TrailCoords3.rayhousePts, "0.35 miles", "icon_rayhouse", "rayhouse", "rayhouse",
+                        TrailCoords3.rayhouseLot, TrailCoords3.rayhousePts, "1.08 miles", "icon_rayhouse", "rayhouse", "rayhouse",
                         "5 Miles past Capay Valley",
                         "Common Poorwill, Mountain Quail, Sage Sparrow, Lawrence’s Goldfinch,  Pileated Woodpeckers",
                         "Steep Mountains, Oak Woodlands, Riparian, Chaparral",

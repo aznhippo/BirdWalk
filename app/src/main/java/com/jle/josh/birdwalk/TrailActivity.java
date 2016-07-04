@@ -245,7 +245,7 @@ public class TrailActivity extends AppCompatActivity {
             }
             //center to bounds, zoom when map loaded
             LatLngBounds bounds = builder.build();
-            int padding = 200; // offset from edges of the map in pixels
+            int padding = 75; // offset from edges of the map in pixels
             final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.getCenter(), 14));
             mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
