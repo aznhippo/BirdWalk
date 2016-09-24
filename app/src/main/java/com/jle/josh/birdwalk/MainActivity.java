@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.content.Intent;
 import android.webkit.WebView;
@@ -36,15 +37,12 @@ public class MainActivity extends AppCompatActivity {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean shown = prefs.getBoolean(eulaKey, false);
         if (shown == false){
-            String title = "BirdWalk v" + versionInfo.versionName;
+            String title = "BirdWalk v" + versionInfo.versionName + " EULA";
             String assetPath = "file:///android_asset/eula.html";
-
-
-
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
                     .setTitle(title)
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    .setNegativeButton("Decline", new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -66,16 +64,21 @@ public class MainActivity extends AppCompatActivity {
 
                     });
 
+            builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    finish();
+                    System.exit(0);
+                    return false;
+                }
+            });
+
             WebView wv = new WebView(this);
             wv.loadUrl(assetPath);
-
 
             builder.setView(wv);
             builder.create().show();
         }
-
-
-
     }
 
     //called when user clicks maps button

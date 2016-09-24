@@ -291,28 +291,6 @@ public class ListActivity extends AppCompatActivity {
             len_icon.setVisibility(View.VISIBLE);
 
             int typeCode = trail.getTypeCode();
-//            if (typeCode == 1){
-//                len_icon.setImageResource(R.drawable.icon_loop);
-//                holder.lengthText.setText("   ".concat(trail.getLength()));
-//            }
-//            else if (typeCode == 2){
-//                len_icon.setImageResource(R.drawable.icon_area3);
-//                holder.lengthText.setText("   ".concat(trail.getLength()));
-//            }
-//            else if (trail.singlePoint()){
-//                len_icon.setImageResource(R.drawable.icon_pin);
-//                holder.lengthText.setText("   Birding Viewpoint");
-//            }
-//            //special case
-//            else if (typeCode == 3) {
-//                len_icon.setImageResource(R.drawable.icon_pin);
-//                holder.lengthText.setText("   Birding Viewpoints");
-//            }
-//            else {
-//                len_icon.setImageResource(R.drawable.icon_oneway);
-//                holder.lengthText.setText("   ".concat(trail.getLength()));
-//            }
-
             switch (typeCode) {
                 case 0: if (trail.singlePoint()){
                             len_icon.setImageResource(R.drawable.icon_pin);
