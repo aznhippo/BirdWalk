@@ -35,6 +35,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+/**
+ * Created by Josh on 11/4/15.
+ * Activity for uploading pics to remote server
+ *
+ */
+
 public class UploadActivity extends AppCompatActivity {
 
     public static final String UPLOAD_URL = "http://birdwalk.hopto.org/upload.php";
@@ -117,6 +124,7 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
+    //encode image bitmap to base64 bytes to string
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -124,6 +132,7 @@ public class UploadActivity extends AppCompatActivity {
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
+    //upload image to using AsyncTask
     public void uploadImage(View v){
         if (!imagePicked) {
             Toast.makeText(getApplicationContext(),"No image selected",Toast.LENGTH_SHORT).show();
@@ -138,6 +147,7 @@ public class UploadActivity extends AppCompatActivity {
         final String contactName = contact.getText().toString();
 
 
+        //AsyncTask subclass for sending bmp and info to server
         class UploadImage extends AsyncTask<Bitmap,Void,String>{
             ProgressDialog loading;
             RequestHandler rh = new RequestHandler();
@@ -177,6 +187,7 @@ public class UploadActivity extends AppCompatActivity {
         ui.execute(bitmap);
     }
 
+    //set up search bar for trails
     public void setUpSearchField(){
         //set up search field listeners
         final Button clearButton = (Button) findViewById(R.id.clear_search);
@@ -237,6 +248,7 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 
+    //clear search bar
     public void clearText(View v){
         input.setText("");
     }

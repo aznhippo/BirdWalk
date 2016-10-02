@@ -4,6 +4,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by Josh on 1/8/16.
+ * Class for storing static lat/lng arrays for each trail
+ * Bad design
  */
 public class TrailCoords {
     static LatLng sailorLot = new LatLng (38.634109, -121.233595);

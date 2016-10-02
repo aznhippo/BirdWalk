@@ -13,6 +13,13 @@ import android.view.View;
 import android.content.Intent;
 import android.webkit.WebView;
 
+/**
+ * Created by Josh
+ * Main menu activity
+ * Displays EULA, choose between overview, listview, or info
+ */
+
+
 public class MainActivity extends AppCompatActivity {
     private String EULA_PREFIX = "eula_";
 

@@ -5,6 +5,8 @@ import java.util.Comparator;
 
 /**
  * Created by Josh on 11/11/15.
+ * Trail class for holding trail data
+ * Uses comparators for sorting trails by alpha, or by length
  */
 class Trail {
 

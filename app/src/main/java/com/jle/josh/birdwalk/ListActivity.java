@@ -38,6 +38,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Created by Josh
+ * List of all trail activity
+ * Shows all trails, allows users to search by trail name or bird
+ */
+
+
 public class ListActivity extends AppCompatActivity {
     ListView listView;
     TrailAdapter trailAdapter;
@@ -57,6 +64,7 @@ public class ListActivity extends AppCompatActivity {
         trailList= new ArrayList<Trail>(TrailData.trailHashMap.values());
         Collections.sort(trailList, Trail.TrailComparatorName);
 
+        //set listview to trailadapter using trailList
         trailAdapter = new TrailAdapter(this, R.layout.list_item, trailList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(trailAdapter);
@@ -76,12 +84,12 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
+    //set up the search bar
     public void setUpSearchField(){
-        //set up search field listeners
         final Button clearButton = (Button) findViewById(R.id.clear_search);
         clearButton.setVisibility(View.GONE);
 
-
+        // create array containing all trail and bird names
         Set<String> keys = map.keySet();
         String[] trails = keys.toArray(new String[keys.size()]);
         String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
@@ -106,8 +114,7 @@ public class ListActivity extends AppCompatActivity {
         //hide button, when field is empty
         input.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -118,8 +125,7 @@ public class ListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-            }
+            public void afterTextChanged(Editable s) {}
         });
         //perform search for selected suggestion
         input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -151,36 +157,19 @@ public class ListActivity extends AppCompatActivity {
     public void performSearch(String query){
         trailList.clear();
 
-        //check for trails without narratives
-        if (query.equals("nonarr")){
-            List<String> list = null;
-            try{
-                list = Arrays.asList(getResources().getAssets().list(""));
-            } catch (IOException e){
+        //check each trail's title, birds
+        for (Map.Entry<String, Trail> entry : map.entrySet()) {
+            String title = entry.getKey();
+            String birds = entry.getValue().birdText();
+            Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
+            Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
+            if (inBirds || inTitle) {
+                trailList.add(entry.getValue());
             }
-
-            for (Map.Entry<String, Trail> entry : map.entrySet()) {
-                if (!list.contains(entry.getValue().getExcName() + ".html"))
-                    trailList.add(entry.getValue());
-            }
-            Collections.sort(trailList, Trail.TrailComparatorName);
-            trailAdapter.notifyDataSetChanged();
         }
+        Collections.sort(trailList, Trail.TrailComparatorName);
+        trailAdapter.notifyDataSetChanged();
 
-        else {
-            //check each trail's title, birds
-            for (Map.Entry<String, Trail> entry : map.entrySet()) {
-                String title = entry.getKey();
-                String birds = entry.getValue().birdText();
-                Boolean inTitle = title.toLowerCase().contains(query.toLowerCase());
-                Boolean inBirds = birds.toLowerCase().contains(query.toLowerCase());
-                if (inBirds || inTitle) {
-                    trailList.add(entry.getValue());
-                }
-            }
-            Collections.sort(trailList, Trail.TrailComparatorName);
-            trailAdapter.notifyDataSetChanged();
-        }
     }
 
     //delete the editText field, and show all trails
@@ -233,6 +222,7 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
+    //show the submit pics dialog
     public void showSubmit(View view){
         LayoutInflater inflater = (LayoutInflater)
                 this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -244,12 +234,14 @@ public class ListActivity extends AppCompatActivity {
         ad.show();
     }
 
+    //launch upload activity
     public void launchSubmit(View view){
         Intent intent = new Intent(this, UploadActivity.class);
         intent.putExtra("fromActivity", "ListActivity");
         startActivity(intent);
     }
 
+    //array adapter for Trail class
     static class TrailAdapter extends ArrayAdapter<Trail> {
         private final Context context;
         private final ArrayList<Trail> data;

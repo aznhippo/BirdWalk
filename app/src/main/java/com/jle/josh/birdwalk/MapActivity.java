@@ -50,6 +50,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Created by Josh
+ * Map Overview Activity
+ * Displays all trail pins, or single trail
+ */
+
 public class MapActivity extends AppCompatActivity {
     private GoogleMap mMap;
     Trail trail;
@@ -75,6 +81,7 @@ public class MapActivity extends AppCompatActivity {
         trailMap = TrailData.trailHashMap;
 
         setUpMapIfNeeded();
+        //show all trails, or single trail based on calling activity
         Intent intent = this.getIntent();
         if (intent != null) {
             intentString = intent.getExtras().getString("fromActivity");
@@ -114,6 +121,7 @@ public class MapActivity extends AppCompatActivity {
         return true;
     }
 
+    //options to change map type, or launch directions
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -202,9 +210,12 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+    //show all trails, or just searched items
     public void showTrails(boolean searched){
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+
+        //adapter for selected trail pin
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
@@ -222,6 +233,7 @@ public class MapActivity extends AppCompatActivity {
                 Trail t = TrailData.getValue(marker.getTitle());
                 int typeCode = t.getTypeCode();
 
+                //select proper length icon for trail
                 switch (typeCode) {
                     case 0: if (t.singlePoint()){
                         len_icon.setImageResource(R.drawable.icon_pin);
@@ -305,6 +317,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
+    //show single trail
     public void showSelectedTrail(){
         ImageButton legend = (ImageButton) findViewById(R.id.legend);
         legend.setVisibility(View.GONE);
@@ -366,12 +379,13 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
+    //set up the search bar
     public void setUpSearchField(){
         //set up search field listeners
         final Button clearButton = (Button) findViewById(R.id.clear_search);
         clearButton.setVisibility(View.GONE);
 
-
+        //create array containing all trail and bird names
         Set<String> keys = trailMap.keySet();
         String[] trails = keys.toArray(new String[keys.size()]);
         String[] birdsAndTrails = new String[trails.length + TrailBirds.allBirds.length];
@@ -384,7 +398,7 @@ public class MapActivity extends AppCompatActivity {
             k++;
         }
 
-
+        //set up search autocompleter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, birdsAndTrails);
         final AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.search_text);
@@ -463,7 +477,7 @@ public class MapActivity extends AppCompatActivity {
         performSearch("");
     }
 
-
+    //show length icon legend
     public void showLegend(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater)

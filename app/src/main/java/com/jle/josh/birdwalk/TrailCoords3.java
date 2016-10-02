@@ -4,6 +4,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by Josh on 6/27/16.
+ * Class for storing static lat/lng arrays for each trail
+ * Bad design
  */
 public class TrailCoords3 {
 

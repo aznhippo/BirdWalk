@@ -1,11 +1,11 @@
 package com.jle.josh.birdwalk;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.util.HashMap;
 
 /**
  * Created by Josh on 11/4/15.
+ * Static class for traildata
+ * HashMap containing Trail objects
  */
 
 public class TrailData {

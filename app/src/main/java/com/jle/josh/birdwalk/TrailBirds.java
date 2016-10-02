@@ -2,6 +2,8 @@ package com.jle.josh.birdwalk;
 
 /**
  * Created by Josh on 1/9/16.
+ * Class for storing static bird texts
+ * String values for birds found at each trail.
  */
 public class TrailBirds {
         static String chorley = "white-tailed kites";

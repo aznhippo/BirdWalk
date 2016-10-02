@@ -47,6 +47,12 @@ import java.util.Arrays;
 import static com.google.maps.android.SphericalUtil.computeArea;
 import static com.google.maps.android.SphericalUtil.computeLength;
 
+/**
+ * Created by Josh
+ * Trail activity
+ * Displays map snippet, bullet points, user can read narratives, and launch directions
+ */
+
 public class TrailActivity extends AppCompatActivity {
     GoogleMap mMap;
     Trail trail;
@@ -200,6 +206,7 @@ public class TrailActivity extends AppCompatActivity {
         createTrailLine();
     }
 
+    //draw trail line
     private void createTrailLine(){
         mMap.addMarker(new MarkerOptions().position(trail.getStart()).title("Start"));
         if (!trail.lotIsStart()) {
@@ -257,6 +264,7 @@ public class TrailActivity extends AppCompatActivity {
         }
     }
 
+    //method for rounding double to specified places
     private static double round(double value, int places) {
         //http://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places
         if (places < 0) throw new IllegalArgumentException();
@@ -266,9 +274,11 @@ public class TrailActivity extends AppCompatActivity {
         return bd.doubleValue();
     }
 
+    //set up info: address, length, birds, habitats
     private void setUpInfo(){
         TextView tv1 = (TextView) findViewById(R.id.addrText);
         tv1.setText(trail.getAddress());
+        //long click copies address to clipboard
         tv1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -290,6 +300,7 @@ public class TrailActivity extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.distText);
         ImageView len_icon = (ImageView) findViewById(R.id.len_icon);
 
+        //set length icon to trail type
         int typeCode = trail.getTypeCode();
         switch (typeCode) {
             case 0: if (trail.singlePoint()){
@@ -331,6 +342,7 @@ public class TrailActivity extends AppCompatActivity {
         }
     }
 
+    //show icon legend dialog
     public void showLegend(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater)
@@ -341,6 +353,7 @@ public class TrailActivity extends AppCompatActivity {
         ad.show();
     }
 
+    //launch google maps app for directions to trail
     public void launchDirections(View view){
         //convert the starting latlng into a string
         LatLng lotPoint = trail.getLotPoint();
@@ -357,6 +370,7 @@ public class TrailActivity extends AppCompatActivity {
         startActivity(mapIntent);
     }
 
+    //launch narrative w/ info activity
     public void launchExcerpt(View view){
         Intent intent = new Intent(TrailActivity.this, InfoActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
@@ -365,6 +379,7 @@ public class TrailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //show submit pics dialog
     public void showSubmit(View view){
         LayoutInflater inflater = (LayoutInflater)
                 this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -376,6 +391,7 @@ public class TrailActivity extends AppCompatActivity {
         ad.show();
     }
 
+    //launch upload activity
     public void launchSubmit(View view){
         Intent intent = new Intent(this, UploadActivity.class);
         intent.putExtra("fromActivity", "TrailActivity");
@@ -383,6 +399,7 @@ public class TrailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //show trail picture in dialog
     public void showPicture(View view){
         //http://stackoverflow.com/questions/7693633/android-image-dialog-popup
         int drawableId = 0;

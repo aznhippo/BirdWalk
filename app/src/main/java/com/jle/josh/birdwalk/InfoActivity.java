@@ -14,6 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 
+/**
+ * Created by Josh
+ * Info Activity for displaying trail narratives, and app info
+ * Donate, submit, show pic button
+ */
 public class InfoActivity extends AppCompatActivity {
 
     @Override
@@ -29,6 +34,7 @@ public class InfoActivity extends AppCompatActivity {
         fab.setVisibility(View.GONE);
         fab2.setVisibility(View.GONE);
 
+        //set buttons based on calling activity
         Intent intent = this.getIntent();
         if (intent != null) {
             String intentString = intent.getExtras().getString("fromActivity");
@@ -51,18 +57,21 @@ public class InfoActivity extends AppCompatActivity {
         }
     }
 
+    //show html file in webview
     private void setWebView(String assetName){
         String assetPath = "file:///android_asset/" + assetName + ".html";
         WebView webView = (WebView) this.findViewById(R.id.webView);
         webView.loadUrl(assetPath);
     }
 
+    //launch donate link in browser
     public void launchDonate(View view){
         Intent browserIntent = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://www.sacramentoaudubon.org/payments.html"));
         startActivity(browserIntent);
     }
 
+    //launch email addressed to devs
     public void launchEmail(View view){
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("plain/text");
@@ -70,6 +79,7 @@ public class InfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //launch share intent
     public void launchShare(View view){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
@@ -79,6 +89,7 @@ public class InfoActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
+    //show dubmit dialog
     public void showSubmit(View view){
         LayoutInflater inflater = (LayoutInflater)
                 this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -90,6 +101,7 @@ public class InfoActivity extends AppCompatActivity {
         ad.show();
     }
 
+    //launch upload activity
     public void launchSubmit(View view){
         Intent intent = new Intent(this, UploadActivity.class);
         intent.putExtra("fromActivity", "InfoActivity");
